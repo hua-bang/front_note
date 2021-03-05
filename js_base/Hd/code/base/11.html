@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //null undefined 无必须使用哪一种 视场景而论
+        let config = null;  //引用类型
+        let web = undefined;    //基本类型
+
+        //无指明返回值 返回undefined
+        function show(name) {
+            console.log(name);  //不传值的参数为undefined
+        }  
+        console.log(show())   // undefined
+
+        let a = 324;
+        let b;
+        console.log(typeof a);  //number
+        console.log(typeof b);  //undefined 声明未定义
+        console.log(typeof f);  //undefined 未声明
+
+        function star(num) {
+            num = num || 5; //undefined为假
+            for (let i = 0; i < num; i++) {
+                document.write("*");
+            }
+        }
+        star();
+    </script>
+</body>
+</html>

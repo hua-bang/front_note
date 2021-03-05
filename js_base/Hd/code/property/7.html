@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let hd = {};    //new Object
+    console.log(hd.__proto__ === Object.prototype); //true
+
+    let arr = [];   //new Array
+    console.log(arr.__proto__ === Array.prototype); //true
+
+    let str = "";   //new String
+    console.log(str.__proto__ === String.prototype); //true
+
+    let bool = true;
+    console.log(bool.__proto__ === Boolean.prototype); //true
+</script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let user = {
+        name: "向军",
+        "my age": 18   //给的例子  一般不会这么写
+    }
+    console.log(user.name);
+    console.log(user["my age"]);
+    for (const key in user) {
+        console.log(user[key]);
+    }
+    user.age = 16;
+    user.get = function() {
+        return `${this.name}的年龄是${this.age}`
+    }
+    console.log(user.get());
+    delete user.age;
+</script>
+</html>

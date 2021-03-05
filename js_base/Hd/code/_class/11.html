@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class User {
+        // public
+        _site = "后盾人"    // 人为 私有属性
+        _url = "https://www.baidu.com"
+        constructor(name) {
+            this.name = name;
+        }
+        set url(url) {
+            if(!/^https?:/i.test(url)){
+                throw new Error("非法网址")
+            }
+            this._url = url;
+        }
+    }
+    let hd = new User("厚度人");
+    hd.name = "李四";
+    hd.url = "https://hua-bang.club"
+    console.log(hd);
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class User {
+        show() {
+            console.log("user show");
+        }
+    }
+    class Admin extends User {
+        show() {
+            super.show();
+            console.log("admin show")
+        }
+    }
+    let hd = new Admin();
+    hd.show();
+
+    let a = {
+        show() {
+            console.log("a")
+        }
+    };
+    let b = {
+        __proto__: a,
+        show() {
+            this.__proto__.show.call(this);
+            console.log("b")
+        }
+    }
+    b.show();
+</script>
+</html>

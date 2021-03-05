@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="promise.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+    let p = new HPromise((resolve,reject) => {
+        // resolve("passed");
+        setTimeout(() => {
+            resolve("passed");
+            // reject("reject")
+        },1000)
+    })
+    .then(res => {
+        return new HPromise((resolve,reject) => {
+            // resolve("hua");
+            reject(res)
+        });
+    },reason => {
+        console.log(reason);
+        return new HPromise((resolve,reject) => {
+            // resolve("hua");
+            reject("p2拒绝")
+        });
+    }).then(res => {
+        console.log(res);
+    },reason => {
+        console.log(reason)
+    })
+    console.log("后盾人");
+</script>
+</html>

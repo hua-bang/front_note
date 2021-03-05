@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    "use strict"
+    // const user = {
+    //     name: "hdr",
+    //     age: 10
+    // }
+    // user.age = 1999; 可修改 不可控
+    const user = {
+        data: {
+            name: "hdr",
+            age: 10
+        },
+        set age(value) {
+            if(typeof value !== "number" || value < 10 || value >100) {
+                throw new Error("年龄格式错误")
+            }
+            this.data.age = value;
+        },
+        get age() {
+            return this.data.age;
+        }
+    };
+    user.age = 55
+    console.log(user.age);
+</script>
+</html>

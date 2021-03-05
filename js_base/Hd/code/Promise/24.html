@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const hd = new Promise((resolve,reject) => {
+        setTimeout(() => {
+            resolve("第一个异步")
+        },1000)
+    }).then(res => {
+        return {
+            then(resolve) {
+                resolve("嵌套")
+            }
+        }
+    })
+    const houdunren = new Promise((resolve,reject) => {
+        setTimeout(() => {
+            resolve("第二个异步")
+        },1000)
+    })
+
+    //全部成功 才会执行then 一个不成功 就算失败 catch捕捉 解决状态后会直接走then
+    Promise.all([hd,houdunren]).then(res => {
+        console.log(...res);
+    }).catch(err => {
+        console.log(...err)
+    })
+</script>
+</html>

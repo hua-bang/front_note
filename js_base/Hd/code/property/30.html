@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function User() {}
+    User.prototype.show = function() {
+        console.log(this.description());
+    }
+
+    function Admin() {}
+    Admin.prototype = Object.create(User.prototype);
+    Admin.prototype.show = () => "我是Admin"
+
+    function Member() {};
+    Member.prototype = Object.create(User.prototype);
+    Member.prototype.show = () => "我是Member"
+
+    let a = new Admin();
+    console.log(a.show());
+    let m = new Member();
+    console.log(m.show());
+</script>
+</html>

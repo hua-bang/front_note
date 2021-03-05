@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>hdcms</div>
+    <div>houdunren</div>
+</body>
+<script>
+
+    //WeakMap不能用keys entries values size forof 都不行
+
+    // let divs =  document.querySelectorAll("div");
+    // let map = new WeakMap();
+    // divs.forEach(item => map.set(item,item.innerHTML));
+    // console.log(map);
+
+    let arr = [];
+    let map = new WeakMap();
+    map.set(arr,"hdcms.com");
+    console.log(map);
+</script>
+</html>

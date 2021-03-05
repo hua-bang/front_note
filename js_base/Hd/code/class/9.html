@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let user = {name:"houdunren",url:"houdunren.com",title:"开源系统"};
+    let {url, name, title="hdcms"} = user;
+    console.log({url, name, title})
+
+    function createElement(options) {
+        let {width=200,height=100,backgroundColor='red'} = options;
+        const div = document.createElement("div");
+        div.style.width = width+'px';
+        div.style.height = height+'px';
+        div.style.backgroundColor = backgroundColor;
+        document.body.appendChild(div);
+    }
+    createElement({});
+</script>
+</html>

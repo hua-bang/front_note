@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>huodunren</div>
+    <div>hdcms</div>
+    <script>
+        const divNodeList = document.querySelectorAll("div");
+        console.log(divNodeList);
+        //这时候是一个类数组，无法使用map等操作
+
+
+        //第一种，转化成array
+        Array.from(divNodeList).map((item) => {
+            console.log(item);
+        });
+
+        //第二种，用Array的原型链
+        Array.prototype.map.call(divNodeList, (item) => {
+            console.log(item);
+        });
+
+        //第三种，点语法
+        [...divNodeList].map((item) => {
+            item.addEventListener('click', function() {
+                this.classList.toggle("hide");
+            })
+        });
+    </script>
+</body>
+</html>

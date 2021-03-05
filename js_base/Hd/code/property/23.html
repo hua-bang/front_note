@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let hd = { name: "hdr" };
+    hd.__proto__ = {
+        show() {
+            console.log(this.name)
+        }
+    }
+    hd.__proto__ = 99;  //访问器
+    console.dir(hd);
+    hd.show();
+    // 如何修改呢 1.创建原型不是object的对象
+    // hd = Object.create(null,{
+    //     __proto__: null
+    // })
+
+    // 2. 重写覆盖属性访问器
+    hd = {
+        action: {},
+        get __proto__() {
+            return this.action;
+        },
+        set __proto__(val) {
+            this.action = val
+        }
+    }
+    console.log(hd.__proto__);
+    hd.__proto__ = "123";
+    console.log(hd.__proto__);
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const DATA = Symbol();
+    const user = {
+        [DATA]: {name},
+        age: 10,
+        set name(value) {
+            this[DATA].name = value + "-后盾人"    //这里的this.name会直接找到访问器的方法 造成了循环调用
+        },
+        get name() {
+            return this[DATA].name;
+        }
+    }
+    user.name = "hua"
+    console.log(user.name);
+</script>
+</html>

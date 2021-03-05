@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function User(name) {
+        this.name = name;
+    }
+    console.dir(User);
+    console.log(User.prototype.__proto__ === Object.prototype);
+    console.log(User.prototype.constructor === User);
+
+    // ①
+    User.prototype.show = function() {
+        console.log(this.name);
+    }
+
+    // ②
+    User.prototype = {
+        constructor: User,  //若没有这个的话，相当于没有构造函数 User.prototype.constructor("李四")这个会报错
+        show() {
+            console.log(this.name)
+        }
+    }
+
+    // ①和②的意思不一样
+    console.dir(User);
+    let lisi = new User.prototype.constructor("李四")
+    console.log(lisi);
+    lisi.show();
+</script>
+</html>

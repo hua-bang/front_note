@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [3,2,1,4,5];
+        let res = arr.find(item => {
+            return (item % 3) === 1;
+        })
+        console.log(res);   //返回的是符合元素的值
+
+        let obj = {name:'js'};
+        let lessons = [obj,{name:'css'},{name:'mysql'}];
+        console.log(lessons.includes(obj)); //判断引用的时候，用的是地址内存地址
+
+        let result = lessons.find(item => {
+            return item.name = "css";
+        });
+        console.log(result);
+
+        let index = lessons.findIndex(item => {
+            return item.name = "css";
+        });
+        console.log(index);
+    </script>
+</body>
+</html>

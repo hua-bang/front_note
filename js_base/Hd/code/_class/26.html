@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Arr extends Array {
+        constructor(...args) {
+            super(...args);
+        }
+        get first() {
+            return this[0];
+        }
+        get max() {
+            return Math.max(...this);
+        }
+        add(item) {
+            this.push(item);
+        }
+        remove(value) {
+            let pos = this.findIndex(item => item === value)
+            return pos === -1 ? false : (this.splice(pos,1) && true );
+        }
+    }
+    let a = new Arr(1,2,3,52,6,7);
+    console.log(a.first);
+    console.log(a.max);
+    console.log(a.remove(2));
+</script>
+</html>

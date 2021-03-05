@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const web = {
+        name: "后盾热呢",
+        url: "houdunren.com",
+        set site(value) {
+            [this.name, this.url] = value.split(",")
+        },
+        get site() {
+            return  `${this.name}的网址是${this.url}`;
+        }
+    }
+    web.site = "hug,www.baidu.com";
+    console.log(web);
+    console.log(web.site);
+</script>
+</html>

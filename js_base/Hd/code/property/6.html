@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let hd = new Object();
+    hd.name = "houdunren";
+    console.dir(Object);
+    // console.log(hd.__proto__ === Object.__proto__); //false
+    // console.log(Object.__proto__ === Object().__proto__);   //false
+    // console.log(Object.prototype === Object().__proto__)    
+    // console.log(hd.__proto__ === Object.prototype); //true
+    // console.log(hd.__proto__ === Object().__proto__);   //true
+    Object.prototype.show = () => {
+        console.log("show");
+    }
+    hd.show();  //show
+
+    function User() {}
+    console.dir(User);
+    console.log(User.prototype.__proto__ === User.__proto__.__proto__); //true
+</script>
+</html>

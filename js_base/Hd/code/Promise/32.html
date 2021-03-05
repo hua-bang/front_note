@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    async function ajax(name) {
+        return new Promise((resolve,reject) => {
+            setTimeout(() => {
+                resolve(name)
+            },1000)
+        })
+    }
+
+    async function getRandom () {
+        return new Promise((resolve,reject) => {
+            setTimeout(() => {
+                resolve(Math.random());
+            },1000)
+        })
+    }
+    async function get(name) {
+        // await必须放在async函数中才能使用
+        let username = await ajax(name);
+        let random = await getRandom();
+        return {username,random};
+    }
+    get("hug").then(res => {
+        console.log(res);
+    })
+</script>
+</html>

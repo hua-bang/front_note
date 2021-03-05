@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let user = {};
+    hd = user;
+    user.name = "hug";
+    user.age = 16;
+    console.log(hd,user);
+
+    //传值
+    function show(a) {
+        a += 100;
+        console.log(a);
+    }
+    let a = 1;
+    show(a);
+    console.log(a);
+
+    //传地址
+    function showAge(user) {
+        user.age = 18;
+        console.log(user.age);
+    }
+    showAge(user);
+    console.log(user);
+</script>
+</html>

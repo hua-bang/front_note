@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        li{
+            padding: 10px;
+        }
+        li:nth-child(odd) {
+            background: #16a085;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function show() {
+            return "houdunren.com";
+        }
+        let hd = `www.${show()}`;   //表达式也可以写
+        console.log(hd);
+
+        let lessons = [
+            { title: "第一章 走进js黑洞", lesson: 3 },
+            { title: "第二章 ubuntn", lesson: 6 },
+            { title: "第三章 响应式布局", lesson: 8 }
+        ];
+
+        function template() {
+            return `
+            <ul>${lessons.map( item => `<li>${item.title}</li>` ).join("")}</ul>
+            `
+        }
+        document.body.innerHTML = template();
+    </script>
+</body>
+</html>

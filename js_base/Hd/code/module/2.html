@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // AMD require.js CMD sea.js
+    // COMMONJS NODE.JS
+    // UMD
+    let module = (function(){
+        //定义模块
+        const moduleList = {};
+        /**
+        *   @param String name  模块名
+        *   @param Array modules  依赖的模块
+        *   @param Function action 动作
+        */
+        function define(name,modules,action){
+            modules.map((m,i) => {
+                modules[i] = moduleList[m];
+            }) 
+            moduleList[name] = action.apply(null,modules);
+        }
+        return { define }
+    })();
+
+    module.define('hd',[],function() {
+        // 导出
+        return {
+            first(arr) {
+                return arr[0]
+            },
+            max(arr, key) {
+                return arr.sort((a,b)=>b[key]-a[key])[0];
+            }
+        }
+    });
+
+    module.define("lesson",['hd'],function(hd) {
+        //导入
+        let data = [
+            {name:'js',price:199},
+            {name:'mysql',price:78}
+        ]
+        console.log(hd.max(data,"price"));
+    });
+
+    module.define("a",[],function() {
+        return {
+            site: "后盾人",
+            url: "houdunren.com"
+        }
+    })
+    module.define("b",["a"],function(a) {
+        console.log(a);
+        a.site = "hdcms";   //共用一个内容 这个会改变 影响其他模块的使用
+    });
+    module.define("c",["a"],function(a) {
+        console.log(a);
+    });
+</script>
+</html>

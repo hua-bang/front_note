@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const lessons = [
+        {
+            title: "媒体查询响应式布局",
+            category: "css"
+        },
+        {
+            title: "FLEX弹性布局",
+            category: "css"
+        },
+        {
+            title: "mysql多表操作",
+            category: "mysql"
+        }
+    ];
+    let proxy = new Proxy(lessons, {
+        //array, key, proxy 数组 键值 代理
+        get(array, key, proxy) {
+            const title = array[key].title;
+            const len = 5;
+            array[key].title = title.length > len ? title.substr(0,len) : title;
+            return array[key];
+        }
+    })
+    console.log(proxy[0])
+</script>
+</html>

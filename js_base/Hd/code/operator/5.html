@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a = 1, b = 0;
+        let f = a || b;
+
+        if (a || b) {
+            console.log(f);
+        }
+
+        // let sex = prompt("input your sex~") || "保密";
+        // console.log(sex);
+
+        function star(num) {
+            return "*".repeat(num || 5);
+        }
+        console.log(star());
+    </script>
+</body>
+</html>

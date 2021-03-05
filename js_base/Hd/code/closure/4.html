@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    // function Hd() {
+    //     let n = 1;
+    //     this.sum = function() {
+    //         console.log(++n);
+    //     }
+    // }
+    
+    //为每个对象只存放一个
+    function Hd() {
+        let n = 1;
+        let sum = function() {
+            console.log(++n);
+        }
+        return {
+            sum
+        }
+    }
+    // 每次new有新的空间
+    let a = new Hd();
+    console.log(a);
+    a.sum();
+    a.sum();
+</script>
+</html>

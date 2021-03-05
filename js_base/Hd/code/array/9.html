@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let array = ["hdcms","houdunren"];
+        let vars = array.pop();    //出栈 返回的是出栈的值
+        console.log(vars);
+        console.table(array);
+
+        let length = array.unshift("hug");   //从最前添加元素   返回的是最终的长度
+        console.log(length);
+        console.table(array);
+
+        vars = array.shift();  //从最前面减少一个值， 返回的也是
+        console.log(vars);
+        console.table(array);
+
+        console.log(Array(5).fill("hug"));
+        console.log([1,2,3,4,5,6].fill("hug",3,4)); //第i元素开始，i-1个元素结束
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 函数也是对象
+    function User() {
+
+    }
+    User.prototype.show = () => {
+        console.log("show")
+    }
+    let hd = new User();
+    hd.show();
+    console.dir(User);
+    console.log(User.prototype === hd.__proto__);   //true
+    console.log(User.__proto__ === hd.__proto__);   //false
+</script>
+</html>

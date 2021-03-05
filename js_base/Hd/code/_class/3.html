@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //类中定义的属性自动放在原型中
+    class User {
+        constructor(name) {
+            this.name = name;
+        }
+        show() {
+            
+        }
+    };
+    // console.dir(User);
+    // console.log(User === User.prototype.constructor);
+    let user = new User("hug");
+    console.dir(user);
+    // 获取对象的属性名称
+    console.log(Object.getOwnPropertyNames(user));
+    console.log(Object.getOwnPropertyNames(User.prototype));
+
+    function Hd(name){
+        this.name = name;
+    };
+    // console.dir(Hd);
+    let h = new Hd("hug");
+    console.dir(h);
+    console.log(Object.getOwnPropertyNames(h));
+    console.log(Object.getOwnPropertyNames(Hd.prototype));
+</script>
+</html>

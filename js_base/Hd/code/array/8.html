@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let array = ["hdcms","houdunren"];
+        array[2] = "cms";
+        array[array.length] = "shop";
+        let hd = ["shop","cms"];
+        array = [...array, ...hd];
+        //array.push(...hd);
+
+        array.push("newArgment","pop");   // 建议 可推荐  直接改变调用对象的值 同时函数返回的是数组的长度
+        console.table(array);
+
+        function rangeArray(begin, end) {
+            const array = [];
+            for (let i = begin; i <= end; i++) {
+                array.push(i);
+            }
+            return array;
+        }
+        console.log(rangeArray(1,5));
+    </script>
+</body>
+</html>

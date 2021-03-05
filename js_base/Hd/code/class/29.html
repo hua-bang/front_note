@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let Request = {
+        set token(content) {
+            localStorage.setItem('token',content);
+        },
+        get token() {
+            let token = localStorage.getItem('token');
+            if(!token)
+                alert("please login");
+            return token;
+        }
+    }
+    Request.token = "3289f3151d53sa4d554qw3d4w5ds";
+    console.log(Request.token);
+</script>
+</html>

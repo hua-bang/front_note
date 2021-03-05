@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const user = {
+        name: "后盾人",
+        age: 18
+    }
+    Object.preventExtensions(user); //此时的user中的属性值可以修改，但不可以扩展
+    user.lesson = "js";
+    user.age = 16;
+    console.log(user);
+    console.log(Object.isExtensible(user));
+</script>
+</html>

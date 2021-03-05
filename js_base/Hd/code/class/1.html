@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let name = "hug";
+    let grade = [
+        {name: "js", score:91},
+        {name: "docker", score:81},
+    ];
+    function average(grade, name) {
+        return `${name}的平均成绩为${grade.reduce((t,l) => t+l.score,0) / grade.length}`;
+    }
+    console.log(average(grade,name));
+
+    let user = {
+        name: "hug",
+        grade: [
+            {name: "js", score:91},
+            {name: "docker", score:81}
+        ],
+        // 方法
+        average() {
+            return `${this.name}的平均成绩为${this.grade.reduce((t,l) => t+l.score,0) / this.grade.length}`;
+        }
+    }
+    console.log(user.average());
+</script>
+</html>

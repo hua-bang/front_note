@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // function queue(num) {
+    //     let promise = Promise.resolve(num[0]);
+    //     num.map(v => {
+    //         promise = promise.then(_ => {
+    //             return new Promise(resolve => {
+    //                 setTimeout(() => {
+    //                     console.log(_);
+    //                     resolve(_+1);
+    //                 }, 1000);
+    //             })
+    //         })
+    //     })
+    // }
+    // queue([1,2,3,4,5])
+
+    // let promise = Promise.resolve(0);
+    // promise = promise.then((v) => {
+    //     return new Promise(resolve => {
+    //         console.log(v);
+    //         resolve(v+1)
+    //     })
+    // })
+    // promise = promise.then((v) => {
+    //     return new Promise(resolve => {
+    //         console.log(v);
+    //         resolve(v+1)
+    //     })
+    // })
+    // promise.then(v => {
+    //     console.log(v)
+    // })
+
+    function p1() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                console.log("p1");
+                resolve();         
+            }, 1000);
+        })
+    }
+
+    function p2() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                console.log("p2");
+                resolve();         
+            }, 1000);
+        })
+    }
+    
+    function queuePromise(promiseArr) {
+        let promise = Promise.resolve();
+        promiseArr.map(v => {
+            promise = promise.then(() => {
+                return v();
+            })
+        })
+    }
+    // queuePromise([p1,p2])
+
+    class Queue {
+        constructor(promiseArr) {
+            this.promises = promiseArr
+        }
+        promise() {
+            let promise = Promise.resolve();
+            this.promises.map(v => {
+                promise = promise.then(() => {
+                    return v();
+                })
+            }) 
+        }
+    }
+
+    new Queue([p1,p2]).promise();
+</script>
+</html>

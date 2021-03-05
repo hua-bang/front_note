@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var web = "hdcms";  //var声明的变量会直接印象到window中的属性
+        console.log(window.web);    //hdcms
+        
+        // let web = "hdcms";  //let则不会
+        // console.log(window.web);    //undefined   
+
+        var screenLeft = 88;    //会造成screenLeft会覆盖window中的同名变量,导致失去变量原有的意义
+        console.log(window.screenLeft);
+
+        var a = 123;
+        var a = 456;
+        console.log(a);
+
+        let b = 456;
+        // let b = 123;    // error 这里直接报错
+        console.log(b);
+
+
+    </script>
+</body>
+</html>

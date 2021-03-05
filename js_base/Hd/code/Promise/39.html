@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    async function hd(name) {
+        // try{
+        //     let a = await demo(name);
+        //     return a;
+        // }catch(err) {
+        //     console.log(err)
+        //     return err;
+        // }
+        return demo(name);
+    }
+    async function demo(name) {
+        return new Promise((resolve,reject) => {
+            if(name === "hua")
+                reject("error")
+            else {
+                resolve(name);
+            }
+        })
+    }
+    hd("hua").then(res => {
+        console.log(res);
+    }).catch(err => {
+        console.log("err"+err);
+    })
+</script>
+</html>

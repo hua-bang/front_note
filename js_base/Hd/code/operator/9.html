@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let name = "视频";
+        switch(name) {
+            case '产品':
+                console.log('product');
+                break;
+            case '视频':
+                console.log("video");
+                break;
+            default:
+                console.log("default");
+        }
+
+        let error = "hd";
+        switch(error) {
+            case "notice":
+            case "warning":
+                console.log("tips or warning");
+                break;
+            case "error":
+            default:
+                console.log("error");
+        }
+
+        // swicth接入表达式
+        function message(age) {
+            let msg = "";
+            switch(true) {
+                case age > 60:
+                    msg = "老年";
+                    break;
+                case age >= 0:
+                    msg = "少年"
+                    break;
+            }
+            return msg;
+        }
+    </script>
+</body>
+</html>

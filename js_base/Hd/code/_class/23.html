@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // instance 主角是类的对象
+    function User() {}
+    function Admin() {}
+    Admin.prototype = Object.create(User.prototype);
+    let hd = new Admin();
+    console.dir(Admin);
+    console.dir(hd);
+    console.log(hd instanceof Admin);
+    console.log(hd instanceof User);
+
+    function checkPrototype(obj, constructor) {
+        if(!obj.__proto__)
+            return false;
+        return obj.__proto__ === constructor.prototype ? true : checkPrototype(obj.__proto__,constructor);
+    }
+    console.log(checkPrototype(hd,Number));
+
+    class U {
+
+    }
+    class A extends U {}
+    let a = new A();
+    console.log(a instanceof A)
+    console.log(a instanceof U)
+    console.log(checkPrototype(a,A));
+</script>
+</html>

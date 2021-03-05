@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let obj = {
+        name: "后盾人",
+        show() {
+            function render() {
+                console.log(this);
+            }
+            render();
+            console.log(this);
+            return this.name;
+        }
+    };
+    console.log(obj.show());
+    console.log(this, this===window);  //打印的是window
+
+    function User(name) {
+        this.name = name;
+        this.show = function () {
+            return this.name;
+        }
+    }
+    console.log(new User("hug").show());
+</script>
+</html>

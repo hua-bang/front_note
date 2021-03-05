@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const date = new Date("2000-11-24 16:45:32");
+
+        // 暂不完整
+        let dateFormat = (date, format = "YYYY-MM-DD HH:mm:ss") => {
+            const config = {
+                YYYY: date.getFullYear(),
+                MM: date.getMonth() + 1,
+                DD: date.getDate(),
+                HH: date.getHours(),
+                mm: date.getMinutes(),
+                ss: date.getSeconds()
+            };
+            for(const key in config) {
+                format = format.replace(key, config[key]);
+            }
+            return format;
+        }
+
+        console.log(dateFormat((new Date()),"YYYY-MM-DD HH:mm:ss"));
+    </script>
+</body>
+</html>

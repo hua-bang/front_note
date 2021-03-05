@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [1,2,3,4];
+        console.log(arr.indexOf(-4));   //-1 返回的是找到元素的索引位置
+        console.log(arr.indexOf("1"));  //严格查找 -1
+        console.log(arr.indexOf(2,0));  //第二个参数表示第几位开始查找 lastIndexOf一样道理
+
+        console.log(arr.includes(2));   //返回的是布尔类型
+        console.log(arr.includes("1"));   //返回的是布尔类型
+    </script>
+</body>
+</html>

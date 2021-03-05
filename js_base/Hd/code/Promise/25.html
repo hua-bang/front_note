@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const p1 = new Promise((resolve,reject) => {
+        reject("rejected")
+    })
+    const p2 = new Promise((resolve,reject) => {
+        reject("resolved");
+    })
+
+    // allSettled 用于处理多个promise ，只关注执行完成，不关注是否全部执行成功，allSettled 状态只会是fulfilled。
+    // 返回的是每个promise的状态结果
+    Promise.allSettled([p1,p2]).then(res => {
+        console.log("res");
+        console.log(res);
+    });
+</script>
+</html>

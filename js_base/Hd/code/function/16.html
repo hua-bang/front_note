@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    let lesson = {
+        site: "后盾人",
+        lists: ["js","css","mysql"],
+        show: function() {
+            // const self = this; 用常量代替this
+            return this.lists.map(function(value) {
+                return `${this.site}-${value}`;
+                // console.log(this);//会找到自身的this 但是这里是函数  this指的是本身
+            },this);    //map传入的第二个参数，会在回调函数中，成为函数中的this
+        }
+    }
+    console.table(lesson.show()) 
+</script>
+</html>

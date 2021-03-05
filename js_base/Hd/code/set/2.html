@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // let set = new Set("hdcms","hdr");   //这样写会把第一个参数当初数组
+    let set = new Set(["hdcms","hdr"]);
+    console.log(set.size);  //获取长度 number
+    console.log(set.has("hdr"));    //判断有没有某个元素 boolean
+    console.log(set.delete("hdr")); //删除元素 boolean
+    console.log(set.clear());   //无返回值
+    console.log(set);
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let arr = ["houdunren.com","hdcms"];
+    console.log(arr);
+    console.log(arr.hasOwnProperty("length"));  //true 只检测自身有没有相关属性（不包括父级属性）
+    console.log(arr.hasOwnProperty("concat"));  //false
+
+    console.log("concat" in arr);   //true 检测某个属性是否在这
+
+    let a = {
+        name: "后盾人"
+    }
+    let b = {
+        url: "houdunren.com"
+    }
+    Object.setPrototypeOf(a,b);
+    console.log(a);
+    console.log(a.hasOwnProperty("url"));
+    console.log('url' in a);
+
+    function oss(options) {
+        if(!options.hasOwnProperty("host")) {
+            throw new Error("必须设置主机地址")
+        }
+    }
+    oss({host:"192.168.89.9"});
+</script>
+</html>

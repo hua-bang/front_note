@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let lesson = {
+        list: [
+            {name:"js",price:100},
+            {name:"mysql",price:120},
+            {name:"vue.js",price:70},
+        ],
+        get total() {
+            return this.list.reduce((total,lesson) => total + lesson.price, 0);
+        }
+    }
+    lesson.total = 0;   //修改无用
+    console.log(lesson.total);
+</script>
+</html>

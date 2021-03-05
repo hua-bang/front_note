@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let hd = {
+        name: "后盾人",
+        show() {
+            console.log(this.name)  //若不是箭头函数的话，谁调用this this就指向谁
+        }
+    }
+    let User = {
+        name: "行军"
+    }
+    Object.setPrototypeOf(hd,User);
+    console.log(hd);
+</script>
+</html>

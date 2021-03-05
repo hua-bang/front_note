@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //这里是因为用将函数的执行放在宏任务，所以houdunren先执行
+    function sum(num) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                let count = 0;
+                for (let i = 0; i < num; i++) {
+                    count += num--;
+                }
+                resolve(count);
+            })
+        })
+    }
+
+    sum(987654321).then(res => {
+        console.log(res);
+    })
+
+    //这里是因为用将函数的执行放在微任务，所以houdunren先执行
+    async function hd(num) {
+        let sum = await new Promise((resolve) => {
+            let count = 0;
+            for (let i = 0; i < num; i++) {
+                count += num--;
+            }
+            resolve(count);
+        })
+        return sum;
+    }
+    hd(987554545).then(res => {
+        console.log(res);
+    })
+    console.log("houdunren");
+</script>
+</html>

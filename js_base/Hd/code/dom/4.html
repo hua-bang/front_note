@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="red">
+    <!-- hug -->
+     <!-- <script>
+         // the type of node
+         console.log(document.nodeType);
+         console.log(document.body.nodeType);
+         console.log(document.body.attributes[0].nodeType);
+         console.log(document.body.childNodes[0].nodeType);
+         console.log(document.body.childNodes[1].nodeType);
+     </script> -->
+     <div id="hd">hdcms.com</div>
+     <script>
+         let hd = document.querySelector("#hd");
+         console.dir(hd);
+
+         function prototype(el) {
+             let p = Object.getPrototypeOf(el);
+             console.log(p);
+             Object.getPrototypeOf(p) ? prototype(p) : ''
+         }
+
+         prototype(hd);
+     </script>
+</body>
+</html>

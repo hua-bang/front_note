@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>hdcms</div>
+    <div>houdunren</div>
+    <script>
+        let divs = document.querySelectorAll("div");
+        console.log(divs);  //NodeList
+        console.log(Array.from(divs));  //array
+        let newArr = Array.from(divs, (item) => {
+            item.style.backgroundColor = "red";
+            return item;
+        });
+        console.log(newArr);
+
+        
+        console.log(Array.isArray([])); //检测是否是数组
+        console.log(Array.toString());  //
+        console.log(typeof Array.toString());   //字符串
+        [1,3,4].join("-");
+
+        let str = "hello,world";
+        console.log(str.split(","));
+
+        console.log(Array.from(str));   //字符串变成数组
+
+        let obj = {
+            0: 'hug',
+            1: 18,
+            length: 2
+        };
+        // 对象要用length，且键要为从0递增的索引
+        console.log(Array.from(obj));
+    </script>
+</body>
+</html>

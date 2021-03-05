@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function find(arr, callback) {
+            for (const value of arr) {
+                if(callback(value))
+                    return value;
+            }
+            return undefined;
+        }
+
+        let arr = [3,2,3,4,5];
+        console.log(find(arr,item => {
+            return item === 2;
+        }));
+
+        Array.prototype.findValue = function(callback) {
+            for (const value of this) {
+                if(callback(value)) return value;
+            }
+            return undefined;
+        }
+
+        Array.prototype.findValueIndex = function(callback) {
+            for (const key in this) {
+                if(callback(this[key]))
+                    return key;
+            }
+            return -1;
+        }
+
+        console.log(arr.findValue(item => item === 3));
+        console.log(arr.findValueIndex(item => item === 3));
+    </script>
+</body>
+</html>

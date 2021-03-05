@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const user = {
+        name: "hug",
+        age: 18
+    }
+    user.lesson = "js";
+    console.log(user);
+    delete user.lesson;
+    console.log(user);
+    console.log(JSON.stringify(Object.getOwnPropertyDescriptor(user,"name"), null,2));
+    console.log(JSON.stringify(Object.getOwnPropertyDescriptors(user), null,2));
+    // {
+    //     "value": "hug",
+    //     "writable": true,    //可写
+    //     "enumerable": true,  //可遍历
+    //     "configurable": true //可配置（修改）
+    // }
+</script>
+</html>

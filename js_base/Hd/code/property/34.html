@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function extend(sub, sup) {
+        sub.prototype = Object.create(sup.prototype);
+        Object.defineProperty(sub.prototype,"constructor",{
+            value: sub,
+            enumerable: false
+        });
+    }
+    function User(name, age) {
+        this.name = name;
+        this.age = age;
+    };
+
+    extend(User,Request);
+    User.prototype.show = function() {
+        console.log(this.name)
+    };
+
+    function Request() {};
+    Request.prototype.ajax = function() {
+        console.log("ajax");
+    }
+
+    function Credit() {};
+    function Admin(name, age) {
+        User.call(this, name, age);
+    }
+    extend(Admin, User);
+    let a = new Admin("hug",123);
+    a.show();
+    a.ajax();
+
+
+</script>
+</html>

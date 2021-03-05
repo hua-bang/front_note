@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let cart = [
+            {name:"iphone",price:12000},
+            {name:"imac",price:25000},
+            {name:"ipad",price:3000}
+        ];
+        function getNameByPrice(goods, price) {
+            return goods.reduce((arr, cur) => {
+                if(cur.price >= price)
+                    arr.push(cur);
+                return arr;
+            }, [])
+            .map(good => good.name);
+        }
+        console.log(getNameByPrice(cart,10000));
+
+        // let arr = [1,2,3,3,1,4,2];
+        // let newArr = arr.reduce((arr, cur) => {
+        //     if(arr.includes(cur) === false)
+        //         arr.push(cur);
+        //     return arr;
+        // }, []);
+        // console.table(newArr);
+
+        let goods = [
+            {name:"iphone",price:12000},
+            {name:"imac",price:25000},
+            {name:"ipad",price:3000},
+            {name:"imac",price:25000},
+            {name:"ipad",price:3000}
+        ];
+
+        function filterGoods(goods) {
+            return goods.reduce((arr, cur) => {
+                if(!arr.find((v)=> v.name === cur.name)){
+                    arr.push(cur);
+                }
+                return arr;
+            },[]);
+        }
+        console.log(filterGoods(goods));
+    </script>
+</body>
+</html>

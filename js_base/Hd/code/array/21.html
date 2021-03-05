@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .disable {
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>hdcms</li>
+        <li>houdunren</li>
+    </ul>
+    <script>
+        let lessons = [
+            {title:"媒体查询响应式布局", category: "css"},
+            {title:"flex弹性布局", category: "css"},
+            {title:"mysql多表查询", category: "mysql"}
+        ];
+
+        lessons.forEach((item, index, lessons) => {
+            item.title = item.title.substr(0,2);
+        })
+        console.table(lessons);
+
+        let lis = document.querySelectorAll("ul li");
+        lis.forEach((item) => {
+            item.addEventListener('click',function() {
+                this.classList.toggle('disable');
+            })
+        })
+    </script>
+</body>
+</html>

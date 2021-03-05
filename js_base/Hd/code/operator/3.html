@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input name="age" type="text"/>
+    <span id="msg"></span>
+    <script>
+        //== === > < >= <= != !==
+
+        // let a = 1, b = 2, c = "1";
+        // console.log(a > b); //false
+        // console.log(a == b);
+        // console.log(a === c);
+        // console.log(a <= b);
+
+        let span = document.querySelector("#msg");
+
+        document.querySelector('[name="age"]')
+        .addEventListener('keyup', function() {
+            span.innerHTML = this.value >= 90 ? "年龄不能超过90": "年龄合法";
+        })
+    </script>
+</body>
+</html>

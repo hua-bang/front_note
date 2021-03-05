@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let arr = [1,2,3,4,5];
+        // arr.reduce((pre,value,index,arr) => {
+        //     console.log(pre,value,index,arr);
+        //     return value;
+        // }); //不传第二个参数的话，则数组第0个会作为第一次pre的取值
+
+        // let res = arr.reduce((pre,value) => {
+        //     return pre + value
+        // },0);
+        // console.log(res);
+
+        let arr = [1,222221,300,1,5];
+        function arrayCount(array,item) {
+            return array.reduce((total,cur)=> cur === item ? ++total : total, 0);
+        }
+        console.log(arrayCount(arr,1));
+
+        function arrayMax(arr) {
+            return arr.reduce((pre,cur)=> pre >= cur ? pre : cur);
+        }
+        console.log(arrayMax(arr));
+    </script>
+</body>
+</html>

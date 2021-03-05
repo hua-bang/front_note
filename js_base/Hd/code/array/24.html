@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = ['hdcms','houdunren'];
+        let newArr = arr.filter((value) => {
+            return true;
+        })
+        console.log(newArr);
+
+        let lessons = [
+            {title:"媒体查询响应式布局", category: "css"},
+            {title:"flex弹性布局", category: "css"},
+            {title:"mysql多表查询", category: "mysql"}
+        ];
+        const cssLessons = lessons.filter(item => {
+            return item.category === "css";
+        })
+        console.log(cssLessons);
+    </script>
+</body>
+</html>

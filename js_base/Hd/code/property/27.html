@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Hd() {}
+    let obj = new Hd();
+    console.log(obj.__proto__.constructor === Hd);
+    let obj2 = new obj.__proto__.constructor();
+
+    function User() {}
+    User.prototype.name = function() {
+        console.log("user.name");
+    }
+    function Admin(){};
+    Admin.prototype = Object.create(User.prototype);
+    Admin.prototype.constructor = Admin;
+    Admin.prototype.role = () => {
+        console.log("role")
+    };
+    let a = new Admin();
+    let b = new a.__proto__.constructor();
+    console.log(b);
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let hd = new Map([["houdunren","后盾人"],["hdcms","开源系统"]]);
+    hd.set("name","在线编程");
+    console.log(hd.keys());
+    console.log(hd.values());
+    console.log(hd.entries());
+
+    for (const [key,value] of hd.entries()) {
+        console.log(key,value);
+    }
+
+    hd.forEach((v,k) => {
+        console.log(v,k);
+    })
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let hd = document.querySelector("#hd");
+        console.log(hd);    //null 因为是同步执行 下方元素还没渲染
+        // 1.setTimeOut 2.外部文件async or defer 制造脚本延迟 3.调用onload函数
+        window.onload = () => {
+            let hd = document.querySelector("#hd");
+            console.log(hd);
+        }
+        
+    </script>
+    <div id="hd"></div>
+    <!-- 节点 -->
+    <!-- <script>
+        let hd = document.querySelector("#hd");
+        console.log(hd);
+    </script> -->
+</body>
+</html>

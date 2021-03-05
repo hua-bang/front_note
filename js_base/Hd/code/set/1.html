@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    let arr = [1,1,12,3];
+    console.table(arr);
+
+    let set = new Set();    // new Set([1,2,3,4]);
+    set.add(1);
+    set.add(1); //不能添加已存在的元素，但是是强类型的，所以不同类型是可以添加的
+    set.add("123");
+    console.log(set);
+
+    let obj = {
+        1: "hdcms",
+        "1": "hd"   //会覆盖
+    }
+    console.log(obj);
+
+    let hd = {
+        [obj]: "后盾人" //[key]这种形式在定义对象的时候，是以key的值来做键值的，但如果是对象或数组会将他字符串化
+    }
+    console.log(hd[obj.toString()]);
+</script>
+</html>

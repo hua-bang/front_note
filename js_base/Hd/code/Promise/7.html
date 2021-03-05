@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 宏任务
+    setTimeout(() => {
+        console.log("setTimeout")
+    },0);
+
+    // 同步任务
+    console.log("houdunren")
+
+    // 微任务
+    new Promise((resolve,reject) => {
+        resolve(1); //成功或失败通知，且有对应的函数接收，才会加入微任务队列
+        console.log("promise")  //同步
+        reject(2)
+    }).then(res => {
+        console.log(res);
+    })
+
+    console.log("hdcms")
+</script>
+</html>

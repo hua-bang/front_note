@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const protecteds = new WeakMap();
+    class Common {
+        constructor() {
+            protecteds.set(this,{
+                host: "https://houdunren.com"
+            })
+        }
+        set host(url) {
+            if(!/^https?:/i.test(url)){
+                throw new Error("非法网址。")
+            }
+            protecteds.set(this, {
+                ...protecteds.get(this),
+                host:url
+            });
+        }
+        get host() {
+            return protecteds.get(this)["host"];
+        }
+    }
+    class User extends Common{
+        constructor(name) {
+            super();
+            protecteds.set(this, {
+                ...protecteds.get(this),
+                name
+            });
+            this.name = name;
+        }
+        
+    }
+    let hd = new User("hug");
+    // 实际上是利用了外部的变量
+    let xj = new User("xj");
+    console.log(xj.host);
+    console.log(hd.host);
+    hd.host = "https://www.baidu.com";
+    console.log(hd.host);
+    console.log(protecteds);
+</script>
+</html>

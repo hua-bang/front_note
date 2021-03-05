@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let func = new Function("title", "console.log(title)");
+    func("后盾人");
+
+    function hd(title) {
+        console.log(title);
+    }
+    hd("houdunren");
+
+    let cms = function(title) {
+        console.log(title);
+    };
+    cms("后盾人");
+
+    let user = {
+        name: null,
+        setUsername(name) {
+            this.name = name;
+        },
+        getUsername() {
+            return this.name;
+        }
+    }
+    user.setUsername("hug");
+    console.log(user.getUsername());
+</script>
+</html>

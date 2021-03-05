@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //indexOf找不到返回的是-1
+
+        const hd = "houdunren";
+        console.log(hd.indexOf("n"));   //第一次出现的key值
+        console.log(hd.lastIndexOf("n"));   //最后一次出现的key值
+
+        console.log(hd.indexOf("n",6)); //第二个参数代表的是从第index位置开始取
+
+        //include 返回的是false
+        console.log(hd.includes('a'));
+
+        //是否以某个字符开头
+        console.log(hd.startsWith("a"));
+
+        //是否以某个字符结尾
+        console.log(hd.endsWith("b"));
+
+        const word = ['php', 'css'];
+        const string = "我喜欢学习编程知识，php,css,java,等";
+        // some 一个为真就停止
+        const status = word.some(word => {
+            return string.includes(word);
+        })
+        console.log(status)
+    </script>
+</body>
+</html>

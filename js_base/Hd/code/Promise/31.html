@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    let demo = () => {
+        return new Promise(resolve => {
+            resolve("houdunren")
+        }).then(res => {
+            return res
+        }).then(r => {
+            return {
+                then(resolve) {
+                    resolve(r)
+                }
+            }
+        })
+    }
+
+    // async 表示是promise函数
+    async function hd() {
+        let a = await demo(); //处理后面接的promise函数的结果
+        let b = await new Promise((resolve,reject) => {
+            setTimeout(() => {
+                resolve("await");   //如果没有resolve就会一直卡在那
+            },200)
+        });
+        let c = await new Promise(resolve => {
+            console.log("c");
+            resolve("hdcms");
+        })
+        return {
+            a,b,c
+        };
+    };
+
+    hd().then(res => {
+        console.log(res);
+    }) 
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div name="houdunren">houdunren.com</div>
+    <div name="kaiyuan">hdcms</div>
+</body>
+<script>
+let map = new Map();
+document.querySelectorAll('div').forEach(item => {
+    map.set(item, {
+        content: item.getAttribute("name")
+    });
+});
+map.forEach((config, elem) => {
+    elem.addEventListener('click',function() {
+        alert(config.content);
+    })
+})
+</script>
+</html>

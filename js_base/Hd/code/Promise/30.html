@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class User{
+        getUser(name) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(name)   //闭包
+                },2000)
+            })
+        }
+        render(names) {
+            names.reduce((promise, name) => promise.then(() => this.getUser(name)).then((name) => this.view(name)) ,Promise.resolve()).finally(() => {
+                setTimeout(() => {
+                    console.log("finally")
+                },1000)
+            })
+        }
+        view(name) {
+            return new Promise(resolve => {
+                let h2 = document.createElement("h2");
+                h2.innerHTML = name;
+                document.body.appendChild(h2);
+                resolve();
+            })
+        }
+    }
+    new User().render(["hug","hua"])
+</script>
+</html>

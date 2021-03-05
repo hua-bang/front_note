@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        "use strict";   //声明严格模式后，只对当前作用域以及子作用域有影响
+        
+        let { name, url } = { name: "hug", url: "https://hua-bang.club"};
+        console.log(name,url);
+
+        // function showA() {
+        //     function handle() {
+        //         show = 123;   
+        //     }
+        //     handle();
+        // }
+
+        // function hd() {
+        //     site = 456;
+        // }
+        // showA();
+        // hd();
+        // var public = "123"; //开启严格模式后，这段报错 不能使用关键字
+        // console.log(public);
+
+        // web = '33'; //开启严格模式后，这段报错 web is not defined
+        // let web = 123;
+        // console.log(web);
+
+        // var web = 123;
+        // function run() {
+        //     var web = "hdcms";
+        // }
+        // run();
+        // console.log(web);
+    </script>
+</body>
+</html>

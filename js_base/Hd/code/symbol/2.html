@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let user1 = {
+            name: "lisi",
+            key: Symbol()
+        };
+        let user2 = {
+            name: "lisi",
+            key: Symbol()
+        };
+        let grade = {
+            [user1.key]: {
+                js: 100,
+                css: 98
+            },
+            [user2.key]: {   //如果没有括号，相当于之间的键值，有中括号，则可变量代替
+                js: 60,
+                css: 78
+            },
+        };
+        console.log(grade[user1.key]);
+    </script>
+</body>
+</html>

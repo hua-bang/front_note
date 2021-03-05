@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // isPrototypeOf 主角是原型对象
+    let a = {
+
+    }
+    let b = {
+        __proto__: a
+    }
+    let c = {
+        __proto__: b
+    }
+    console.log(a.isPrototypeOf(b));
+    console.log(a.isPrototypeOf(c));
+    class User{}
+    class Admin extends User {}
+    let hd = new Admin();
+    console.log(Admin.prototype.isPrototypeOf(hd))
+    console.log(User.prototype.isPrototypeOf(hd))
+</script>
+</html>

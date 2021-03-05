@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input name="password" type="password"></input>
+    <input name="rePassword" type="password"></input>
+    <span id="msg"></span>
+    <script>
+        // 与 或 非
+        let a = 1, b =1;
+
+        if (a == 1 && b ==1) {
+            console.log("both are 1");
+        }
+
+        if (a == 1 || b ==1) {
+            console.log("one are 1");
+        }
+        console.log(!(a===1));
+
+        function query(name) {
+            return document.querySelector(`[name='${name}']`);
+        }
+
+        const spanNode = document.querySelector("#msg");
+        let inputs = document.querySelectorAll(
+            "[name='password'],[name='rePassword']"
+        );
+        [...inputs].map(node => {
+            node.addEventListener("keyup", () => {
+                spanNode.innerHTML = (query("password").value !== query("rePassword").value || query("password").value.length <= 5) ? "密码格式有错":"okk";
+            })
+        })
+    </script>
+</body>
+</html>

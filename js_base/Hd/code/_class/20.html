@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Controller {
+        sum() {
+            return this.data.reduce((total,lesson) => total + lesson.price, 0)
+        }
+    }
+    class Lesson extends Controller {
+        constructor(data) {
+            super();
+            this.data = data;
+        }
+        sum() {
+            return {
+                totalPrice: super.sum(),
+                data:this.data
+            }
+        }
+    }
+    let data = [
+        {name:"js",price:100},
+        {name:"css",price:90},
+        {name:"vue.js",price:85},
+    ]
+    let hd = new Lesson(data);
+    //子类中自己没有的话，会找到父类的构造函数
+    hd.sum();
+    console.log(hd.sum());
+</script>
+</html>

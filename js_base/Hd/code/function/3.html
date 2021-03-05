@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let hd = function() {
+        console.log("hug");
+    };
+    hd();
+
+    show(); //show
+    //函数也会提升 会把函数提升到最上面
+    function show() {
+        console.log("show");
+    }
+
+    demo();
+    var demo = function() {
+        console.log("var demo");
+    }
+    // 函数提升，函数会被放在最上面
+    function demo() {
+        console.log("demo");
+    }
+
+    //匿名函数的使用
+    function sum(...args) {
+        return args.reduce(function(a,b) {
+            return a + b;
+        })
+        // return args.reduce((a, b) => a + b);
+    }
+    console.log(sum(1,2,7,3,1));
+</script>
+</html>

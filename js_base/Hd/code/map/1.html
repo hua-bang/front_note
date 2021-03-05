@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            name: "hdcms.com",  //会把键值转成字符串 对象键值是字符串类型
+        };
+        let hd = {
+            [obj]: "后盾人"
+        }
+        console.log(obj.name);
+        console.log(hd["[object Object]"]);
+        console.log(hd[obj.toString()]);
+
+        //Map 可以用多个类型当键值
+        let map = new Map();
+        map.set("name","后盾人");
+        map.set(function() {}, "hdcms");
+        map.set({},123456);
+        map.set(1,123);
+        map.set("1",456);
+        map.set("153",456).set("153","2213");   //链式操作
+        console.log(map);
+        console.log(map.get(1));
+        
+        // let map = new Map([["hdcms","开源"]]);
+
+    </script>
+</body>
+</html>

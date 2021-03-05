@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let lessons = [
+            {title:"媒体查询响应式布局", category: "css"},
+            {title:"flex弹性布局", category: "css"},
+            {title:"mysql多表查询", category: "mysql"}
+        ];
+        // for (let index = 0; index < lessons.length; index++) {
+        //     lessons[index].title = `hug${lessons[index].title}`
+        // }
+        // console.log(lessons);
+
+        // for (const value of lessons) {      //引用类型可改 值类型不可 同一块空间地址
+        //     value.title = `后盾人${value.title}`
+        // }
+        // console.log(lessons);
+
+        let arr = [1,2,3];
+        for (let value of arr) {    //这里的value是值类型，新的空间地址
+            value++;
+        }
+        console.log(arr);
+
+        for (const key in lessons) {
+            lessons[key].title = `后盾人${lessons[key].title}`
+        }
+        console.log(lessons);
+    </script>
+</body>
+</html>

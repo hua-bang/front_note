@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="6.js"></script>
+    <script>
+        // var i = 99;
+        // for (var i = 0; i < 5; i++){    //var没有块作用域,会影响到全局的作用域
+        //     console.log(i);
+        // }
+        // console.log(i);   //这里原本的i受到了影响
+
+        var i = 99;
+        for (let i = 0; i < 5; i++){    //var没有块作用域,会影响到全局的作用域
+            console.log(i);
+        }
+        console.log(i);
+    </script>
+    <script>
+        console.log($.getUrl());
+    </script>
+</body>
+</html>

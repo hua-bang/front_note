@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" v-model="content" />
+    <h4 v-bind="content">这里也会发生更新</h4>
+    <input type="text" v-model="title" />
+    <input type="text" v-model="title" />
+    <h4 v-bind="title">这里也会发生更新</h4>
+</body>
+<script>
+    function View() {
+        let proxy = new Proxy({},{
+            get(obj,property) {
+                return obj[property];
+            },
+            set(obj,property,value) {
+                obj[property] = value;
+                document.querySelectorAll(`[v-model='${property}']`).forEach(item => {
+                    item.value = value;
+                })
+                document.querySelectorAll(`[v-bind='${property}']`).forEach(item => {
+                    item.innerHTML = value;
+                })
+                return true;
+            }
+        })
+        this.init = function() {
+            const els = document.querySelectorAll("[v-model]");
+            els.forEach(item => {
+                item.addEventListener('keyup', function() {
+                    proxy[this.getAttribute('v-model')] = this.value;
+                })
+            })
+        }
+    }
+    new View().init();
+</script>
+</html>

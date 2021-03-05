@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Acticle(title) {
+        this.title = title
+    }
+    let a = new Acticle("hug");
+    console.log(a.title);
+
+    class User {
+        constructor(name) {
+            this.name = name
+            this.data = {
+                a: 0
+            };
+        }
+        show() {
+            console.log(this.name)
+        }
+        get() {
+            console.log("hdr")
+        }
+        get a() {
+            return this.data.a;
+        }
+        set a(value) {
+            if(isNaN(value)){
+                throw new Error("need a number value")
+            }
+            this.data.a = value;
+        }
+    }
+    console.log(typeof User);   //function 实际上还是一个函数
+    console.dir(User);
+    let hd = new User("hug");
+    hd.show();
+    console.log(hd.a)   //访问器
+    hd.a = 2;
+    console.log(hd.a)   //访问器
+</script>
+</html>

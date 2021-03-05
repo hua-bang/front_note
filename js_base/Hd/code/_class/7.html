@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Web(url) {
+        this.url = url;
+    }
+    Web.url = "hdcms.com"
+    let hd = new Web("baidu.com")
+    // console.log(hd);
+    // console.dir(Web);
+
+    class Request{
+        static host = "https://www.baidu.com";
+        api() {
+            return `${Request.host}/hug`    //类中静态属性访问
+        }
+    }
+    let obj = new Request();
+    console.log(obj);
+    console.log(obj.api());
+    console.dir(Request);
+</script>
+</html>

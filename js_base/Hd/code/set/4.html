@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    let set = new Set(["hdcms","hd"]);
+    console.log(set.entries());
+
+    set.forEach((v,k,set) => {
+        console.log(v,k,set);   //键名和索引是同一个值
+    })
+    //遍历set.values()
+    for (const value of set) {
+        console.log(value);        
+    }
+</script>
+</html>

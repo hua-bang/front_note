@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    let hd = {name:"hdr"};
+    let edu = hd;
+    let weakSet = new WeakSet();    //弱引用,引用计数器不加1
+    let set = new Set();    //Set还是强引用
+    weakSet.add(hd);    //当没有其他变量引用时候，他引用的也为空
+    set.add(hd)
+    hd = null;
+    edu = null;
+    console.log(weakSet);
+    console.log(set);
+</script>
+</html>

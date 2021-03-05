@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let lesson = [
+        {
+            title: "媒体查询响应式布局",
+            click: 89
+        },
+        {
+            title: "FLEX 弹性布局",
+            click: 61
+        },
+        {
+            title: "GRID 栅格系统",
+            click: 8
+        },
+    ]
+    function change(lessons, num=100, i=0){
+        if(i === lessons.length){
+            return lessons;
+        }
+        lessons[i].click += num;
+        return change(lessons, num, ++i);
+    }
+    console.table(change(lesson));
+</script>
+</html>

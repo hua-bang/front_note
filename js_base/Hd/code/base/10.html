@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 传值(基本类型)
+        let a = 1;
+        let b = a;
+        console.log(a,b);
+        b = 3;
+        console.log(a,b);
+
+        // 传址(引用类型)
+        let e = {};
+        let f = e;
+        console.log(e,f);
+        e.a = 20;
+        console.log(e,f)
+        f.b = 2;
+        console.log(e,f)
+    </script>
+</body>
+</html>

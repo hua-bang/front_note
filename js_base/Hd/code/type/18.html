@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const date = new Date();    //new Date()返回的是一个Date()对象
+        console.log(date);
+        console.log(typeof date);     //object
+        console.log(date * 1);  //时间戳
+
+        const hd = Date();  //Date()返回的是当前时间的字符串
+        console.log(hd);
+        console.log(typeof hd); //string
+        console.log(hd * 1);
+
+        const start = Date.now();
+        // for (let i = 0; i < 20000000; i++) {}
+        const end = Date.now();
+        console.log(end - start);
+
+        console.time("for");
+        for (let i = 0; i < 20000000; i++) {}
+        console.timeEnd("for");
+
+        const myDate = new Date("2000-11-24 16:43:42");
+        console.log(myDate);
+
+        const param = [2000, 11, 24, 16, 43, 42];
+        console.log(...param);
+        const newDate = new Date(...param);
+        console.log(newDate);
+    </script>
+</body>
+</html>

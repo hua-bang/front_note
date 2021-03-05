@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #loading{
+            width: 0%;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: white;
+            font-size: 100px;
+            background: #8e44ad;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">0%</div>
+</body>
+<script>
+    async function getUser(name) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve(name)
+            },1000)
+        })
+    }
+
+    async function loadUser(Users) {
+        for (let i = 0; i < Users.length; i++) {
+            let user = await getUser(Users[i]);
+            let progress = (i+1) / Users.length * 100;
+            loading.style.width = progress + "%";
+            loading.innerHTML = Math.round(progress) + "%";   
+        }
+        // Users.forEach(async (v,k) => {
+        //     console.log(await getUser(v))
+        // })
+    }
+    loadUser(["hug","hua"])
+</script>
+</html>

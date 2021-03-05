@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let lessons = [
+            {title:"媒体查询响应式布局", category: "css"},
+            {title:"flex弹性布局", category: "css"},
+            {title:"mysql多表查询", category: "mysql"}
+        ];
+        let newArr = lessons.map(val => {
+            return Object.assign({click:100},val);
+        });
+        console.table(lessons);
+        console.table(newArr);
+
+
+        let arr = ["hdcms","houdunren"];
+        let hd = arr.map((val, key, arr)=>{
+            console.log(val, key, arr);
+            val = `后盾人 -${val}`
+            return val;
+        });
+        console.log(arr);
+        console.table(hd);
+
+        //map会产生新的数组，新的数组和原来的数组不共用相同的地址空间，但如果是数组中的元素是引用类型的话，则相应的元素会使用同一片的空间地址
+
+
+        //map会产生新数组
+    </script>
+</body>
+</html>

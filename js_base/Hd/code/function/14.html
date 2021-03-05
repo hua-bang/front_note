@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let hd = [1,2,3];
+    let [a,b,c] = hd;
+    console.log(a,b,c,[...hd]);
+    let [d,...edu] = [1,2,3,4,5];
+    console.log(d,edu);
+    let sum = (...args) => {
+        return args.reduce((a,b) => a + b);
+    }
+    console.log(sum(1,23,4,5,7));
+</script>
+</html>

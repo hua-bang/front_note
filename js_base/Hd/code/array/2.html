@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let array = [[1,2],[2,3],[3,4]];
+        console.log(array[0][0]);
+        console.table(array);
+
+        let lessons = [{ name:'php', click: 33 }, { name:'js', click: 20 }, { name:'css', click: 60 }];
+        console.log(lessons[1].name);
+
+        const arr = [1,2];
+        arr[1] = 99;
+        // arr这里是引用类型 const不能改变指向的地址，但能改变指向的地址中的值。
+        console.log(arr);
+    </script>
+</body>
+</html>

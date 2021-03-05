@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function avg(total, year=1) {
+        return Math.round(total/year);
+    }
+    console.log(avg(2000,2));
+    console.log(avg(1500));
+
+    function sortArray(array, type="asc") {
+        return array.sort((a,b) => type === 'asc' ? a - b : b - a);
+    }
+    console.log(sortArray([3,1,4,5,2]));
+    console.log(sortArray([3,1,4,5,2],'desc'));
+
+    //默认参数必须放没有默认参数的后面
+    function sum(total, discount = 0,dis = 0) {
+        return total * (1 - discount) * (1- dis);
+    }
+    console.log(sum(2000,0.5,0.5));
+</script>
+</html>

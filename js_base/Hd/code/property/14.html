@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let a = { url: "houdunren" };
+    let b = { name: "后盾人" };
+    Object.prototype.web = "hdcms";
+    console.log('web' in a);    //true in不仅检测对象属性 也检测原型链
+    console.log(a.hasOwnProperty("url"));   //查找当前对象中的属性 ，不查找原型
+    console.log(a.hasOwnProperty("web"));  //查找当前对象中的属性 ，不查找原型
+</script>
+</html>

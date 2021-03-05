@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" v-model="title" />
+    <div v-bind="title"></div>
+    <input type="text" v-model="test" />
+    <div v-bind="test"></div>
+</body>
+<script>
+    class View {
+        constructor() {
+            this.bindDom();
+        }
+        bindDom(){
+            document.querySelectorAll("[v-model]").forEach(item => {
+                item.addEventListener("keyup", (event) => {
+                    let target = event.target;
+                    let key = target.getAttribute("v-model");
+                    let value = target.value;
+                    document.querySelectorAll(`[v-model="${key}"]`).forEach(inputNode => {
+                        inputNode.value = value
+                    })
+                    document.querySelectorAll(`[v-bind="${key}"]`).forEach(node => {
+                        node.innerHTML = value
+                    })
+                })
+            })
+        }
+    }
+    new View();
+</script>
+</html>

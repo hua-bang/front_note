@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [1,5,3,9,7];
+        function sort(array, callback) {
+            for (const n in array) {
+                for (const m in array) {
+                    if(callback(array[n], array[m]) < 0){
+                        const temp = array[n];
+                        array[n] = array[m];
+                        array[m] = temp;
+                    }
+                }
+            }
+            return array;
+        }
+        arr = sort(arr, (a, b) => {
+            return a - b;
+        });
+        console.log(arr);
+    </script>
+</body>
+</html>

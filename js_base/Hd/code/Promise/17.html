@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div>loading</div>
+</body>
+<script>
+    const promise = new Promise((resolve,reject) => {
+        reject("hdcms")
+    }).then(msg => {
+        console.log("resolve")
+    }).catch(err => {
+        console.log(err)
+    }).finally(() => {
+        isShow = false;
+        console.log("finally")
+    })
+</script>
+</html>

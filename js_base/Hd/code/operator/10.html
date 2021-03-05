@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function table(options = { tr:5, td:3 }) {
+            document.write(`<table border="1" width="100%">`);
+                
+            let tr = options.tr;
+            while (tr-- != 0) {
+                let td = options.td;
+                document.write(`<tr>`);
+                while(td-- != 0) {
+                    document.write(`<td>${td}</td>`)
+                }
+                document.write(`</tr>`);
+            }
+
+            document.write(`</table>`);    
+        }
+
+        table({tr:9,td:9});
+    </script>
+</body>
+</html>

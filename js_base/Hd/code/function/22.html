@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>后盾人</button>
+</body>
+<script>
+    function show() {
+        console.log(this.name);
+    }
+    show.bind({name:"123"})
+
+    let a = function() {
+
+    }
+    let b = a;
+    console.log(a===b);
+    b = a.bind();
+    console.log(a===b);
+
+    function hd(a,b) {
+        return this.f + a + b;
+    }
+    console.log(hd.call({f:2},3,4));
+    let func = hd.bind({f:5});
+    console.log(func(2,9));
+
+    document.querySelector("button").addEventListener('click', function(event) {
+        console.log(this.url + event.target.innerHTML);
+    }.bind({url:"https://www.baidu.com"}));
+</script>
+</html>

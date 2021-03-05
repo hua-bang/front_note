@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="title">
+    <script>
+        let arr = ["hdcms","houdunren"];
+        //所有元素进入回调后都返回真，最终结果才为真，一个错误立刻停止
+        let res = arr.every((value, index, arr) => {
+            return false;
+        })
+
+        // 有一个元素符合回调函数中返回真，结果就为真，一个正确立即停止，若不正确返回false
+        res = arr.some((value,index,arr) => {
+            return false;
+        })
+        console.log(res);
+
+        const user = [
+            {name:'李四',js:90},
+            {name:'张三',js:85},
+            {name:'马六',js:60},
+        ];
+        let isAllPassed = user.every((item) => {
+            return item.js >= 60;
+        })
+        console.log(isAllPassed);
+
+        let keyWordArr = ["php","js"];
+        let titleNode = document.querySelector('[name="title"]');
+        titleNode.addEventListener('keyup',function() {
+            let value = this.value
+            let res = keyWordArr.some((item)=>{
+                return value.includes(item);
+            })
+            console.log(res?"存在关键词":"不存在关键字");
+        })
+    </script>
+</body>
+</html>

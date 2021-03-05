@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 构造函数形式
+    function Arr(...args) {
+        args.forEach((item) => {
+            this.push(item);
+        })
+        this.first = function() {
+            return this[0];
+        }
+        this.max = function() {
+            return this.sort((a,b) => b - a)[0];
+        }
+    }
+    Arr.prototype = Object.create(Array.prototype);
+    let hd = new Arr(1,2,3,4,65,3);
+    console.log(hd.first());
+    console.log(hd.max());
+</script>
+</html>

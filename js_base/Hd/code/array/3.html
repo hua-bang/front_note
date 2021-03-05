@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let array = [1,3,4];
+        console.log(array.length);  //3
+
+        let hd = [1];
+        hd[4] = 4;
+        console.log(hd, hd.length); //系统会自动填充本不存在的值    (5) [1, empty * 3, 4] 5 即为undefined
+
+        let cms = new Array(6); //如果Array的话，只传递一个参数key，并且这个参数是数值的话，则会创建key个元素的数组
+        console.log(cms);
+        let arr = Array.of(6);
+        console.log(arr);
+    </script>
+</body>
+</html>

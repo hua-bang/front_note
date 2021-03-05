@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = ['hdcms','hug'];
+        let hd = ['js','css'];
+        console.log(arr.concat(hd));
+        console.log(...arr);
+        console.log([...arr, ...hd]);
+
+        let sum = (...args) => { //args是数组
+            return args.reduce((pre,item)=>{
+               return pre + item;
+            },0)
+        }
+        console.log(sum(0,1,2,3,4,5));
+    </script>
+</body>
+</html>

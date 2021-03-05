@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // mixin
+    let Tool = {
+        max(key) {
+            // 不一定字段一样 可以定义访问器
+            return this.data.sort((a,b) => b[key]-a[key])[0];
+        }
+    }
+    let Arr = {
+        count(key) {
+            return this.data.reduce((total, lesson) => total += lesson[key],0);
+        }
+    }
+    class Lesson {
+        constructor(lessons) {
+            this.lessons = lessons;
+        }
+        get data() {
+            return this.lessons;
+        }
+    }
+    const data = [
+        {name:"js",price:100,click:98},
+        {name:"css",price:80,click:199},
+        {name:"vue.js",price:120,click:100},
+    ]
+    Object.assign(Lesson.prototype, Tool, Arr)
+    let hd = new Lesson(data);
+    console.log(hd);
+    console.log(hd.max("price"));
+    console.log(hd.max("click"));
+    console.log(hd.count("click"));
+</script>
+</html>

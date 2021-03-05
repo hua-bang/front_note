@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class User {
+        // public protected private
+        #host = "https://houdunren.com";
+        constructor(name) {
+            this.#check(name);
+            this.name = name;
+        }
+        set host(url) {
+            if(!/^https?:/i.test(url)) {
+                throw new Error("非法网址")
+            }
+            this.#host = url;
+        }
+        #check = (word) => {
+            if(word.length < 5)
+                throw new Error("名字长度不小于5位数")
+            return true;
+        }
+    }
+    let hd = new User("后盾人测试");
+    // hd.#host = "123";   //私有属性不可更改
+    // console.log(hd.#host); //私有属性不可访问
+    hd.host = "https://mi.com"
+    // hd.#check("123"); //私有属性外部不可调用
+    console.log(hd);
+</script>
+</html>

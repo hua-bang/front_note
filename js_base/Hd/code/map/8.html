@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let hd = {name:"hug"};
+    cms = hd;
+    let map = new WeakMap();
+    map.set(hd,"java");
+    hd = null;
+    // console.log(hd,cms,map);
+    cms = null;
+    console.log(hd,cms,map);
+    console.log(hd,cms,map);
+</script>
+</html>

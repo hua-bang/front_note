@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 箭头函数没有this
+    let hd = [1,2,3,4,5,6].filter((value, index) => value <= 3);
+    let sum = [1,2,3,4,5,6].reduce((prev, next) => prev + next);
+    console.log(hd,sum);
+</script>
+</html>

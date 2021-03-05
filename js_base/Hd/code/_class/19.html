@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class User{
+        constructor(name) {
+            this.name = name;
+        }
+    }
+
+    class Admin extends User{
+        //子类中调用构造函数的话一定要用super
+        constructor(name) {
+            super(name);
+            this.site = "site";
+        }
+    }
+
+    let hd = new Admin("123");
+    console.log(hd);
+
+    function A(name) {
+        this.name = name;
+    }
+    function B(...arg) {
+        A.apply(this,arg)
+    }
+    B.prototype = Object.create(A.prototype);
+    let b = new B("test");
+    console.log(b);
+</script>
+</html>

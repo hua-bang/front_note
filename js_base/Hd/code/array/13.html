@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // let str = "hdcms,houdunren";
+        // let hd = str.split(","); //拆分成数组
+        // console.table(hd);
+        // console.log(hd.join("-"));   //合并成字符串
+
+        let arr = ["hdcms","houdunren"];
+        let hd = [1,2,3,4];
+        arr = arr.concat(hd);
+        console.log(arr);
+        arr = [...arr,...hd];
+        console.log(arr);
+
+        let demo = [1,2,3,4,5,6];
+        console.log(demo.copyWithin(2,4,5));   
+    </script>
+</body>
+</html>

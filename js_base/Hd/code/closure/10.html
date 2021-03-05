@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let arr = [1,23,5,3,5,12,532,12];
+    function between(a, b) {
+        return function(v) {
+            return v >= a && v <= b;
+        }
+    }
+    console.log(arr.filter(between(3,1000)));
+    // let hd = arr.filter(v => v>=2 && v<=9);
+
+    let lessons = [
+      {
+        title: "媒体查询响应式布局",
+        click: 89,
+        price: 12
+      },
+      {
+        title: "FLEX 弹性盒模型",
+        click: 45,
+        price: 120
+      },
+      {
+        title: "GRID 栅格系统",
+        click: 19,
+        price: 67
+      },
+      {
+        title: "盒子模型详解",
+        click: 29,
+        price: 300
+      }
+    ];
+    
+    function betweenPrice(a, b) {
+        return function(v) {
+            return v.price >= a && v.price <= b;
+        }
+    }
+
+    console.log(lessons.filter(betweenPrice(200,3000)))
+
+      
+</script>
+</html>

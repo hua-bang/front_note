@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Hd(name) {
+        this.name = name;
+    };
+    Hd.prototype.show = function() {
+
+    }
+    console.log(JSON.stringify(Object.getOwnPropertyDescriptor(Hd.prototype,"show"),null,2))
+    let h = new Hd("hug");
+    for (const key in h) {
+        if(h.hasOwnProperty(key))
+            console.log(key);
+    }
+
+    class User{
+        constructor(name) {
+            this.name = name;
+        }
+        show() {
+
+        }
+    }
+    console.dir(User);
+    // 这里的enumerable 为 false
+    console.log(JSON.stringify(Object.getOwnPropertyDescriptor(User.prototype,"show"),null,2))
+    let u = new User();
+    for (const key in u) {
+        console.log(key);
+    }
+</script>
+</html>

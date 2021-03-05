@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let a = {
+        name: "a",
+        show() {
+            console.log(this.name)
+        }
+    }
+    let b = {
+        name: "b",
+        __proto__: a,
+        show() {
+            // this.__proto__.show.call(this);
+            super.show();
+            console.log(this.name)
+        }
+    }
+    let c = {
+        name: "c",
+        __proto__: b,
+        show() {
+            // this.__proto__.show.call(this);
+            super.show();
+            console.log(this.name)
+        }
+    }
+    c.show();   //如果不用super 使用__proto__.show.call会死循环 why? 因为this指向的问题
+</script>
+</html>

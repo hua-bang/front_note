@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = ["hdcms", "houdunren"];
+        let entries = arr.entries();    //返回迭代器的值中有键和值
+        for (const [key, value] of arr.entries()) {
+            console.log(key,value);
+        }
+
+        
+        // let values = arr.values();
+        // while(({value, done} = values.next()) && done === false) {
+        //     console.log(value);
+        // }
+
+        // for (const value of arr.values()) {
+        //     console.log(value);
+        // }
+        // let keys = arr.keys();  //取得数组的索引
+        // let values = arr.values();
+        // console.log(keys);
+        // console.log(values);
+        // console.log(keys.next());
+        // console.log(values.next());
+    </script>
+</body>
+</html>

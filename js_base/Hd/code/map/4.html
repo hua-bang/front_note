@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let hd = new Map([["houdunren","后盾人"],["hdcms","开源系统"]]);
+    console.log([...hd]);   //等同 [...hd.entries()];
+    console.log([...hd.entries()]);
+    console.log([...hd.keys()]);
+    console.log([...hd.values()]);
+    for (const [key,value] of hd) {
+        console.log(key,value);
+    }
+
+    let newArr = [...hd].filter(item => item[1].includes("后盾人"));
+    console.log(newArr);
+
+    let edu = new Map(newArr);
+    console.log(hd)
+    console.log(edu);
+</script>
+</html>

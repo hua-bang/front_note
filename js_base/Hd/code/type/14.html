@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let number = 99;
+        console.log(typeof number);
+        console.log(number.toString()); //字符串类型
+        console.log(number.valueOf());  //值类型 这里返回的就是数值
+
+        Number.isInteger(56);   //判断整数
+
+        let floatNumber = 99.566;
+        console.log(typeof floatNumber);
+        console.log(floatNumber.toFixed(2));    //格式化到多少位
+        console.log(typeof floatNumber.toFixed(2)); //返回的是string类型
+    </script>
+</body>
+</html>

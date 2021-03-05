@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let obj = {
+        name: "houdunren"
+    };
+    let map = new Map();
+    map.set(obj,"houdunren.com");
+    console.log(map.get(obj));  //要是同一个地址
+    console.log(map.has(obj)); //boolean
+    console.log(map.delete(obj));   //boolean
+    console.log(map.has(obj)); //boolean
+    map.clear();    //void 清除所有的元素
+    console.log(map);
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="hd">
+        <h1>houdunren.com</h1>
+        <h2>后盾人</h2>
+        <h3>
+            <a></a>
+        </h3>
+        <ul>
+            <li>
+                <h4>
+                    <span></span>
+                </h4>
+            </li>
+        </ul>
+    </div>
+    <script>
+        function all(el) {
+            const items = [];
+            [...el.childNodes].map((node) => {
+                if(node.nodeType === 1) {
+                    items.push(node,...all(node));
+                }
+            })
+            return items;
+        }
+
+        const nodes = all(document.querySelector("#hd"));
+        console.log(nodes);
+    </script>
+</body>
+</html>

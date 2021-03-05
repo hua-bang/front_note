@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let hd = {};
+    let name = 'title';
+    hd[name] = "houdunren";
+    console.log(hd.title);
+
+    const lessons = [
+        {title:"媒体查询响应式布局", category: "css"},
+        {title:"flex弹性布局", category: "css"},
+        {title:"mysql多表查询", category: "mysql"}
+    ];
+    let res = lessons.reduce((obj, cur, index) => {
+        obj[`${cur.category}-${index+1}`] = cur;
+        return obj;
+    },{})
+    console.log(res);
+    console.log(JSON.stringify(res,null,2));
+
+    let demo = Object.assign({a:1},{b:2});
+    console.log(demo);
+
+    function upload(params) {
+        let options = {
+            size: 19999
+        }
+        Object.assign(options,params);
+        return options;
+    }
+
+    console.log(upload({type:"*.jpg"}))
+</script>
+</html>

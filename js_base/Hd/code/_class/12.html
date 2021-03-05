@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const protecteds = Symbol("主机");
+    class Common {
+        [protecteds] = {};
+        constructor() {
+
+        }
+        set host(url) {
+            if(!/^https?:/i.test(url)) {
+                throw new Error("非法网址")
+            }
+            this[protecteds].host = url;
+        }
+        get host() {
+            return this[protecteds].host;
+        }
+    }
+    class User extends Common {
+        constructor(name) {
+            super();
+            this[protecteds].name = name;
+        }
+        get name() {
+            return this[protecteds].name;
+        }
+    }
+    let hd = new User("后盾人");
+    hd.host = "https://www"
+    console.log(hd,hd.name);
+</script>
+</html>

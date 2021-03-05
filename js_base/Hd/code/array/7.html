@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = ["后盾人",2010];
+        let [name, year] = arr;
+        console.log(name,year); //数组的解析
+
+        let obj = {
+            username: "hug",
+            age: 18
+        };
+        let { username, age } = obj;
+        console.log(username,age);
+
+        let get = () => {
+            return ["后盾",2009];
+        }
+
+        [name,year] = get();
+        console.log(name,year);
+        [,year] = ["hug",2020];
+        console.log(year);
+
+        const [...array] = [1,2,3,4,5];
+        console.log(array);
+
+        let [ param, ...args ] = [1,2,3,4,5];
+        console.log(param,args);
+
+        let a = [...args];
+        console.log(a);
+
+        function show([name, year]) {
+            console.log(name, year);
+        }
+        show(["hug",456]);
+    </script>
+</body>
+</html>

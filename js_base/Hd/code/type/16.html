@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(Math.max(1,2,5,8,100,200,150));
+        console.log(Math.min(1,2,5,8,100,200,150));
+
+        let grade = [122,3,4,5,25];
+        console.log(Math.max.apply(null,grade));    //apply call
+        //Math.max(122,3,4,5,25);
+
+        console.log(Math.ceil(5.01));   //天花板 向上取整
+        console.log(Math.floor(5.01));  //向下取整
+        console.log(Math.round(5.56));  //四舍五入
+    </script>
+</body>
+</html>

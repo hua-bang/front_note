@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //NaN Not a Number;
+        console.log(Number("huodunren"));   //not a number
+
+        console.log(2/'a'); //not a number
+
+        console.log(NaN == NaN);
+        console.log((2/'a') == NaN);    //故不能用变量==NaN 去判断
+
+        //应该用Number.isNaN()来判断
+        console.log(Number.isNaN(2/'b'));
+
+        //字符串转换
+        console.log(Number(true));  //1
+        console.log(Number("123"))  //123
+        console.log(Number("123asd"));  //NaN
+        console.log(parseInt("123ach"));    //123
+        console.log(Number({}));    //NaN
+
+        let number = 98.557;
+        console.log(number.toFixed(0));
+    </script>
+</body>
+</html>

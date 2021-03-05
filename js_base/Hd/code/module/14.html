@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>houdunren</button>
+</body>
+<script type="module">
+    // promise对象
+    document.querySelector("button").addEventListener("click",() => {
+        import("./modules/m14.js").then(({site,url}) => {
+            console.log(site,url);
+        })
+    })
+</script>
+</html>

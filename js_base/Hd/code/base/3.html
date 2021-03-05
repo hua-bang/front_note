@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   var web = 'hua-bang.club'
+      //   console.log(web)
+      //   var class = 123
+
+      // console.log(web); //这里出现了变量提升
+      // var web = "hug";
+
+      // function hd() {
+      //   if (false) {
+      //     var web = "hug";
+      //   }
+      //   console.log(web);
+      // }
+      // hd();
+
+      // console.log(web); //error 暂时性死区TDZ
+      // let web = "hug";  //由于这里声明变量使用了关键字let(const的话也是一个道理),必须在声明之后使用，而不能在声明之前调用, temporal dead zone TDZ
+
+
+      // let web = "hug";
+      // function func() {
+      //   let web = "hug";
+      //   console.log(web);  //这里的web也必须声明后才能调用
+      // }
+      // func();
+
+      // function run(a = b, b = 3) {} //Cannot access 'b' before initialization
+      // run();
+
+      function run(a = 3, b = a) {} //可以运行。也可以看出函数参数的执行顺序
+      run();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //某一对象是否是另外一对象的长辈
+    let a = {};
+    let b = {};
+    let c = {};
+    console.log(Object.prototype.isPrototypeOf(a));
+    Object.setPrototypeOf(a,b);
+    Object.setPrototypeOf(b,c)
+    console.log(b.isPrototypeOf(a));    //true
+    console.log(c.isPrototypeOf(a));    //true
+</script>
+</html>

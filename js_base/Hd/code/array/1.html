@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const array = new Array(1,2);
+        console.log(array);
+
+        const arr = [1,2,3];
+        console.log(arr);
+        const temp = arr;
+        temp[2] = "hug";     // 引用类型 传地址 共用一片地址
+        console.log(arr);
+        console.log(typeof arr);    //object
+
+        console.table(arr);
+    </script>
+</body>
+</html>

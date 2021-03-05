@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // let obj = {
+    //     name: "hdr",
+    //     user: {
+    //         name:"hdcms"
+    //     }
+    // };
+    // let hd = {
+    //     name: obj.name,
+    //     user: obj.user
+    // }
+    // hd.user.name = "hug";
+    // console.log(JSON.stringify(obj,null,2))
+    // console.log(JSON.stringify(hd,null,2))
+
+    let obj = {
+        name: "hdr",
+        user: {
+            name:"hdcms"
+        },
+        array: [1,2,3]
+    };
+
+    function copy(object) {
+        let res = {};
+        for (const key in object) {
+            res[key] = object[key];
+        }
+        return res;
+    }
+    let hd = copy(obj);
+    console.log(JSON.stringify(hd,null,2));
+    obj.user.age = 18;
+    console.log(JSON.stringify(hd,null,2));
+
+    // 深拷贝
+    function deepCopy(object) {
+        let res = object instanceof Array ? [] : {};
+        for (const [k,v] of Object.entries(object)) {
+            res[k] = typeof v === "object" ? deepCopy(v) : v;
+        }
+        return res;
+    }
+    hd = deepCopy(obj);
+    console.log(JSON.stringify(hd,null,2));
+    obj.name = "obj";
+    hd.array.push(123);
+    console.log(JSON.stringify(hd,null,2));
+    console.log(JSON.stringify(obj,null,2));
+</script>
+</html>

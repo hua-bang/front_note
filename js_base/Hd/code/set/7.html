@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+</body>
+<script>
+    let set = new WeakSet();    //元素只能是引用类型
+    set.add(["hdcms","houdunren"]);
+    console.log(set);
+    let nodes = new WeakSet();
+    let divs = document.querySelectorAll("div");
+    divs.forEach(v => nodes.add(v));
+    console.log(nodes);
+    nodes.delete(divs[0]);
+    console.log(nodes);
+</script>
+</html>

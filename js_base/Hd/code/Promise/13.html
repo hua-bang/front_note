@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let p1 = new Promise((resolve,reject) => {
+        resolve("fulfilled")
+    }).then(value => {
+        return {
+            then(resolve,reject) {
+                reject("test");
+            }
+        }
+    }).then((res) => {
+        console.log("res"+res)
+    },(err) => {
+        console.log("err"+err)
+    })
+
+    //会自动检测返回中是否存在then方法
+</script>
+</html>

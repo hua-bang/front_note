@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let hd = Symbol("123"); //特殊的字符串
+        // let edu = Symbol("123");
+        // console.log(hd == edu);
+        // hd.name = "456";    //无法提取属性
+        // console.log(hd.name); //undefined
+        // console.log(hd.description);    //描述
+
+        let cms = Symbol.for("hdcms");  //symbol定义类一种方式 会内存当中记录
+        let edu = Symbol.for("hdcms");  //会先查是否用过symbol.for声明过
+        console.log(cms === edu);   //全等于 true
+
+        let temp = Symbol.keyFor(cms);  //Symbol.keyFor只能拿到用Symbol.for定义的变量 根据键值来获取，但只是获取值
+        console.log(temp);  //hdcms
+
+    </script>
+</body>
+</html>

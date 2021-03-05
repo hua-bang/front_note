@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [1,2,3,4,5];
+        let hd = arr.slice(1,2)  //从start到，end-1的元素  不影响原来的数组
+        console.log(hd);   
+        console.table(arr);
+
+        hd = arr.splice(3,1);   //从第几个开始，截取几个  影响原来的数组值
+        // hd = arr.splice(3,1,"123","456");    //会将截取的元素换成新的元素
+        console.log(hd);
+        console.table(arr);
+    </script>
+</body>
+</html>

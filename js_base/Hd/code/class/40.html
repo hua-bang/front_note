@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let hd = {
+        title: "houdunren",
+        url: "houdunren.com",
+        teacher: {
+            name: "向军大叔"
+        },
+        //可用toJSON进行定制
+        toJSON: function() {
+            return {
+                title: this.title,
+                teacher: this.teacher.name
+            };
+        }
+    }
+    let json = JSON.stringify(hd,null,2);
+    console.log(json);
+
+    let arr = ['后盾人','hdcms.com'];
+    let arrJson = JSON.stringify(arr,["title","url"],2);
+    console.log(arrJson);
+</script>
+</html>

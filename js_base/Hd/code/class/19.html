@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let o = new Object();
+    o.name = "hdr";
+    console.log(o);
+    let n = new Number(1);
+    console.log(++n);
+    let s = new String("21321");
+    console.log(s.valueOf());
+    let b = new Boolean(false);
+    console.log(typeof b.valueOf());
+
+    let User = new Function('name',`
+        this.name = name;
+        this.show = () => {
+            console.log(this.name);
+        }
+    `)
+    let hug = new User("hug")
+    hug.show();
+</script>
+</html>

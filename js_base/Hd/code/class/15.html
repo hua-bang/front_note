@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //  浅拷贝的使用
+
+    let hd = {name:"hug"};
+    let cms = hd;   //这一步是浅拷贝
+    cms.name = "houduren.com";
+    console.log(hd,cms)
+
+    let a = {name:"hug"};
+    cms = {
+        name: a.name    //相当于取值 若a.name是对象的话，则这里是浅拷贝
+    }
+    console.log(a,cms)
+
+    let obj = {name:"hug",url:"https://www.baidu.com"}
+    for (const key in obj) {
+        cms[key] = obj[key]
+    }
+    console.log(obj,cms)
+
+    cms = null;
+    console.log(cms);
+    cms = Object.assign({},obj);
+    console.log(cms);
+    cms = null;
+    console.log(cms);
+    cms = {...obj};
+    console.log(cms);
+</script>
+</html>

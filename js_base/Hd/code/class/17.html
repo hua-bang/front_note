@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // let hug = {
+    //     name: "hug",
+    //     show() {
+    //         console.log(this.name);
+    //     }
+    // }
+    // let hd = {
+    //     name: "hd",
+    //     show() {
+    //         console.log(this.name);
+    //     }
+    // }
+
+    function user(name) {
+        return {
+            name,
+            show() {
+                console.log(this.name)
+            }
+        }
+    }
+
+    let hug = user("hug");
+    let lisi = user("lisi");
+    hug.show();
+    lisi.show();
+</script>
+</html>

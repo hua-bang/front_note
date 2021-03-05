@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function User() {
+    
+    };
+    User.prototype.show = function() {
+        console.log("prototype.show")
+    }
+
+    // 这样是直接定义在函数对象上
+    // User.show = function() {
+    //     console.log("static.show")
+    // }
+    User.__proto__.show = function() {
+        console.log(this === User.prototype.constructor);
+    }
+    User.show();
+    console.dir(User);
+    let hd = new User();
+    console.dir(hd);
+    hd.show();
+
+    class Demo{
+        show() {
+            console.log("demo show");
+        }
+        static show() {
+            console.log("static demo show")
+        }
+    }
+    // 由于类也是函数 函数在js中也是对象 也可以按照上面的方法定义静态方法
+    let demo = new Demo();
+    demo.show();
+    Demo.show();
+    console.dir(Demo);
+
+    class Admin {
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        static create(...args) {
+            return new this(...args);
+        }
+    }
+
+    let xj = Admin.create("hug",18);
+    console.log(xj);
+</script>
+</html>

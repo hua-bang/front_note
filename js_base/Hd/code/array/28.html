@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let cart = [
+            {name:"iphone",price:12000},
+            {name:"imac",price:25000},
+            {name:"ipad",price:3000}
+        ];
+        function maxPrice(goods) {
+            return goods.reduce((pre, cur) => pre.price >= cur.price ? pre : cur);
+        }
+        function sum(goods) {
+            return goods.reduce((pre, cur) => pre += cur.price,0);
+        }
+        console.log(maxPrice(cart));
+        console.log(sum(cart));
+    </script>
+</body>
+</html>

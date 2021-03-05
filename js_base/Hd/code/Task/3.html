@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    setTimeout(() => {
+        console.log("setTimeout")   //宏任务
+        new Promise(resolve => {
+            console.log("settime Promise");
+            resolve();
+        }).then(() => {
+            console.log("settime then");
+        })
+    },0)
+    new Promise(resolve => {
+        console.log("promise"); //同步任务
+        resolve();
+    }).then(() => {
+        console.log("then") //微任务
+    });
+    console.log("hdr"); //同步任务
+    
+    //promise hdr then setTimeout
+    //promise hdr then setTimeout settime Promise settime then
+</script>
+</html>

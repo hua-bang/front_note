@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function extend(sub, sup) {
+        sub.prototype = Object.create(sup.prototype);
+        Object.defineProperty(sub.prototype,"constructor",{
+            value: sub,
+            enumerable: false
+        });
+    }
+
+    function User() {};
+    User.prototype.show = () => {
+        console.log("user.show");
+    }
+
+    function Admin() {};
+    extend(Admin,User);
+    let a = new Admin();
+    a.show();
+</script>
+</html>

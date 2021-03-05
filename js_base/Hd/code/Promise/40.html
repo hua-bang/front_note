@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function p1() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve("p1")
+            },1000)
+        })
+    }
+
+    function p2() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve("p2")
+            },1000)
+        })
+    }
+
+    async function hd() {
+        // 此时不是并行的
+        // let h1 = await p1();
+        // let h2 = await p2();
+        
+        // 实现并行
+        // let h1 = p1();
+        // let h2 = p2();
+        // let h1value = await h1;
+        // let h2value = await h2;
+        let res = await Promise.all([p1(),p2()]);
+        return res;
+    }
+    hd().then(res => {
+        console.log(res)
+    })
+</script>
+</html>

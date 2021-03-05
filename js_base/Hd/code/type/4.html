@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let name = "hug";
+        let web = "https://hua-bang.club";
+        // let tag = (strings, ...vars) => {
+        //     console.log(strings);
+        //     console.log(vars);
+        // }
+        // tag`在线教程${name}, 网站是${web}`;
+        
+        let lessons = [
+            { title: "第一章 走进js黑洞", author: "hug" },
+            { title: "第二章 ubuntn", author: "hug" },
+            { title: "第三章 响应式布局", author: "hug" }
+        ];
+        let link = (strings, ...vars) => {
+            return strings
+            .map((str, key) => {
+                return (
+                    str + 
+                    (vars[key]
+                    ? vars[key].replace(
+                        "后盾人",
+                        `<a href="https://www.houdunren.com">后盾人</a>`
+                        )
+                    : ""));
+            }).join("");
+        }
+        let template = () => {
+            return `<ul>
+                ${lessons.map((item) => 
+                    link`<li>作家: ${item.author},课程:${item.title}</li>` 
+                ).join("")}    
+            </ul>`;
+        }
+        document.body.innerHTML += template();
+    </script>
+</body>
+</html>

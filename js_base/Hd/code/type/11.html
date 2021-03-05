@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const boolean = new Boolean(true);
+        // console.log(typeof boolean);
+        // console.log(boolean);
+        // console.log(boolean.valueOf());
+
+        let hd = true;
+        let number = 99;
+        
+        // 数字和boolean比较的时候，是将boolean转成数字比较
+        console.log(0 ==  false); //true
+        console.log(number == true);    //false
+        console.log(1 == true); //true
+
+        // 数值类型为0都为假 字符串为空为假 引用均为真
+        let array = [];
+        console.log(Number(array)); //空数组返回的数值是0
+        array.push("231");
+        console.log(Number(array)); //一个元素的数组返回的数值是第一个元素的数字值
+        array.push("562");
+        console.log(Number(array)); // NAN
+
+        console.log("[]的boolean值是"+Boolean([])); //true
+        console.log("{}的boolean值是"+Boolean({})); //true
+
+
+    </script>
+</body>
+</html>

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fda6ea41-7eb6-4307-b7a6-722ad304de01" name="Default Changelist" comment="" />
+    <list default="true" id="fda6ea41-7eb6-4307-b7a6-722ad304de01" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +19,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="hua-bang &lt;1964760211@qq.com&gt;" />
         <option value="hua-bang &lt;47221942+hua-bang@users.noreply.github.com&gt;" />
         <option value="196" />
       </list>
@@ -51,7 +54,28 @@
       <option name="project" value="LOCAL" />
       <updated>1614860624164</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="the iteration of Map">
+      <created>1614907693347</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1614907693347</updated>
+    </task>
+    <task id="LOCAL-00003" summary="WeakMap uses weak references.&#10;WeakMap realize private member">
+      <created>1614911424639</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1614911424639</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Set,WeakSet">
+      <created>1614912808298</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1614912808298</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -59,16 +83,19 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="字符串的迭代解析" />
-    <option name="LAST_COMMIT_MESSAGE" value="字符串的迭代解析" />
+    <MESSAGE value="the iteration of Map" />
+    <MESSAGE value="WeakMap uses weak references.&#10;WeakMap realize private member" />
+    <MESSAGE value="Set,WeakSet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set,WeakSet" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="239" y="0" key="CommitChangelistDialog2" timestamp="1614860623198">
+    <state x="239" y="0" key="CommitChangelistDialog2" timestamp="1614912807393">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="239" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1614860623198" />
-    <state x="261" y="76" key="Vcs.Push.Dialog.v2" timestamp="1614860630804">
+    <state x="239" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1614912807393" />
+    <state x="261" y="76" key="Vcs.Push.Dialog.v2" timestamp="1614912813342">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="261" y="76" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1614860630804" />
+    <state x="261" y="76" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1614912813342" />
   </component>
 </project>

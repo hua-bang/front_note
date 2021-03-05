@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // mixin
+
+    function extend(sub, sup) {
+        sub.prototype = Object.create(sup.prototype);
+        Object.defineProperty(sub.prototype,"constructor", {
+            value: sub,
+            enumerable: false
+        })
+    }
+
+    function User(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    User.prototype.show = function() {
+        console.log(this.name, this.age);
+    }
+
+    const Address = {
+        getAddress() {
+            console.log("get address");
+        }
+    }
+
+    const Credit = {
+        total() {
+            console.log("credit total");
+        }
+    }
+
+    const Request = {
+        ajax() {
+            console.log("ajax")
+        }
+    }
+    function Admin(name, age) {
+        User.call(this, name, age);
+    };
+    extend(Admin,User);
+    Object.assign(Admin.prototype,Request,Credit,Address);
+    let a = new Admin("hug",18);
+    a.show();
+    a.ajax();
+</script>
+</html>

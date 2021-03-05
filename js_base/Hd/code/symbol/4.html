@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let symbol = Symbol("this is symbol");
+    let hd = {
+        name: "后盾人",
+        [symbol]: "houdunren.com"
+    };
+    //平常的forin 和forof都无法得到 保护属性
+
+    //Object.getOwnPropertySymbols 得到对象中Symbol的属性
+    for (const key in Object.getOwnPropertySymbols(hd)) {
+        console.log(key);
+    }
+    for (const value of Object.getOwnPropertySymbols(hd)) {
+        console.log(value);
+    }
+
+    for (const value of Reflect.ownKeys(hd)) {
+        console.log(value); //便利所有属性,value为键名
+    }
+
+    let site = Symbol("这是一个Symbol");
+
+    class User {
+        constructor(name) {
+            this.name = name;
+            this[site] = "后盾人";
+        }
+        getName() {
+            return `${this[site]} ${this.name}` //可以看到site
+        }
+    }
+    let lisi = new User("lisi");
+    console.log(lisi.getName());
+</script>
+</html>

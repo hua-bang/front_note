@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function User() {
+        this.name = 123
+    };
+    User.prototype.test = () => {
+        return "test";
+    }
+    User.prototype.show = () => {
+        console.log("user.show")
+    }
+
+    function Admin() {};
+    // Admin.prototype.__proto__ = User.prototype
+    Admin.prototype = Object.create(User.prototype);
+    Admin.prototype.constructor = Admin;
+
+    // 自写  这里修改的是User.prototype的show
+    // Admin.prototype.__proto__.show = () => {
+    //     console.log("new show");
+    // }
+
+    // 方法重写
+    Admin.prototype.show = () => {
+        console.log("new show" + User.prototype.test());
+    }
+    let hd = new Admin();
+    hd.show();
+    console.dir(hd)
+    console.dir(User);
+</script>
+</html>

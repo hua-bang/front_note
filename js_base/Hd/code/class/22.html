@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const user = {
+        name: "hug",
+        age: 18
+    }
+    console.log(JSON.stringify(Object.getOwnPropertyDescriptor(user,"age"), null,2));
+    Object.defineProperty(user,"name",{
+        value:"后盾人",
+        writable: false, //能否修改的配置
+        enumerable: false, //能否遍历
+        configurable: false //能否删除 为false不能删除，不能重新配置
+    })
+    console.log(user.name)
+    user.name = "123";
+    console.log(user.name)
+    console.log(Object.keys(user))
+    console.log(JSON.stringify(Object.getOwnPropertyDescriptor(user,"name"), null,2));
+</script>
+</html>

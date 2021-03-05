@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let p1 = new Promise((reslove,reject) => {
+        reslove("fulfilled")
+    });
+
+    //p2相当于新开的promise 注意 这里then里面的是会先存放到微任务中
+    let p2 = p1.then(value => console.log(value));
+
+    console.log(p1);
+    // 由于同步任务优先于微任务 所以此时的p2状态还是准备状态 pending
+    console.log(p2);
+
+    setTimeout(() => {
+        console.log(p1)
+        console.log(p2)
+    },0)
+</script>
+</html>

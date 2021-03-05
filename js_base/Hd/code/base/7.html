@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const URL = "https://hua-bang.club";
+        // URL = "deces";  //error const定义的是常量（不可修改指向的地址），且习惯起见变量名大写。
+        function show(params) {
+            const URL = "https://www.baidu.com";
+            console.log(URL);
+        }
+        show();
+
+        const CONFIG = {};
+        CONFIG.URL = "https://hua-bang.clud";   //可以修改常量指向的地址中存放的值
+        console.log(CONFIG);
+
+        const a = "a";
+        {
+            const a = "A";
+            console.log(a);
+        }
+        console.log(a);
+    </script>
+</body>
+</html>

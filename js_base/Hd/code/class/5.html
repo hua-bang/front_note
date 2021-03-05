@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let user = {name:"hug",age:18};
+    // let {name:sname,age:sage} = user;
+    let {name,age} = user;  //简写
+    console.log(name,age);
+
+    function hd() {
+        return {
+            name: "hua",
+            age: 17
+        }
+    }
+
+    let {name:hName,age:hAge} = hd();
+    console.log(hName,hAge);
+
+    function showUser({name:n,age:a}) {
+        console.log(name,age);
+        console.log(n,a);
+    }
+
+    showUser({name:"hug",age:18});
+
+    let {random} = Math;
+    console.log(random(1));
+</script>
+</html>

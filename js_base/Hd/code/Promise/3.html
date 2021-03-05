@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            position: relative;
+            width: 250px;
+            height: 250px;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+    function interval(callback, delay=100) {
+        let id = setInterval(() => callback(id),delay);
+    }
+    interval((timeId) => {
+        const div = document.querySelector("div");
+        let left = parseInt(window.getComputedStyle(div).left.slice(0,-2));
+        div.style.left = left + 10 + "px"
+        if(left > 600) {
+            clearInterval(timeId);
+            interval((timeId) => {
+                let width = parseInt(window.getComputedStyle(div).width.slice(0,-2));
+                div.style.width = width - 10 + "px";
+                if(width <= 0) {
+                    clearInterval(timeId);
+                }
+            },80)
+        }
+    },10);
+
+    for (let i = 0; i < 4000; i++) {
+        console.log(i);
+    }
+</script>
+</html>

@@ -1,0 +1,47 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <button>houduren.com</button>
+        <button>hdcms.com</button>
+    </body>
+    <script>
+        // let lesson = {
+        //     site: "后盾人",
+        //     lists: ["js","css","mysql"],
+        //     show() {
+        //         return this.lists.map(title => `${this.site}-${title}`);    //箭头函数中的this指向的是上下文，指向的是父级作用域的this
+        //     }
+        // }
+        // console.table(lesson.show());
+
+        let Dom = {
+            site: "后盾人",
+            handleEvent: function(event) {
+                console.log(this.site+event.target.innerHTML);
+            },
+            bind() {
+                const buttons = document.querySelectorAll("button");
+                buttons.forEach(elem => {
+                    elem.addEventListener('click',(event) => {
+                        console.log(`${this.site}-${event.target.innerHTML}`);
+                    })
+                })
+                // const button = document.querySelector("button");
+                // button.addEventListener("click",this);
+                // button.addEventListener('click', (event) => {
+                //     console.log(this.site+event.target.innerHTML);
+                // })
+                //相当于对象中的方法
+                // button.onclick = function() {
+                //     console.log(this);
+                // }
+            }
+        }
+        Dom.bind();
+    </script>
+    </html>

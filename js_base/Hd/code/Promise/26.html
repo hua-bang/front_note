@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const p1 = new Promise((resolve,reject) => {
+        setTimeout(() => {
+            resolve("p1")
+        },100)
+    })
+    const p2 = new Promise((resolve,reject) => {
+        setTimeout(() => {
+            resolve("p2")
+        },200)
+    })
+    const p3 = new Promise((resolve,reject) => {
+        setTimeout(() => {
+            reject("p3")
+        },300)
+    })
+    const p4 = new Promise((resolve,reject) => {
+        setTimeout(() => {
+            reject("p4")
+        },400)
+    })
+    // 使用Promise.race() 处理容错异步，和race单词一样哪个Promise快用哪个，哪个先返回用哪个。
+    // 1.哪个最快用哪个
+    // 2.如果参数不是promise，内部将自动转为promise
+    // 3.状态根据最快的promise状态
+    Promise.race([p1,p2,p3,p4]).then(res => {
+        console.log(res)
+    }).catch(err => {
+        console.log(err);
+    })
+
+    const promises = [
+        new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(300)
+            },3000)
+        }),
+        new Promise((resolve,reject) => {
+            setTimeout(() => {
+                throw new Error("network error")
+            },2000)
+        })
+    ]
+    Promise.race(promises).catch(err => {
+        console.log(err)
+    })
+</script>
+</html>

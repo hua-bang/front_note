@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //  >=0 ~ <1
+        console.log(Math.random());
+
+        // 0 ~ 5
+        console.log(Math.floor(Math.random() * (5 + 1)));
+
+        // 2-5
+        console.log(Math.floor(Math.random() * (3 + 1)) + 2);
+
+        // min ~ max [min,max]
+        // min + Math.floor(Math.random() * (max - min + 1));
+
+        const students = ["李四","赵云","张三","王五","马六"];
+        // 0 ~ 4
+        const index = Math.floor(Math.random() * students.length);
+        console.log(students[index]);
+
+        // 1 ~ 4
+        console.log(students[Math.floor(Math.random() * (students.length - 1)) + 1]);
+
+        function arratRandomValue(array, start = 1, end) {
+            end = end ?? array.length;
+            start--;
+            const index = start + Math.floor(Math.random() * (end - start));
+            return array[index];
+        }
+
+        console.log(arratRandomValue(students,4,4));
+    </script>
+</body>
+</html>

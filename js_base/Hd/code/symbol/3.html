@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    class Cache {
+        static data = {};
+        static set(name,value) {
+            return this.data[name] = value;
+        }
+        static get(name) {
+            return this.data[name];
+        }
+    }
+    Cache.set('hdcms',"houdunren.com");
+    console.log(Cache.get("hdcms"));
+
+    //生成的值永远唯一，不可能重复
+    let user = {
+        name: 'apple',
+        desc: "用户资料",
+        key: Symbol("用户资料")
+    };
+    let cart = {
+        name: "apple",
+        desc: "购物车",
+        key: Symbol("购物车数据")
+    };
+    Cache.set(user.key,user);
+    Cache.set(cart.key,cart);
+    console.log(Cache.get(user.key));
+</script>
+</html>

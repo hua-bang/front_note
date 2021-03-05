@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const data = [
+        {name:"js",price:100},
+        {name:"mysql",price:212},
+        {name:"vue.js",price:80},
+    ]
+    class Lesson {
+        constructor(data) {
+            this.model = data;
+        }
+        get price() {
+            return this.model.price;
+        }
+        get name() {
+            return this.model.name;
+        }
+        static totalPrice(data) {
+            return data.reduce((total,prev) => {
+                return total + prev.price;
+            },0) 
+        }
+        static createBatch(data) {
+            return data.map((lesson) => new Lesson(lesson))
+        }
+        static maxPrice(data) {
+            return new Lesson(data.reduce((max,val) => max.price <= val.price ? val : max));
+        }
+    }
+
+    let lessonList = Lesson.createBatch(data);
+    console.log(lessonList);
+    console.log(Lesson.maxPrice(data).price);
+    console.log(Lesson.totalPrice(data));
+</script>
+</html>

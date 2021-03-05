@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Request() {
+        this.get = function(params) {
+            return `https://houdunren.com/${this.url}?${Object.keys(params).map(k => `${k}=${params[k]}`).join("&")}`;
+        };
+    }
+
+    function Article() {
+        this.url = "article/lists";
+        Request.call(this); //立即执行,所以会指向上方this.get的函数
+    }
+    let a = new Article();
+    console.log(a.get({id:1,cat:"js"}));
+
+    function User() {
+        this.url = "user/lists";
+        Request.call(this); //立即执行,所以会指向上方this.get的函数
+    }
+    let user = new User();
+    console.log(user.get({id:2,role:"admin"}))
+</script>
+</html>

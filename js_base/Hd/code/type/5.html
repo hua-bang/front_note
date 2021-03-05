@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="password" name="password">
+    <span id="msg"></span>
+    <script>
+        // let name = "hug";
+        // console.log(name.length);   //长度
+        // console.log(name.toUpperCase());    //大写
+        // console.log(name.toLowerCase());    //小写
+        // let site = "    hua-bang    ";
+        // console.log(site.trim().length);    //trim去掉空白
+
+        let psNode = document.querySelector("[name='password']");
+        psNode.addEventListener('keyup', function() {
+            this.value = this.value.trim();
+            let spanNode = document.querySelector("#msg");
+            spanNode.innerHTML = this.value.length <= 5 ? "密码长度应大于5位数" : "";
+        })
+
+        let hd = "houdunren";
+        console.log(hd.charAt(0));  //取第0个字符
+
+        for (const word of hd) {
+            let spanNode = document.createElement("span");
+            spanNode.innerHTML = word;
+            document.body.appendChild(spanNode);
+        }
+    </script>
+</body>
+</html>

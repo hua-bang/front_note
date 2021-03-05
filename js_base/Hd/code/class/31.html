@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    "use strict";
+    function User(name, age) {
+        let data = { name ,age }
+        let i = 1;
+        Object.defineProperties(this,{
+            name: {
+                get() {
+                    return data.name;
+                },
+                set(value) {
+                    if (value.trim() === "" || value.length>20)
+                        throw new Error("用户名不合法")
+                    data.name = value
+                }
+            },
+            age: {
+                get() {
+                    return data.age;
+                },
+                set(value) {
+                    data.age = value
+                }
+            }
+        })
+    }
+    let hug = new User("hug",18);
+    console.log(hug);
+    hug.name = "hua";
+    hug.age = 16;
+    console.log(hug);
+
+    class Stu {
+        constructor(name, age) {
+            this.data = { name, age }
+        }
+        get name() {
+            return this.data.name;
+        }
+        set name(value) {
+            if (value.trim() === "" || value.length>20)
+                throw new Error("用户名不合法")
+            this.data.name = value;
+        }
+        get age() {
+            return this.data.age;
+        }
+        set age(value) {
+            this.data.age = age;
+        }
+    }
+    let hua = new Stu("hug",20);
+    console.log(hua);
+    console.log(hua.age);
+</script>
+</html>

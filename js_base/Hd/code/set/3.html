@@ -1,0 +1,25 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+    </body>
+    <script>
+        let set = new Set(["hdcms","hd"]);
+        console.log(set);   //Set类型打印
+        console.log(Array.from(set));   //数组类型
+        console.log([...set]);  //数组类型
+        let hd = new Set("123456789");
+
+        let newArr = [...hd].filter( v => v < 5);
+        console.log(newArr);
+        console.log(new Set(newArr));   //转成set类型
+
+        let array = [1,2,3,4,5,4,2,5,1,2];
+        array = [...new Set(array)];
+        console.log(array);
+    </script>
+    </html>

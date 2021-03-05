@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function User(name) {
+        this.name = name;
+    }
+
+    User.prototype = {
+        constructor: User,
+        get() {
+            console.log("get")
+        }
+    }
+
+    // 在原型中定义 减少内存开销
+    User.prototype.show = function() {
+        console.log(this.name)
+    };
+    let lisi = new User("lisi");
+    let xj = new User("xj");
+    console.dir(lisi)
+    console.dir(xj)
+    lisi.show();
+</script>
+</html>
