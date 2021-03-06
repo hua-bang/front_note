@@ -10,3 +10,5 @@
       let arr = [10,15,20,30,40,20,19,20]
       arr.filter(v => v > 20).map(v => v * 0.5).reduce((total,value) => total + value,0)
       ``` 
++ #### String的新特性 startsWith, endsWith, template string.
++ #### Destructuring_Assignment 解构赋值
