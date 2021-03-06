@@ -5,7 +5,7 @@
 
 + #### let const命令
 + #### arrow function 箭头函数
-+ #### Map Filter Set Reduce Some Every数组的高级用法
++ #### map filter reduce some every数组的高级用法
     + ```js
       let arr = [10,15,20,30,40,20,19,20]
       arr.filter(v => v > 20).map(v => v * 0.5).reduce((total,value) => total + value,0)
