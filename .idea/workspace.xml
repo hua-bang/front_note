@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fda6ea41-7eb6-4307-b7a6-722ad304de01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/js_base/Es6/Class/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/Es6/Json/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/Es6/Json/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/Iterable/IdMarker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/Iterable/ObjIterable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js_base/Es6/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/js_base/Es6/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +50,7 @@
       <option name="presentableId" value="Default" />
       <updated>1614860242639</updated>
       <workItem from="1614860243716" duration="1133000" />
-      <workItem from="1614936584868" duration="8565000" />
+      <workItem from="1614936584868" duration="15258000" />
     </task>
     <task id="LOCAL-00001" summary="字符串的迭代解析">
       <created>1614860624164</created>
@@ -124,7 +122,28 @@
       <option name="project" value="LOCAL" />
       <updated>1614995416065</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="class的引入 class constructor extends super等关键字&#10;Json的新特性">
+      <created>1614996497478</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1614996497478</updated>
+    </task>
+    <task id="LOCAL-00012" summary="es6新增module导入(import)导出(export)的用法">
+      <created>1614997495804</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1614997495804</updated>
+    </task>
+    <task id="LOCAL-00013" summary="迭代器的使用（不是很理解）">
+      <created>1615004094988</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1615004094988</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,17 +160,20 @@
     <MESSAGE value="map,set,reduce,some,every,filter数组高级用法" />
     <MESSAGE value="startsWith, endsWith, template string" />
     <MESSAGE value="解构赋值的运用&#10;数组的解构&#10;对象的解构&#10;数组对象符合解构&#10;三点扩展运行符号的使用" />
-    <option name="LAST_COMMIT_MESSAGE" value="解构赋值的运用&#10;数组的解构&#10;对象的解构&#10;数组对象符合解构&#10;三点扩展运行符号的使用" />
+    <MESSAGE value="class的引入 class constructor extends super等关键字&#10;Json的新特性" />
+    <MESSAGE value="es6新增module导入(import)导出(export)的用法" />
+    <MESSAGE value="迭代器的使用（不是很理解）" />
+    <option name="LAST_COMMIT_MESSAGE" value="迭代器的使用（不是很理解）" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="239" y="0" key="CommitChangelistDialog2" timestamp="1614995414142">
+    <state x="239" y="0" key="CommitChangelistDialog2" timestamp="1615004093772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="239" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1614995414142" />
-    <state x="261" y="76" key="Vcs.Push.Dialog.v2" timestamp="1614994467176">
+    <state x="239" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1615004093772" />
+    <state x="261" y="76" key="Vcs.Push.Dialog.v2" timestamp="1615004099033">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="261" y="76" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1614994467176" />
+    <state x="261" y="76" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615004099033" />
     <state x="341" y="183" width="840" height="1034" key="run.anything.popup" timestamp="1614996008890">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
