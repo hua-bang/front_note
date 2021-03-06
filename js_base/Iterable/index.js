@@ -19,3 +19,12 @@ let foo = new Foo();
 console.log(foo[Symbol.iterator]().next());
 console.log(foo[Symbol.iterator]().next());
 console.log(foo[Symbol.iterator]().next());
+
+//pseudo code
+// const ITERABLE = "迭代对象";
+// $iterator = ITERABLE[Symbol.iterator];
+// let $result = $iterator.next();
+// while(!$result.done) {
+//     let val = $result.value;
+//     $result = $iterator.next();
+// }
