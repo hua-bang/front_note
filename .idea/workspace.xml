@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fda6ea41-7eb6-4307-b7a6-722ad304de01" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/js_base/Es6/Class/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/Es6/Json/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/Es6/Json/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js_base/Es6/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/js_base/Es6/README.md" afterDir="false" />
     </list>
@@ -13,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -49,7 +52,7 @@
       <option name="presentableId" value="Default" />
       <updated>1614860242639</updated>
       <workItem from="1614860243716" duration="1133000" />
-      <workItem from="1614936584868" duration="6118000" />
+      <workItem from="1614936584868" duration="8565000" />
     </task>
     <task id="LOCAL-00001" summary="字符串的迭代解析">
       <created>1614860624164</created>
@@ -107,7 +110,21 @@
       <option name="project" value="LOCAL" />
       <updated>1614993839338</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="startsWith, endsWith, template string">
+      <created>1614994462387</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1614994462387</updated>
+    </task>
+    <task id="LOCAL-00010" summary="解构赋值的运用&#10;数组的解构&#10;对象的解构&#10;数组对象符合解构&#10;三点扩展运行符号的使用">
+      <created>1614995416065</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1614995416065</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,16 +139,22 @@
     <MESSAGE value="the difference of let, const and var.&#10;Use var as little as possible." />
     <MESSAGE value="arrowFunction concise usage &#10;the direction of this" />
     <MESSAGE value="map,set,reduce,some,every,filter数组高级用法" />
-    <option name="LAST_COMMIT_MESSAGE" value="map,set,reduce,some,every,filter数组高级用法" />
+    <MESSAGE value="startsWith, endsWith, template string" />
+    <MESSAGE value="解构赋值的运用&#10;数组的解构&#10;对象的解构&#10;数组对象符合解构&#10;三点扩展运行符号的使用" />
+    <option name="LAST_COMMIT_MESSAGE" value="解构赋值的运用&#10;数组的解构&#10;对象的解构&#10;数组对象符合解构&#10;三点扩展运行符号的使用" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="239" y="0" key="CommitChangelistDialog2" timestamp="1614993838353">
+    <state x="239" y="0" key="CommitChangelistDialog2" timestamp="1614995414142">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="239" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1614993838353" />
-    <state x="261" y="76" key="Vcs.Push.Dialog.v2" timestamp="1614993845438">
+    <state x="239" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1614995414142" />
+    <state x="261" y="76" key="Vcs.Push.Dialog.v2" timestamp="1614994467176">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="261" y="76" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1614993845438" />
+    <state x="261" y="76" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1614994467176" />
+    <state x="341" y="183" width="840" height="1034" key="run.anything.popup" timestamp="1614996008890">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="341" y="183" width="840" height="1034" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1614996008890" />
   </component>
 </project>

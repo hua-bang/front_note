@@ -12,3 +12,5 @@
       ``` 
 + #### String的新特性 startsWith, endsWith, template string.
 + #### Destructuring_Assignment 解构赋值
++ #### class类 class extends 关键字
++ #### Json新特性 序列化 反序列化 简写
