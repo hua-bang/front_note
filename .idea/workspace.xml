@@ -2,19 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fda6ea41-7eb6-4307-b7a6-722ad304de01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/js_base/function/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/function/apply/apply.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/function/bind/bind.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/function/bind/bind.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/function/call/call.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/function/call/call.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/function/callee.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/function/caller.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/function/caller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/function/new.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/function/this/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/function/this/this.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/executor/executor.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/executor/executor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/resolve/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/resolve/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/then.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js_base/asynchronous/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/js_base/asynchronous/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -50,9 +44,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\github\js_note\js_base\asynchronous\promise\executor" />
+      <recent name="F:\github\js_note\js_base\function\private" />
       <recent name="F:\github\js_note\js_base\function\apply" />
       <recent name="F:\github\js_note\js_base\function\call" />
       <recent name="F:\github\js_note\js_base\function\this" />
@@ -76,7 +73,12 @@
       <workItem from="1615293859124" duration="1047000" />
       <workItem from="1615296317647" duration="17000" />
       <workItem from="1615296378336" duration="5000" />
-      <workItem from="1615333813319" duration="1540000" />
+      <workItem from="1615333813319" duration="9591000" />
+      <workItem from="1615351479955" duration="611000" />
+      <workItem from="1615358710286" duration="259000" />
+      <workItem from="1615359028889" duration="640000" />
+      <workItem from="1615359774994" duration="793000" />
+      <workItem from="1615360604381" duration="6183000" />
     </task>
     <task id="LOCAL-00001" summary="字符串的迭代解析">
       <created>1614860624164</created>
@@ -225,7 +227,28 @@
       <option name="project" value="LOCAL" />
       <updated>1615212200672</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="caller callee new this apply bind call">
+      <created>1615335411840</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1615335411840</updated>
+    </task>
+    <task id="LOCAL-00023" summary="闭包的使用&#10;私有变量：模块模式、静态私有成员、模块增强模式&#10;尾调用的优化">
+      <created>1615344591880</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1615344591880</updated>
+    </task>
+    <task id="LOCAL-00024" summary="es6之前异步操作的处理 callback error接收值 但容易产生回调地狱">
+      <created>1615361589907</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1615361589908</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,27 +276,38 @@
     <MESSAGE value="类的声明 定义 静态成员 迭代器 生成器" />
     <MESSAGE value="super 和 mixin的用法。&#10;composition over inheritance" />
     <MESSAGE value="Proxy trap Reflect trapInvariant" />
-    <option name="LAST_COMMIT_MESSAGE" value="Proxy trap Reflect trapInvariant" />
+    <MESSAGE value="caller callee new this apply bind call" />
+    <MESSAGE value="闭包的使用&#10;私有变量：模块模式、静态私有成员、模块增强模式&#10;尾调用的优化" />
+    <MESSAGE value="es6之前异步操作的处理 callback error接收值 但容易产生回调地狱" />
+    <option name="LAST_COMMIT_MESSAGE" value="es6之前异步操作的处理 callback error接收值 但容易产生回调地狱" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="398" y="186" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1615090603595">
+    <state x="398" y="186" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1615361172582">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="398" y="186" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1615090603595" />
-    <state x="239" y="0" key="CommitChangelistDialog2" timestamp="1615212198114">
+    <state x="398" y="186" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1615361172582" />
+    <state x="256" y="125" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog" timestamp="1615359418560">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="256" y="125" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/0.0.1536.824@0.0.1536.824" timestamp="1615359418560" />
+    <state x="239" y="0" key="CommitChangelistDialog2" timestamp="1615361581658">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1681" y="0" key="CommitChangelistDialog2/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1615024810263" />
-    <state x="239" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1615212198114" />
+    <state x="239" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1615361581658" />
     <state x="147" y="72" width="1228" height="686" key="DiffContextDialog" timestamp="1615212159002">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="147" y="72" width="1228" height="686" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1615212159002" />
-    <state x="261" y="76" key="Vcs.Push.Dialog.v2" timestamp="1615212217977">
+    <state x="190" y="0" key="SettingsEditor" timestamp="1615359856477">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="190" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1615359856477" />
+    <state x="261" y="76" key="Vcs.Push.Dialog.v2" timestamp="1615361817447">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1659" y="77" key="Vcs.Push.Dialog.v2/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1615036062478" />
-    <state x="261" y="76" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615212217977" />
+    <state x="261" y="76" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615361817447" />
     <state x="-1401" y="308" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615024774021">
       <screen x="-1920" y="0" width="1536" height="832" />
     </state>
@@ -283,6 +317,10 @@
     </state>
     <state x="-1579" y="185" width="840" height="1045" key="run.anything.popup/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1615019112834" />
     <state x="341" y="183" width="840" height="1034" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1614996008890" />
+    <state x="347" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1615340238088">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="347" y="-1" width="840" height="1034" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1615340238088" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
