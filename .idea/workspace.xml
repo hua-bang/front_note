@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fda6ea41-7eb6-4307-b7a6-722ad304de01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/executor/executor.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/executor/executor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/resolve/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/resolve/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/then.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/all.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/async/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/await/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/compose.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/equal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/race.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/sleep.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js_base/asynchronous/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/js_base/asynchronous/README.md" afterDir="false" />
     </list>
@@ -78,7 +80,7 @@
       <workItem from="1615358710286" duration="259000" />
       <workItem from="1615359028889" duration="640000" />
       <workItem from="1615359774994" duration="793000" />
-      <workItem from="1615360604381" duration="6183000" />
+      <workItem from="1615360604381" duration="13592000" />
     </task>
     <task id="LOCAL-00001" summary="字符串的迭代解析">
       <created>1614860624164</created>
@@ -248,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615361589908</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="promise的executor resolve reject&#10;onResolved onReject">
+      <created>1615367188464</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1615367188464</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,7 +288,8 @@
     <MESSAGE value="caller callee new this apply bind call" />
     <MESSAGE value="闭包的使用&#10;私有变量：模块模式、静态私有成员、模块增强模式&#10;尾调用的优化" />
     <MESSAGE value="es6之前异步操作的处理 callback error接收值 但容易产生回调地狱" />
-    <option name="LAST_COMMIT_MESSAGE" value="es6之前异步操作的处理 callback error接收值 但容易产生回调地狱" />
+    <MESSAGE value="promise的executor resolve reject&#10;onResolved onReject" />
+    <option name="LAST_COMMIT_MESSAGE" value="promise的executor resolve reject&#10;onResolved onReject" />
   </component>
   <component name="WindowStateProjectService">
     <state x="398" y="186" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1615361172582">
@@ -290,11 +300,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="256" y="125" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/0.0.1536.824@0.0.1536.824" timestamp="1615359418560" />
-    <state x="239" y="0" key="CommitChangelistDialog2" timestamp="1615361581658">
+    <state x="239" y="0" key="CommitChangelistDialog2" timestamp="1615367185042">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1681" y="0" key="CommitChangelistDialog2/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1615024810263" />
-    <state x="239" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1615361581658" />
+    <state x="239" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1615367185042" />
     <state x="147" y="72" width="1228" height="686" key="DiffContextDialog" timestamp="1615212159002">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -303,11 +313,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="190" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1615359856477" />
-    <state x="261" y="76" key="Vcs.Push.Dialog.v2" timestamp="1615361817447">
+    <state x="261" y="76" key="Vcs.Push.Dialog.v2" timestamp="1615376536341">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1659" y="77" key="Vcs.Push.Dialog.v2/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1615036062478" />
-    <state x="261" y="76" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615361817447" />
+    <state x="261" y="76" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615376536341" />
     <state x="-1401" y="308" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615024774021">
       <screen x="-1920" y="0" width="1536" height="832" />
     </state>
