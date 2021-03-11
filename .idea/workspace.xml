@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fda6ea41-7eb6-4307-b7a6-722ad304de01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/all.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/async/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/await/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/compose.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/equal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/race.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_base/asynchronous/promise/sleep.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_base/ClientDetection/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js_base/asynchronous/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/js_base/asynchronous/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +13,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -46,7 +39,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -80,7 +73,8 @@
       <workItem from="1615358710286" duration="259000" />
       <workItem from="1615359028889" duration="640000" />
       <workItem from="1615359774994" duration="793000" />
-      <workItem from="1615360604381" duration="13592000" />
+      <workItem from="1615360604381" duration="13942000" />
+      <workItem from="1615419342473" duration="6437000" />
     </task>
     <task id="LOCAL-00001" summary="字符串的迭代解析">
       <created>1614860624164</created>
@@ -257,15 +251,27 @@
       <option name="project" value="LOCAL" />
       <updated>1615367188464</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Promise.all&#10;Promise.race&#10;compose&#10;sleep函数实现&#10;async await的使用">
+      <created>1615383500874</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1615383500874</updated>
+    </task>
+    <task id="LOCAL-00027" summary="BOM 知识点的学习">
+      <created>1615423575875</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1615423575875</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="字符串的迭代解析" />
-    <MESSAGE value="the iteration of Map" />
     <MESSAGE value="WeakMap uses weak references.&#10;WeakMap realize private member" />
     <MESSAGE value="Set,WeakSet" />
     <MESSAGE value="后盾人js的学习笔记以及代码" />
@@ -289,9 +295,15 @@
     <MESSAGE value="闭包的使用&#10;私有变量：模块模式、静态私有成员、模块增强模式&#10;尾调用的优化" />
     <MESSAGE value="es6之前异步操作的处理 callback error接收值 但容易产生回调地狱" />
     <MESSAGE value="promise的executor resolve reject&#10;onResolved onReject" />
-    <option name="LAST_COMMIT_MESSAGE" value="promise的executor resolve reject&#10;onResolved onReject" />
+    <MESSAGE value="Promise.all&#10;Promise.race&#10;compose&#10;sleep函数实现&#10;async await的使用" />
+    <MESSAGE value="BOM 知识点的学习" />
+    <option name="LAST_COMMIT_MESSAGE" value="BOM 知识点的学习" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="261" y="0" key="#Plugins" timestamp="1615419459516">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="261" y="0" key="#Plugins/0.0.1536.824@0.0.1536.824" timestamp="1615419459516" />
     <state x="398" y="186" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1615361172582">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -300,24 +312,24 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="256" y="125" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/0.0.1536.824@0.0.1536.824" timestamp="1615359418560" />
-    <state x="239" y="0" key="CommitChangelistDialog2" timestamp="1615367185042">
+    <state x="239" y="0" key="CommitChangelistDialog2" timestamp="1615423573916">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1681" y="0" key="CommitChangelistDialog2/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1615024810263" />
-    <state x="239" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1615367185042" />
+    <state x="239" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1615423573916" />
     <state x="147" y="72" width="1228" height="686" key="DiffContextDialog" timestamp="1615212159002">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="147" y="72" width="1228" height="686" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1615212159002" />
-    <state x="190" y="0" key="SettingsEditor" timestamp="1615359856477">
+    <state x="190" y="0" key="SettingsEditor" timestamp="1615419431395">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="190" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1615359856477" />
-    <state x="261" y="76" key="Vcs.Push.Dialog.v2" timestamp="1615376536341">
+    <state x="190" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1615419431395" />
+    <state x="261" y="76" key="Vcs.Push.Dialog.v2" timestamp="1615425797620">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1659" y="77" key="Vcs.Push.Dialog.v2/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1615036062478" />
-    <state x="261" y="76" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615376536341" />
+    <state x="261" y="76" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615425797620" />
     <state x="-1401" y="308" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615024774021">
       <screen x="-1920" y="0" width="1536" height="832" />
     </state>
