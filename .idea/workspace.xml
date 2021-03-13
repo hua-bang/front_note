@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fda6ea41-7eb6-4307-b7a6-722ad304de01" name="Default Changelist" comment="客户端检测&#10;能力检测 &#10;用户代理检测">
-      <change afterPath="$PROJECT_DIR$/datastructures-algorithms/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datastructures-algorithms/Stack/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datastructures-algorithms/Stack/stack-array.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Algorithm/README.md" beforeDir="false" />
-    </list>
+    <list default="true" id="fda6ea41-7eb6-4307-b7a6-722ad304de01" name="Default Changelist" comment="客户端检测&#10;能力检测 &#10;用户代理检测" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,6 +78,7 @@
       <workItem from="1615553161796" duration="5179000" />
       <workItem from="1615591874647" duration="4953000" />
       <workItem from="1615599240106" duration="326000" />
+      <workItem from="1615636747253" duration="17000" />
     </task>
     <task id="LOCAL-00001" summary="字符串的迭代解析">
       <created>1614860624164</created>

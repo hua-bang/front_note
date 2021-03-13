@@ -3,3 +3,4 @@
     + 数据结构和语言无关。
     + 栈 Stack
     + 队列 Queue
+    + 链表 LinkedList
