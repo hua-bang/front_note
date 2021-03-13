@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function loadScript(fileName, callback) {
+        let script = document.createElement("script");
+        script.src = fileName;
+        script.onload = () => {
+            callback()
+        }
+        document.body.appendChild(script);
+    }
+
+    loadScript("loadScript.js",() => {
+        console.log("load success!");
+    })
+</script>
+</html>
