@@ -72,12 +72,14 @@ class Deque {
     }
 }
 
-let deque = new Deque();
-console.log(deque.isEmpty());
-deque.addFront(1);
-deque.addFront(2);
-deque.addBack(2);
-deque.addBack(3);
-deque.addBack(4);
-deque.addFront(5);
-console.log(deque.items);
+module.exports = Deque;
+
+// let deque = new Deque();
+// console.log(deque.isEmpty());
+// deque.addFront(1);
+// deque.addFront(2);
+// deque.addBack(2);
+// deque.addBack(3);
+// deque.addBack(4);
+// deque.addFront(5);
+// console.log(deque.items);
