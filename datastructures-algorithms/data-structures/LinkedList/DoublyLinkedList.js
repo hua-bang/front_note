@@ -68,4 +68,4 @@ class DoublyLinkedList extends DoublyNode {
     }
 }
 
-export default DoublyLinkedList;
+module.exports = DoublyLinkedList;
