@@ -11,3 +11,5 @@
     + isEmpty
     + size
     + toString
+  + 双向链表
+  + StackLinkedList
