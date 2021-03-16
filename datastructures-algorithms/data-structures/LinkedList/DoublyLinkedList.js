@@ -67,3 +67,5 @@ class DoublyLinkedList extends DoublyNode {
         return undefined;
     }
 }
+
+export default DoublyLinkedList;
