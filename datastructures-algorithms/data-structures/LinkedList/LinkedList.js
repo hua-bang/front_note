@@ -102,8 +102,9 @@ class LinkedList {
     }
 }
 
-let linkedList = new LinkedList();
-linkedList.push(1);
-linkedList.push(2);
-linkedList.push(3);
-console.log(linkedList);
+// let linkedList = new LinkedList();
+// linkedList.push(1);
+// linkedList.push(2);
+// linkedList.push(3);
+// console.log(linkedList);
+module.exports = LinkedList;

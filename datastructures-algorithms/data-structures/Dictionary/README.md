@@ -29,3 +29,5 @@
       + keyValues()
       + forEach(callbackFn)
     + 哈希冲突
+      + 分离链接
+        + 使用链表
