@@ -13,3 +13,19 @@
     + values()
     + keyValues()
     + forEach(callbackFn)
+  + HashTable
+    + api
+      + hasKey(key)
+      + hashCode(key)
+      + loseloseHashCode(key)
+      + set(key, value)
+      + remove(key)
+      + get(key)
+      + clear()
+      + size()
+      + isEmpty()
+      + keys()
+      + values()
+      + keyValues()
+      + forEach(callbackFn)
+    + 哈希冲突

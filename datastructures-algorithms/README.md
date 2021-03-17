@@ -6,3 +6,4 @@
     + 链表 LinkedList
     + 集合 Set
     + 字典 Dictionary
+    + 哈希表 HashTable
