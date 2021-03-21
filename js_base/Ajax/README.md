@@ -349,4 +349,185 @@
       },2000);
       ```
 
-      
+  - **Headers对象**
+
+    - Headers对象是所有外发请求和入站响应头部的容器
+    - Request.prototype.headers Response.prototype.headers
+    - Headers和Map相似
+      - get
+      - set
+      - has
+      - delete
+    - Headers独有的特性
+      - 可以用对象进行初始化
+      - append添加字段
+    - 头部护卫
+
+  - **Request对象**
+
+    - 创建Request对象
+
+      ```js
+      let r = new Request("http://127.0.0.1/api/index.php");
+      console.log(r);
+      ```
+
+      Request也接受第二个参数 一个init对象，跟fetch的init对象一样，会有默认值
+
+    - 克隆Request对象
+
+      Fetch提供创建构造Request对象的副本，使用Request构造函数，和使用clone方法
+
+      - Request构造函数
+
+        ```js
+        let r1 = new Request("https://www.baidu.com");
+        
+        let r2 = new Request(r1);
+        
+        let r3 = new Request(r1, {method:"post"});	//此时的r1.bodyUsed 为true
+        ```
+
+      - clone方法
+
+        ```js
+        let r1 = new Request("https://www.baidu.com");
+        let r2 = r1.clone();	//此时r1.bodyUsed不会被标记
+        ```
+
+    - 在fetch中使用Request对象
+
+      fetch第一个参数可以传入Request对象，而非url
+
+      ```js
+      let r = new Request(url);
+      fetch(r, {});
+      ```
+
+      fetch不能用已经用过的请求体进行请求
+
+      如果希望多次第哦啊用fetch，则可以使用clone
+
+      ```js
+      let r = new Request(url);
+      fetch(r.clone());
+      fetch(r.clone());
+      ```
+
+  - **Response对象**
+
+    - **创建Response对象**
+
+      - 可以通过构造函数初始化且不需要参数，均为默认值。不代表实际的HTTP响应。
+      - 参数body，init
+        - body 可选 相当于fetch中init参数中的body属性
+        - init 可选
+          - headers
+          - status
+          - statusText
+      - 大多情况下，产生Response对象主要调用fetch方法，返回一个最后会解决为Response对象的期约
+
+    - **读取响应状态信息**
+
+      - headers
+      - ok
+      - redirected
+      - status
+      - statusText
+      - type
+      - url
+
+    - **克隆Response对象**
+
+      - 主要用的是clone方法，创建一模一样的副本
+
+      - 不能克隆已经用过的response
+
+      - 响应体只能读取一次
+
+      - 代码：
+
+        ```js
+        let r1 = new Response("foorbar");
+        let r2 = r1.clone();
+        ```
+
+  - **Request、Response、Body混入**
+
+    - **Body混入为Request和Response提供了body，bodyUsed和一组方法**
+    - **Request、Response两个原因**
+      - 有效载荷大小会导致网络延迟
+      - 流APi在有效载荷方面是有优势的。
+    - **Body.text()**
+      - 返回promise，解决为将缓冲区转存得到UTF8格式字符串
+      - 在Response上使用了Body.text()
+    - **Body.json()**
+      - 返回promise，解决为将缓存区转存得到json
+      - 在Response上使用了Body.json();
+    - **Body.formData();**
+      - 游览器通过FormData对象序列化、反序列化为主体
+      - 返回promise，解决为将缓存区转存得到FormData实例
+      - 在Request上使用了Body.formData();
+    - **Body.arrayBuffer();**
+      - 在Request，Response上使用了Body.formData();
+    - **Body.blob()**
+      - 返回promise，解决为将缓冲区转存得到blob
+      - 在Request，Response上使用了Body.blob();
+    - **一次性流**
+      - Body中混入是构建在ReadableSteam上，主体流只能使用一次，意味所有的主体混入方法只能调用一次。
+      - 在读取流的过程中，这些方法调用时会被加锁，阻止其他访问器访问
+      - bodyUsed表示ReadableStream是否已经摄受，意思时读取器是否已经在流上加了锁
+    - **使用ReadableStream主体**
+
+  - ##### Beacon API
+
+    - 由于一般在unload时间时候发送请求，可能会被游览器将事件销毁
+
+    - Beacon Api
+
+    - 使用
+
+      ```js
+      navigator.sendBeacon(url,'{}');
+      ```
+
+    - 特性：
+
+      - sendBeacon随时都能用
+      - 调用该方法，游览器会把请求添加到一个内部请求队列，游览器主动发送
+      - 页面关闭下也会发送
+      - 状态码，超时，响应对于游览器来说均是透明的
+      - 可以携带cookies
+
+  - **web socket**
+
+    - 长连接实现服务器全双工，双向的通信。
+
+    - 协议
+
+      - ws，wss
+
+    - Api
+
+      - 初始化
+
+        ```js
+        let socket = new WebSocket(url);
+        ```
+
+      - 关闭
+
+        ```js
+        socket.close();
+        ```
+
+      - 发送接收信息
+
+        ```js
+        socket.send(data);
+        socket.onmessage = (event) => {
+            let data = event.data;
+        }
+        ```
+
+        
