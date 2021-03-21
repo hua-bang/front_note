@@ -183,3 +183,170 @@
       - 可能会涉及安全问题
       - 无法确定jsonp是否请求失败。
 
+  ### Fetch Api
+
+  fetch能执行XMLHttpRequest的方法，且更容易使用。必须是异步。
+
+  - ##### 基本用法
+
+    - **fetch是暴露在全局作用域的，会给URL发送请求。**
+
+    - **分派请求**
+
+      - fetch()只有一个必需参数，URL，这个方法返回一个promise
+
+        ```js
+        fetch("/bar").then(res => {
+            console.log(res);
+        })
+        ```
+
+    - **读取响应**
+
+      - 这时候需要用到text()方法，该方法返回Promise
+
+        ```js
+        fetch("/bar").then(response => {
+            response.text().then(data => {
+                console.log(data)
+            })
+        })
+        
+        fetch("bar")
+            .then(res => res.text())
+            .then(data => {
+            	console.log(data)
+        })
+        ```
+
+    - **处理状态码和请求失败**
+
+      - status(状态码) statusText(状态文本)
+      - 重定向时，默认会跟随着重定向，状态码仍是200
+      - 只要服务器有响应 就算成功，fetch期约都会解决  未响应的时候才会导致期约被拒绝。
+      - 违反CORS，无网络链接，HTTPS曹佩或游览器、网络策略等问题都会导致拒绝521
+
+    - **自定义选项**
+
+      - fetch第一个参数是必须的，若只用第一个参数，会发送get请求，第二个参数为init对象
+        - body
+        - cache
+        - credentials
+        - headers
+        - integrity
+        - keepalive
+        - method
+        - mode
+        - redirect
+        - referrer
+        - referrerPolicy
+        - signal
+
+  - ##### 常见Fetch的请求模式
+
+    用init对象参数，可以配置fetch在请求体中发送的各种形式的数据
+
+    - **JSON数据**
+
+      ```js
+      let payload = JSON.stringify({
+          foo: "bar"
+      });
+      
+      let jsonHeaders = new Headers({
+          "Content-Type": "application/json"
+      });
+      
+      fetch("http://127.0.0.1/api/post.php", {
+          method: "post",
+          body: payload,
+          headers: jsonHeaders
+      })
+      .then(res => res.text()).then(res => {
+          console.log(res);
+      })
+      ```
+
+    - **请求体中发送数据**
+
+      ```js
+      payload = "foo=bar&baz=qux";
+      let paramHeaders = new Headers({
+          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"  
+      })
+      
+      fetch("http://127.0.0.1/api/post.php", {
+          method: "post",
+          body: payload,
+          headers: paramHeaders
+      })
+      .then(res => res.text()).then(res => {
+          console.log(res);
+      })
+      ```
+
+    - **发送文件**
+
+      - FormData
+
+        ```js
+        let formData = new FormData();
+        formData.append();
+        fetch(url, {
+            method: "post",
+            body: formData
+        })
+        ```
+
+    - **加载Blob文件**
+
+      提供响应blob类型的响应，达到文件对象，然后可以使用blob()将其返回。
+
+      ```js
+      let imgUrl = "./static/demo.jpg";
+      setTimeout(() => {
+          fetch(imgUrl)
+          .then(res => res.blob())
+          .then(blob => {
+              let url = URL.createObjectURL(blob);
+              insertImg(url, (src) => {
+                  console.log(`loaded success`);
+                  console.log(src);
+              })
+          })
+      },1000)
+      
+      function insertImg(src, callback = () => {}) {
+          if(!src) {
+              throw new Error("need image");
+          }
+          let img = document.createElement("img");
+          img.src = src;
+          console.log(src);
+          console.log(typeof src);
+          document.body.appendChild(img);
+          img.onload = () => {
+              callback(src);
+          }
+      }
+      ```
+
+    - **发送跨域请求**
+
+      从不同的源请求资源，包含Cors才能保证响应，没有头部，跨域请求失败并错误。
+
+      no-cors请求，响应type值为opaque,无法得到响应内容，适用探测请求或响应缓存
+
+    - **中断请求**（少用）
+
+      直接通过AbortController/AbortSignal中断请求
+
+      ```js
+      let abortController = new AbortController();
+      fetch(url, {signal:abortController.signal}).then(res => {}, err => {})
+      setTimeout(() => {
+          abortController.abort()
+      },2000);
+      ```
+
+      
