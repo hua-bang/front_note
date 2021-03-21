@@ -530,4 +530,9 @@
         }
         ```
 
-        
+    - 事件
+
+      - open：连接成功触发
+      - error：发生错误触发
+        - event中有三个参数 wasClean code reason
+      - close： 关闭时触发。
