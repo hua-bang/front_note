@@ -1,11 +1,4 @@
-class Person {
-    constructor(name) {
-        this.name = name;
-    }
-    getName() {
-        return this.name;
-    }
-}
+import $ from "./js/jQuery";
 
-let p = new Person("hug");
-alert(p.getName());
+let p = $("p");
+console.log(p);
