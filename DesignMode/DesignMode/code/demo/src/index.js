@@ -1,4 +1,12 @@
+// import {
+//     Product,
+//     Creator
+// } from "./js/factor/index";
+
+// import {
+//     SingleObject
+// } from "./js/SingleObject/index"
+
 import {
-    Product,
-    Creator
-} from "./js/factor/index";
+    LoginForm
+} from "./js/SingleObject/LoginForm"

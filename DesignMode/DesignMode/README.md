@@ -22,3 +22,24 @@
   ![image-20210325080746295](F:\github\js_note\DesignMode\DesignMode\image-20210325080746295.png)
 
   传入相应的参数，实例化对象
+
+#### 单例模式
+
+- 介绍
+
+  - 系统中唯一使用
+  - 一个类只有一个实例（单例）
+
+- 事例：
+
+  - 登录框
+  - 购物车
+
+- UML图：
+
+  ![image-20210325084623003](F:\github\js_note\DesignMode\DesignMode\image-20210325084623003.png)
+
+- 实现
+
+  - java实现
+  - js实现
