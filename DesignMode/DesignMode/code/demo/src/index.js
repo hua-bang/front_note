@@ -5,8 +5,12 @@
 
 // import {
 //     SingleObject
-// } from "./js/SingleObject/index"
+// } from "./js/SingleObject/index";
+
+// import {
+//     LoginForm
+// } from "./js/SingleObject/LoginForm";
 
 import {
-    LoginForm
-} from "./js/SingleObject/LoginForm"
+    Adaptee
+} from "./js/AdapterPattern/index.js";
