@@ -11,6 +11,30 @@
 //     LoginForm
 // } from "./js/SingleObject/LoginForm";
 
+// import {
+//     Adaptee
+// } from "./js/AdapterPattern/index.js";
+
+// import {
+//     Map
+// } from "./js/AdapterPattern/map.js";
+
+// import {
+//     Decorator
+// } from "./js/Decorator/index";
+
+// import {
+//     Demo
+// } from "./js/Decorator/es7/mixin"
+
+// import {
+//     Demo
+// } from "./js/Decorator/es7/readonly"
+
+// import {
+//     Demo
+// } from "./js/Decorator/es7/log"
+
 import {
-    Adaptee
-} from "./js/AdapterPattern/index.js";
+    Demo
+} from "./js/Decorator/es7/originDecorateFn"
