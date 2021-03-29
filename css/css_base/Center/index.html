@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>text-align:center;line-height:center;</h2>
+      <div class="main" style="text-align: center; line-height: 300px">123</div>
+    </div>
+
+    <div class="container">
+      <h2>table-cell</h2>
+      <div class="main" style="display: table-cell; text-align: center; vertical-align: middle">123</div>
+    </div>
+
+    <div class="container">
+      <h2>flex</h2>
+      <div class="main" style="display: flex; justify-content: center; align-items: center">123</div>
+    </div>
+
+    <div class="container">
+      <h2>absolute1</h2>
+      <div class="main" style="position: relative">
+        <div style="position: absolute; left: 50%; top: 50%; height: 100px; width: 100px; margin-top: -25px; margin-left: -25px">123</div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>absolute2</h2>
+      <div class="main" style="position: relative">
+        <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%)">123</div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>grid</h2>
+      <div class="main" style="display: grid; ">
+        <div style="justify-self: center; align-self: center">123
+        </div>
+    </div>
+  </body>
+</html>
