@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <style>
+      .grid1 {
+        display: grid;
+        grid-template-columns: 100px 100px;
+        grid-template-rows: 100px 100px 100px 100px;
+      }
+      .grid1 div {
+        text-align: center;
+        line-height: 100px;
+      }
+
+      .grid2 {
+        display: grid;
+        grid-template-columns: repeat(3, 33.3%);
+        grid-template-rows: 33.3% 33.3% 33.3%;
+        width: 300px;
+        height: 300px;
+      }
+
+      .grid3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 100px);
+      }
+
+      .grid4 {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+      }
+
+      .grid5 {
+        display: grid;
+        grid-template-columns: 1fr 1fr minmax(50px, 50px);
+      }
+
+      .grid6 {
+        display: grid;
+        grid-template-columns: 100px auto 100px;
+      }
+
+      .grid7 {
+        display: grid;
+        grid-template-columns: 30% 70%;
+        height: 200px;
+      }
+
+      .left {
+        background: rgb(179, 140, 230);
+      }
+
+      .main {
+        background: coral;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid1">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+    </div>
+
+    <div class="grid2">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+
+    <div class="grid3">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+    </div>
+
+    <div class="grid4">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+    </div>
+
+    <div class="grid5">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+    </div>
+
+    <div class="grid6">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+
+    <div class="grid7">
+      <div class="left"></div>
+      <div class="main"></div>
+    </div>
+  </body>
+</html>
