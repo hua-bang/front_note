@@ -85,4 +85,54 @@ export default Subject;
     emitter.emit("some", "hug");
     ```
 
-    
+- 其他场景
+
+  - nodejs http请求，多进程通讯
+  - vue和react组件生命周期的触发
+  - vue watch
+
+
+
+简易的EventEmitter实现
+
+```js
+class HEventEmitter {
+    constructor() {
+        this.eventHandlerList = {};
+    }
+
+    on(eventName, fn = () => {}) {
+        let eventHandler = this.eventHandlerList[eventName] || [];
+        eventHandler.push(fn);
+        this.eventHandlerList[eventName] = eventHandler;
+    }
+
+    emit(eventName, ...args) {
+        let eventHandler = this.eventHandlerList[eventName] || [];
+        eventHandler.forEach(fn => {
+            fn(...args);
+        })
+    }
+}
+
+class Dog extends HEventEmitter {
+    constructor(name) {
+        super();
+        this.name = name;
+    }
+
+    bark() {
+        console.log(this.name);
+    }
+}
+
+let simon = new Dog("simon");
+simon.on("bark", (target) => {
+    target.bark();
+})
+
+setInterval(() => {
+    simon.emit("bark", simon);
+}, 500);
+```
+
