@@ -39,4 +39,6 @@
 //     Demo
 // } from "./js/Decorator/es7/originDecorateFn"
 
-import ProxyImage from "./js/Proxy/ES6/index"
+// import ProxyImage from "./js/Proxy/ES6/index"
+
+import HSystem from "./js/Facade/index"
