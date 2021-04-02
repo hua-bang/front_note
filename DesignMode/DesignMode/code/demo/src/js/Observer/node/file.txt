@@ -1,0 +1,1501 @@
+CSDN首页
+首页
+博客
+程序员学院
+下载
+论坛
+问答
+代码
+直播
+能力认证
+高校
+前端
+ 
+登录/注册
+会员中心
+收藏
+消息
+创作中心
+前端JavaScript的发布-订阅模式
+
+weixin_34417635 2019-05-12 05:56:06  323  收藏
+文章标签： 前端 javascript 设计模式
+版权
+发布-订阅模式又被称为观察者模式，它是定义在对象之间一对多的关系中，当一个对象发生变化，其他依赖于它的对象收到通知。在javascript的开发中，我们一般用事件模型替代发布-订阅模式。
+DOM事件
+document.body.addEventListener('click',function(){
+ 
+    alert(绑定1);
+ 
+},false)};
+复制代码
+document.body.click();  //模拟点击
+ 
+document.body.addEventListener('click',function(){
+ 
+    alert(绑定2);
+ 
+},false)};
+ 
+document.body.addEventListener('click',function(){
+ 
+    alert(绑定3);
+ 
+},false)};
+ 
+document.body.click();  //模拟点击
+复制代码
+我们可以增加更多订阅者，不会对发布者的代码造成影响。注意，标准浏览器下用dispatchEvent实现。
+
+自定义事件
+①确定发布者。（例如售票处）
+
+②添加缓存列表，便于通知订阅者。（预订车票列表）
+
+③发布消息。遍历缓存列表。依次触发里面存放的订阅者回调函数（遍历列表，逐个发送短信）。
+
+另外，我们还可以在回调函数填入一些参数，例如车票的价格之类信息。
+
+var ticketOffice = {};    //售票处
+ 
+ticketOffice.clientList = [];    //缓存列表，存放订阅者的回调函数
+ 
+ticketOffice.listen = function (fn) {    //增加订阅者
+    this.clientList.push(fn);    //订阅的消息添加进缓存列表
+};
+ 
+ticketOffice.trigger = function () {    //发布消息
+    for(var i = 0, fn; fn = this.clientList[i++];){
+        fn.apply(this, arguments);    //arguments 是发布消息时带上的参数
+    }
+}
+ 
+下面进行简单测试：
+ 
+ticketOffice.listen(function(time, path){    //小刚订阅消息
+    console.log('时间：' + time);
+    console.log('路线：' + path);
+});
+ 
+ 
+ticketOffice.listen(function(time, path){    //小强订阅消息
+    console.log('时间：' + time);
+    console.log('路线：' + path);
+});
+ 
+ticketOffice.trigger('晚上8：10','深圳-上海');
+ticketOffice.trigger('晚上8：10','上海-深圳');
+复制代码
+至此，我们实现了一个最简单发布-订阅模式。不过这里存在一些问题，我们运行代码可以看到订阅者接收到了所有发布的消息。我们有必要加个key让订阅者只订阅 自己感兴趣的消息。改写后的代码如下：
+
+var ticketOffice = {};    //售票处
+ 
+ticketOffice.clientList = [];    //缓存列表，存放订阅者的回调函数
+ 
+ticketOffice.listen = function (key, fn) {    //增加订阅者
+    if (!this.clientList[key]){
+        this.clientList[key] = [];
+    }
+    this.clientList[key].push(fn);    //订阅的消息添加进缓存列表
+};
+ 
+ticketOffice.trigger = function () {    //发布消息
+    var key = Array.prototype.shift.call(arguments),    //取出消息类型
+        fns = this.clientList[key];    //取出该消息对应的回调函数集合
+    if (!fns || fns.length === 0) {
+        return false;
+    }
+ 
+    for(var i = 0, fn; fn = fns[i++];){
+        fn.apply(this, arguments);    //arguments 是发布消息时带上的参数
+    }
+}
+ 
+ticketOffice.listen('上海-深圳', function(time){    //小刚订阅消息
+    console.log('小刚时间：' + time);
+});
+ 
+ 
+ticketOffice.listen('深圳-上海', function(time){    //小强订阅消息
+    console.log('小强时间：' + time);
+});
+ 
+ticketOffice.trigger('深圳-上海', '晚上8：00');
+ticketOffice.trigger('上海-深圳', '晚上8：10');
+复制代码
+这样子，订阅者就可以只订阅自己感兴趣的事件了。
+
+参考资料
+《JavaScript 设计模式与开发实践》
+
+
+
+转载于:https://juejin.im/post/5cd7b3ea6fb9a0324a08c933
+
+
+点赞
+
+评论
+
+分享
+
+收藏
+
+举报
+关注
+一键三连
+
+浅析打开eclipse出现Incompatible JVM的解决方法
+09-05
+本篇文章是对打开eclipse出现Incompatible JVM的解决方法进行了详细的分析介绍，需要的朋友参考下
+
+
+优质评论可以帮助作者获得更高权重
+表情包
+weixin_34417635
+weixin_34417635:这篇文章对你有帮助吗？作为一名程序工程师，在评论区留下你的困惑或你的见解，大家一起来交流吧！
+相关推荐
+前端JavaScript设计模式-观察者模式(发布-订阅模式)_屡...
+2-22
+前端JavaScript设计模式-观察者模式(发布-订阅模式) 定义:观察者模式,定义对象间的一种一对多的依赖关系,当一个对象的状态发生改变时,所有依赖于它的对象都将得到通知。事实上,只要你曾经在DOM节点上绑定过事件函数,那么你就曾经使用过...
+[前端面试]JavaScript 发布订阅模式实现_iChangebaobao...
+3-4
+[前端面试]JavaScript 发布订阅模式实现 来自迅雷前端的一道笔试题 实现一个EventEmitter类,实现以下方法: 1.emitter.on(name,fn)//订阅name事件,监听函数为fn,可多次订阅 2.emitter.once(name,fn)//功能与on类似,但监听函数为一次...
+Incompatible argument to function
+fightmyway的专栏
+ 6074
+[java] Exception in thread "main" java.lang.VerifyError: (class: hku/cs/lunuo/instrument/Counter, method: report signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V) Incompatible argu
+Android Studio 报错：Incompatible types
+weixin_44170239的博客
+ 802
+Android Studio 报错：Incompatible types 用Android Studio开发拼图小游戏时，关于初始化函数出现了下列问题 代码中需要的类型为int型，但是发现的却是float型，这个时候需要强制转换类型。 在Androuid studio中Alt+Enter就可以了。 ...
+JavaScript实现发布者订阅模式_weixin_52944656的博客
+3-31
+发布者订阅模式简介发布—订阅模式又叫观察者模式,它定义对象间的一对多的依赖关系,当一个对象的状态发生改变时,所有依赖于它的对象都将得到通知。在javascript开发中,一般用事件模型来替代传统的发布—订阅模式。代码实现如下//定义发布...
+前端JS观察者模式(发布者--订阅者模式)_RainsP的博客
+3-5
+前端JS观察者模式(发布者--订阅者模式) 观察者模式 优点:更加解耦,支持广播通信 缺点:大量观察者,广播有性能问题 举个最简单的例子: 其中body是发布者,回调函数function是观察者。 document.body.onclick=function(){console.log('我...
+java常见问题:incompatible types
+YourFriendyf的博客
+ 2万+
+java中经常遇到错误提示 incompatible types 类型不兼容 而检查代码后，又认为代码没有问题 一般发生这种问题，都是引入包错误导致，因为引入了错误的包，导致使用的类出错 所以要认真检查包的引入 ...
+Incompatible type.Found:'int',required:'java.lang.String'
+expect521的博客
+ 1万+
+spring的注解@Value不能注入int型的值，只能注入字符串，字符也不可以。从上图的代码提示中可以看出，value的值是String类型的
+web前端高级JavaScript - 基于多种方案实现发布订阅设...
+3-8
+所有的设计模式都是用来有效管理代码的 便捷开发 通俗易懂 有助于后期代码维护和升级 发布订阅设计模式(观察者模式的升级版) 发布一个计划,并且向计划中订阅一个个的方法 当触发某个事件或者到达了某个阶段,我们可以通知计划中订阅的方...
+JavaScript 发布订阅模式实现_sinat_41871344的博客
+3-12
+JavaScript 发布订阅模式实现 来自迅雷前端的一道笔试题 实现一个EventEmitter类,实现以下方法: 1.emitter.on(name,fn) //订阅name事件,监听函数为fn,可多次订阅 2.emitter.once(name,fn) //功能与on类似,但监听函数为一次性的,...
+Incompatible types.
+weixin_44349707的博客
+ 215
+java报这个错误原因是类型不兼容，可能的原因 1.导入的包不正确，导入的包可能不是你需要使用的，从而导致你传递的值的类型也不对。 2.你自己设定的类型不对比如List<…>中的类型和你之前设定不同，或者你反回的类型和你设定的不同。 ...
+Incompatible types: 'Char' and 'AnsiChar'
+weixin_33856370的博客
+ 170
+2019独角兽企业重金招聘Python工程师标准>>> ...
+Js实现订阅发布模式(让你的代码写得贼六)_小小人喃的博客
+4-1
+动态安装发布订阅模式varinstallEvent =function(obj){for(variinevent){ obj[i] = event[i]; } }varsalesOffices = {}; installEvent(salesOffices); salesOffices.listen('squareMeter88',function(price){//小明订阅消息console....
+E2010 Incompatible types: 'Array' and 'PAnsiChar'
+冷月宫主的专栏
+ 2507
+今天在编程中又遇到了一个问题，在delphi2009下真的比较头疼啊。O(∩_∩)O~。声明中Buffer: Array[0..63] of Char;代码中GetHostName(Buffer,SizeOf(Buffer));将Char改为AnsiChar即可。D2009里面要把那些String定义改称AnsString再编译安装。https://forums.embarca
+dubbo rest返回值异常Incompatible types: declared root type
+weixin_30642561的博客
+ 88
+1 2018-08-28 17:26:02,208 [http-bio-9090-exec-1][][][][][] ERROR com.wjs.member.plugin.intercepter.ServiceExecutionInterceptor 116 - Incompatible types: declared root type ([map type; class java.ut...
+incompatible types in assignment of ‘const char
+寒江垂钓
+ 332
+//memcpy.c #include<stdio.h> #include<string.h> #include <iostream> using namespace std; int main() { unsigned int num = 10; char strchar2[10]; strchar2 = "mystring";///wrong cout<<"strchar2:"<<strchar2<<endl; cha.
+后端出现“incompatible types“或者”attempting to use incompatible return type”错误
+心似烟火
+ 3767
+在做项目的过程中发现了一个问题： 方法返回类型上有红线，提示信息：“incompatible types“ 或者“... attempting to use incompatible return type ” 原因：需要返回的类型和定义的类型不一致，在A方法中调用B方法，直接返回B方法的返回结果，在B方法中返回的是 X 包下的 Response 对象，但是在A方法中返回的是 Y 包中...
+【Java】- Incompatible types. Found: java. lang. String', required:' byte, char, short or int'
+Arielle-L
+ 2699
+IDEA项目编译报错：Incompatible types. Found: java. lang. String’, required:’ byte, char, short or int’，switch语句，提示编译失败，类型错误，不支持字符串类型； 错误原因： java的语言级别没有设置好导致的问题，也就是说JDK版本不兼容 解决方案： 首先确认电脑安装JDK版本，jdk1.7之前的版本...
+©️2020 CSDN 皮肤主题: 大白 设计师:CSDN官方博客 返回首页
+关于我们
+招贤纳士
+广告服务
+开发助手
+
+400-660-0108
+
+kefu@csdn.net
+
+在线客服
+工作时间 8:30-22:00
+公安备案号11010502030143
+京ICP备19004658号
+京网文〔2020〕1039-165号
+经营性网站备案信息
+北京互联网违法和不良信息举报中心
+网络110报警服务
+中国互联网举报中心
+家长监护
+Chrome商店下载
+©1999-2021北京创新乐知网络技术有限公司
+版权与免责声明
+版权申诉
+
+weixin_34417635
+码龄5年
+ 暂无认证
+165
+原创
+3万+
+周排名
+1万+
+总排名
+66万+
+访问
+
+等级
+3877
+积分
+2666
+粉丝
+119
+获赞
+16
+评论
+529
+收藏
+私信
+关注
+搜博主文章
+
+热门文章
+Chrome接口请求一直是pending状态，但接口实际上是正常的  25502
+Weibull分布(韦伯分布、威布尔分布)  10607
+强化学习用于路径规划，以Q-learning解决TSP问题为例  6273
+window运行.jar  5548
+动态规划应用举例---资源分配问题  5236
+最新评论
+Chrome接口请求一直是pending状态，但接口实际上是正常的
+解勾股: 本地启动项目用无痕没问题，上线之后用无痕接口一直pending，应该怎么改呢，麻烦指教一下
+
+Android连接socket服务器上传下载多个文件
+百味人生0x: 服务端如何配置，设备端才能访问？ 服务器端可以用win7系统吗？
+
+最新文章
+C#3.0语法糖学习笔记
+SSRS 参数 单选 多选
+Create flat file with AE
+2019年380篇2018年679篇2017年912篇2016年526篇2015年424篇2014年317篇2013年307篇2012年289篇2011年198篇2010年174篇2009年121篇2008年109篇2007年76篇2006年32篇2005年17篇2004年8篇
+
+ 
+
+目录
+DOM事件
+自定义事件
+参考资料
+
+
+举报
+#### Observer(观察者模式)
+
+介绍：
+
+- 发布&订阅
+- 一对多
+- 当对象属于一对多关系时，使用观察者模式。比如，当一个对象被修改时，自动通知依赖他的对象
+
+uml类图
+
+![image-20210402091205485](F:\github\js_note\DesignMode\DesignMode\Observer\image-20210402091205485.png)
+
+```js
+// 主题 保存状态 状态变化之后触发所有观察者对象
+class Subject {
+    constructor() {
+        this.state = 0;
+        this.observers = [];
+    }
+
+    getState() {
+        return this.state;
+    }
+
+    setState(state) {
+        this.state = state;
+        this.notifyAllObservers();
+    } 
+
+    //通知所有
+    notifyAllObservers() {
+        this.observers.forEach((observer) => {
+            observer.update();
+        })
+    }
+
+    attach(observer) {
+        this.observers.push(observer);
+    }
+}
+
+class Observer {
+    constructor(name, subject) {
+        this.name = name;
+        this.subject = subject;
+        // 加入观察者队列
+        this.subject.attach(this);
+    }
+    update() {
+        console.log(`${this.name} update, state: ${this.subject.getState()}`);
+    }
+}
+
+let s = new Subject();
+let o1 = new Observer("o1", s);
+let o2 = new Observer("o2", s);
+let o3 = new Observer("o3", s);
+s.setState(1);
+s.setState(2);
+
+
+export default Subject;
+```
+
+场景：
+
+- 网页事件绑定
+
+- Promise
+
+- jQuery callbacks
+
+- nodejs自定义事件
+
+  - 代码
+
+    ```js
+    const emitter = new EventEmitter();
+    
+    // 监听 some 事件
+    emitter.on('some', info => {
+        console.log(info);
+    })
+    
+    emitter.emit("some", "hug");
+    ```
+
+  - 
+  CSDN首页
+首页
+博客
+程序员学院
+下载
+论坛
+问答
+代码
+直播
+能力认证
+高校
+适合JS新手学习的开源项目
+ 
+登录/注册
+会员中心
+收藏
+消息
+创作中心
+计算机网络七层模型
+
+binge_kong 2019-06-03 21:19:42  776  收藏 2
+版权
+2019，21，17 21：18 天气有点闷热，心情有点烦躁，停止学习新知识，所以温习一下七层模型
+
+7应用层
+与其他计算机进行通讯的应用,对应应用程序的通信服务，就是决定以什么形式传输文件的形式（jason,xml等），如登录微信，客户端向服务器发送请求消息的形式（二进制，
+协议示例：TELNET，HTTP，FTP，NFS，SMTP等。
+HTTP是应用层协议，定义的是传输数据的内容的规范，http是用来收发数据
+HTTP协议中的数据是利用TCP/IP协议传输的，所以支持HTTP也就一定支持TCP/IP
+
+6，表示层
+这一层的主要功能是定义数据格式及加密和压缩，对传输数据进行解密压缩等，针对不同类型数据进行格式描述。例如，FTP允许你选择以二进制或ASCII格式传输。如果选择二进制，那么发送方和接收方不改变文件的内容。如果选择ASCII格式，发送方将把文本从发送方的字符集转换成标准的ASCII后发送数据。
+在接收方将标准的ASCII转换成接收方计算机的字符集。示例：加密，ASCII等。
+
+5，会话层
+它定义了如何开始、控制和结束一个会话，包括对多个双向消息的控制和管理，以便在只完成连续消息的一部分时可以通知应用，
+从而使表示层看到的数据是连续的，在某些情况下，如果表示层收到了所有的数据，则用数据代表表示层。示例：RPC，SQL等。
+如微信的两个人的信息中，会话层先传输本次要传输的总的字节数给对方，然后再将数据一部分一部分打包发送，发送完总的字节数的文件之后才会结束当前会话，接收方从开始接收开始直到接收了所有字节数才会结束当前会话
+
+七层只是一个当初设立的一个国际标准，但在实际开发应用中，这三层协议被合成了一个应用层
+
+4，传输层
+传输层提供了在应用程序通信端点之间传输应用层报文的服务，即连接方式。
+TCP向他的应用程序提供了 面向连接 的服务。
+UDP协议向他的应用程序提供 无连接 服务。
+
+在英特网中，有两个传输层协议，–TCP（Transmission Control Protocol)传输控制协议,
+UDP（User Datagram Protocol)用户数据报协议。
+利用其中任何一个都能传输应用层报文。
+
+TCP向他的应用程序提供了 面向连接 的服务，TCP就是单纯建立连接，不涉及任何我们需要请求的实际数据，简单的传输，TCP是底层通讯协议，定义的是数据传输和连接方式的规范
+这种服务包括了应用层报文向目的地的 确保传递和流量控制（即发送方接收方速率匹配）。
+TCP也将长报文划分为短报文，并提供阻塞控制机制，因此网络拥塞时，抑制其传输速率。
+
+流socket用于连接不相关进程，使用的网络协议是tcp，从一个流socket 传输到另一个流socket的数据流中，表面看是连续无缝的，
+实际上是两者socket先建立Internet 连接，将数据分割成独立有编号的，排序的internet数据包，客户端将数据包发送到该端点的流socket的缓冲区，Tcp协议再从缓冲区中读取相应的字节进行传输，直到缓冲区为空，客户端再向缓冲区中发送数据包
+流socket是对接收的数据包进行排序的，Tcp协议将数据包按照一定的字节传输到接收端缓冲区，服务器从缓冲区中接收数据包，检查数据包的顺序来确定数据是否完整到达，丢失发送丢失的数据包的编号，等待发送端进行重新传送
+数据丢失的风险较小
+
+UDP协议向他的应用程序提供 无连接 服务，数据报socket中使用UDP协议，
+发送端不会对数据包进行标号排序，往指定的目的地socket中发送数据，接收端再相应的socket中接收数据包，不可靠即丢失风险较高，丢失后接收端可以重新请求。适合多个发送者的通信
+这是一种不提供不必要的服务，不提供可靠性，没有流量控制，没有阻塞控制。 传输层分组称为 报文段（segment）
+UDP接收信息就行邮箱系统一样，发送者将接收者的地址和发送端的地址标记再数据包上，邮箱系统负责将其送到接收这的邮箱中（数据报socket），然后接受者从邮箱中接收信息。
+如：微信中向一好友发送信息，对方的突然断开服务器的网络连接，重连后可能接收不到信息，出现数据丢失
+
+3，网络层
+建立网络连接，对端到端的包传输进行定义，它定义了能够标识所有结点的逻辑地址，还定义了路由实现的方式和学习的方式。
+其实就是通过为数据包选择目的路由（Ip地址，接收端再网络上的地址），负责选择最佳路径，并保证数据始终沿着最佳路径传输。路由器的功能就是选合适的路径。
+
+单位：数据包
+
+2，数据链路层：
+网络层找到接收者ip后，将数据报传输给链路层，实现把将整个帧在一系列路由器在结点上移动数据报。该接收端链路层将数据包上传给网络层
+类似于把地址相同的货物放到同一个集装箱中，只要集装箱到达，货物也就自然到达。
+这种把比特流组合成字节的组合我们称之为数据帧。对数据进行处理封装成数据帧并传递和错误检测的层就是数据链路层。
+
+1，物理层：
+电脑之间（准确来说网络设备之间）物理连接的介质，以及网络设备与网络终端之间数据传递的规则称之为物理层，其中的数据是以比特的形式传递的。
+即是将不同介质传输的数据(如光纤，wifi，移动网络）转换成一定格式的二进制数据，在物理硬件实现数据用电子信号传输
+
+
+点赞
+1
+
+评论
+
+分享
+
+收藏
+2
+
+打赏
+
+举报
+关注
+一键三连
+
+计算机网络中的七层模型
+weixin_30323631的博客
+ 1921
+最近又看到这个七层模型了，一直都记不住这个七层模型，就算背住了也很快忘记。主要原因还是因为没有真实的使用场景，也没能理解其中的原理。但是这个东西是计算机网络的基础，既然碰巧看到就顺便整理一下吧。很多知识的梳理都是通过文章来理解贯通的，所以在计算机开发中对于技术的应用对敲代码；对于抽象的知识多写文章，自然而然的就懂了。 关于七层模型的介绍 七层模型，也称为OSI（Op...
+计算机网络7层模型
+s苏c醒m
+ 1万+
+以太网是一种局域网；使用双绞线光纤传输数据； 1、以太网是通信协议标准，该标准定义了在局域网（LAN）中采用的电缆类型和信号处理方法，比如有CSMA/CD协议。 2、局域网：在较小范围内组件的网络，通过交换器什么的连接各个PC机，比如一个实验室，一栋楼，一个校园内，这都市局域网，拿网线将两台计算机连在一起，这也能算是局域网，以太网是一种局域网，而局域网却不一定是以太网。 3、因特网是各种网络...
+
+
+优质评论可以帮助作者获得更高权重
+表情包
+相关推荐
+计算机网络中的七层模型详细总结
+Yansky的博客
+ 9520
+计算机网络的七层架构是经常提到的，不管是找工作还是考研都会是面试笔试的高频题。可是一直都记不住这个七层模型，就算背住了也很快忘记肿么办哩，很是苦恼呢！主要原因还是因为没有真实的使用场景，也没能理解其中的原理。其实七层之间关系紧密，如果理解其原理和各层之间的功能及关系，丝毫不夸张地可以说学计算机网络就理顺了一个学习框架和主线了。 这个东西是计算机网络的基础，既然碰巧看到就顺便整理一下吧。很多知识的...
+计算机网络--七层协议/五层协议
+sinat_26230689的博客
+ 1万+
+【OSI七层协议】 应用层 与其它计算机进行通讯的一个应用，它是对应应用程序的通信服务的。例如，一个没有通信功能的字处理程序就不能执行通信的代码，从事字处理工作的程序员也不关心OSI的第7层。但是，如果添加了一个传输文件的选项，那么字处理器的程序员就需要实现OSI的第7层。示例：TELNET，HTTP,FTP,NFS,SMTP等。 表示层 主要功能是定义数据格式及加密。例如，F
+计算机网络中的OSI七层网络模型
+weixin_37760377的博客
+ 2万+
+1.OSI七层模型 1.1.简介 第一种模型是OSI七层模型，OSI为（Open System interconnect）的缩写，自上而下分别是应用层、表示层、会话层、传输层、网络层、数据链路层、物理层   物理层：网卡，网线，集线器，中继器，调制解调器 数据链路层：网桥，交换机 网络层：路由器   1.2物理层 首先，物理层并不是物理媒体本身，物理层的媒体包括电缆、光纤等。...
+计算机网络7层结构归纳总结
+hitthetarget的专栏
+ 1万+
+TCP/IP协议簇可以分为7层结构，从低到高可以分为:物理层，数据链路层，网络层，传输层，会话层，表示层，应用层.也可以分为应用层.网际层.传输层.网络接口层。   其中物理层主要包含一些物理设备，主要包含，中继器，集线器，双绞线，等。   数据链路层负责在相邻两个节点之间的
+计算机网络七层协议
+weixin_42959704的博客
+ 219
+计算机网络七层协议 OSI（open system interconnect开放系统互联）七层模型：物理层，数据链路层，网络层，传输层，会话层，表示层，应用层。 对等层之间不能相互直接通信，各层之间是严格单向依赖，上层使用下层提供的服务，下层向上层提供服务。 1.物理层（比特bit） 通过媒介传输比特，确定机械及电气规范。 规定如何为网络通信实现最底层的物理连接。 如：如何使用电缆和接头的类型、用来传送信号的电压等。 物理层实际上是一种规定，规定物理媒介设备在连接网络时的各种规格、参数以及工作方式。 物理媒
+计算机网络基础——网络分层和IP地址
+小薇子的博客
+ 5868
+计算机网络基础——网络分层和IP地址 协议 在因特网中，凡是涉及两个或者多个远程通信实体的所有活动都首协议的制约。 一个协议定义了在两个或多个通信实体之间交换的报文格式和次序，以及报文发送、接受一条报文或其他事件所采取的动作。 简单而说，协议就像人类之间通信的语言，它就像机器之间通信的方式和语言。 协议三要素 语法：就是一段内容要符合一定的规则和格式 语义：就是这一段内容要代...
+计算机网络：基本概念及OSI七层协议图解
+SanfordZhu的博客
+ 2776
+三网融合：电信网络、有线电视网络和计算机网络 计算机网络提供的功能包括连通性（信息交换）和资源（信息、软件、硬件）共享。 因特网的连接方式和通信方式： 因特网的边缘部分：指因特网上的所有主机。计算机之间的通信是指“主机A的某个进程和主机B上的另一个进程进行通信” 1.通信方式：客户服务器方式（CS）和对等方式（P2P）。 客户服务器模式（CS）：客户和服务器是服务和被服务的关系。客户是服...
+计算机网络七层协议
+N1neDing的博客
+ 1万+
+OSI（open system interconnect开放系统互联）七层模型：物理层，数据链路层，网络层，传输层，会话层，表示层，应用层。 对等层之间不能相互直接通信，各层之间是严格单向依赖，上层使用下层提供的服务，下层向上层提供服务。 1.物理层（比特bit）通过媒介传输比特，确定机械及电气规范。 规定如何为网络通信实现最底层的物理连接。 如：如何使用电缆和接头的类型、用来传送信号的电压等...
+计算机网络---网络层
+海贼王OP的博客
+ 650
+网络层设备——路由器 网络层与网络互联的基本概念 网络层主要任务 （1）通过路由选择算法，为分组通过通信子网选择最适当的路径； （2）网络层使用数据链路层的服务，实现路由选择、拥塞控制与网络互联等基本功能，向传输层的端一端传输连接提供服务。 互联网络 利用网桥、路由器等互联设备将两个及两个以上的物理网络相互连接起来构成的系统。 网络互相连接起来要使用一些中间设备 中间设备又称为中间系统或中继(re...
+计算机网络——五层与七层模型
+留下的，留不下的
+ 1万+
+文章目录1 TCP/IP五层模型与OSI七层模型1.0 OSI是什么1.1 TCP/IP五层模型与OSI七层模型分别是什么1.2 TCP/IP五层模型与OSI七层模型的工作设备1.3 TCP/IP五层模型与OSI七层模型的协议1.4 四层、五层、还是七层？2 计算机网络——以五层模型来说明工作原理2.1 物理层在干吗2.2 数据链路层2.2.1 以太网协议2.2.2 广播与ARP协议2.3 网络层...
+警察叔叔顺着网线是怎么找到你的？计算机网络（四）之网络层未完待续
+后来X大数据
+ 8290
+自律真的是太重要了，我才坚持了不到半个月就犯起了懒，一边抱怨账号不好运营，但反过来想自己也没付出太多的努力。接下来开始继续写。 之前我们讲了物理层和数据链路层，今天就到了网络层。再来串一下这几层的关系。 我们之前讲的物理层和数据链路层，其实再TCP/IP协议的体系结构中属于一层，网络接口层，我们为了更容易理解把它拆分开了。 那么今天我们开始讲网络层，在开始讲之前，还是先引出一个问题： 我们有一句玩笑话，警察叔叔，这不是之前有同学在宿舍吃火锅还得瑟发微博，还没吃完消防员就出现了。 那么问题来了，警察叔叔顺着
+计算机网络7层结构归纳总结
+An1540879349的博客
+ 2250
+TCP/IP协议簇可以分为7层结构，从低到高可以分为:物理层，数据链路层，网络层，传输层，会话层，表示层，应用层.也可以分为应用层.网际层.传输层.网络接口层。   其中物理层主要包含一些物理设备，主要包含，中继器，集线器，双绞线，等。          数据链路层负责在相邻两个节点之间的线路上无差错的传送以帧为单位的数据，并进行流量控制。主要设备有交换机和网桥。        
+计算机网络七层协议模型
+woshihero6的博客
+ 513
+七层协议结构 （1）应用层 应用层是最靠近用户的OSI层。这一层为用户的应用程序（例如电子邮件、文件传输和终端仿真）提供网络服务。。 协议有：HTTP FTP TFTP SMTP SNMP DNS TELNET HTTPS POP3 DHCP等。 （2）表示层 数据的表示、安全、压缩。可确保一个系统的应用层所发送的信息可以被另一个系统的应用层读取。 格式有：J
+OSI七层模式简单通俗理解
+Norton的专栏
+ 5016
+这个模型学了好多次，总是记不住。今天又看了一遍，发现用历史推演的角度去看问题会更有逻辑，更好记。总体来说，OSI模型是从底层往上层发展出来的。   这个模型推出的最开始，是是因为美国人有两台机器之间进行通信的需求。 需求1： 科学家要解决的第一个问题是，两个硬件之间怎么通信。具体就是一台发些比特流，然后另一台能收到。   于是，科学家发明了物理层： 主要定义物理设备标准，如网线的接口
+计算机网络七层
+Kelly成长之路
+ 348
+物理层位于OSI参考模型的底层，它的主要功能是实现比特流的透明传输，为数据链路层提供数据传输服务。它直接面向实际承担数据传输的物理介质（即通信信道）。物理层不是指具体的物理设备，也不是指信号传输的物理介质，而是指在物理介质之上为上一层（即数据链路层）提供一个传输原始比特流的物理连接。  跟着小组学习，学到了很多，这是自己的思维导图大家可以提点提点。...
+OSI七层与TCP/IP五层网络架构详解
+B9班的真高兴
+ 2489
+OSI七层模型 OSI中的层 功能 TCP/IP协议族 应用层 文件传输，电子邮件，文件服务，虚拟终端 TFTP，HTTP，SNMP，FTP，SMTP，DNS，Telnet 表示层 数据格式化，代码转换，数据加密 没有协议 会话层 解除或建立与别的接点的联系 没有协议 传输层 提供端对端的接口 TCP，UDP 网络层 为数据包选择路由
+HTTP(1)之计算机网络七层模型
+kaka0930的博客
+ 1055
+ 下面是从网上整理的一些东西，作为笔记记一下。 TCP/UDP协议 TCP (Transmission Control Protocol)和UDP(User Datagram Protocol)协议属于传输层协议。其中TCP提供IP环境下的数据可靠传输，它提供的服务包括数据流传送、可靠性、有效流控、全双工操作和多路复 用。通过面向连接、端到端和可靠的数据包发送。通俗说，它是事先...
+©️2020 CSDN 皮肤主题: 大白 设计师:CSDN官方博客 返回首页
+关于我们
+招贤纳士
+广告服务
+开发助手
+
+400-660-0108
+
+kefu@csdn.net
+
+在线客服
+工作时间 8:30-22:00
+公安备案号11010502030143
+京ICP备19004658号
+京网文〔2020〕1039-165号
+经营性网站备案信息
+北京互联网违法和不良信息举报中心
+网络110报警服务
+中国互联网举报中心
+家长监护
+Chrome商店下载
+©1999-2021北京创新乐知网络技术有限公司
+版权与免责声明
+版权申诉
+
+binge_kong
+码龄2年
+ 暂无认证
+42
+原创
+9万+
+周排名
+16万+
+总排名
+1万+
+访问
+
+等级
+617
+积分
+16
+粉丝
+31
+获赞
+2
+评论
+35
+收藏
+持之以恒
+1024勋章
+勤写标兵Lv1
+私信
+关注
+搜博主文章
+
+热门文章
+邻接表实现图的深度遍历和广度遍历  2665
+Oracle视图的使用  1908
+Oracle数据库基本操作（创建用户，管理员登陆，普通用户登陆）  1129
+计算机网络（ISP，因特网组成，分组交换，计算机网络性能，网络体系机构）  1088
+简单入门排序算法（直接插入排序，折半插入排序，希尔排序，冒泡排序，堆排序，归并排序）  810
+分类专栏
+
+计算机网络
+3篇
+
+软件设计模式
+1篇
+
+服务器学习
+3篇
+
+软件工程导论+UML
+
+数据库
+
+Linex内存管理
+
+Java知识学习（第一阶段基础）
+22篇
+
+Java面试题
+
+Java基础练习题（第一阶段）
+
+Oracle
+5篇
+
+数据结构
+4篇
+
+最新评论
+计算机网络（传输层）
+程序猿杂记: 厉害厉害
+
+Java基础03&04（逻辑，三元运算符，键盘录入，流程控制语句（if,switch,for,while,do-while)，跳转语句（break，continue）
+Jachins: 优秀啊
+
+最新文章
+计算机网络（传输层）
+软件设计模式（原则）
+服务器_数据缓存与持久化(MySQL，Hibernate，MongoDB，Memcache，Redis）
+2019年33篇2018年9篇
+
+目录
+7应用层
+6，表示层
+5，会话层
+4，传输层
+3，网络层
+2，数据链路层：
+1，物理层：
+
+
+举报
+
+
+掘金
+首页
+沸点
+小册
+活动
+探索掘金
+搜索
+写文章
+登录
+
+axuebin lv-5
+2020年04月06日 阅读 293439
+关注
+
+2021年前端面试必读文章【超三百篇文章/赠复习导图】
+转载请联系作者。原文链接
+
+哈哈，之前是 2020 年必读文章，到了 2021 年了，感觉这些文章还都是经典，那就改个标题吧。[手动狗头]
+
+前言
+之前写过一篇 一年半经验如何准备阿里巴巴前端面试，给大家分享了一个面试复习导图，有很多朋友说希望能够针对每个 case 提供一个参考答案。
+
+
+
+写答案就算了，一是精力有限，二是我觉得大家还是需要自己理解总结会比较好。
+
+给大家整理了一下每个 case 一些还算不错的文章吧（还包括一些躺在我收藏夹里的好文章），大家可以自己看文章总结一下答案，这样也会理解更深刻。
+
+并不是所有文章都需要看，希望是一个抛砖引玉的作用，大家也可以锻炼一下自己寻找有效资料的能力 ~
+
+( 文章排序不分前后，随机排序 ~
+
+建议收藏文章，结合复习导图食用，效果更佳。
+
+完整复习导图全展开太大了，可关注公众号「前端试炼」回复【面试】获取。
+
+
+
+1. JavaScript 基础
+
+
+1.1 执行上下文/作用域链/闭包
+理解 JavaScript 中的执行上下文和执行栈
+JavaScript深入之执行上下文栈
+一道js面试题引发的思考
+JavaScript深入之词法作用域和动态作用域
+JavaScript深入之作用域链
+发现 JavaScript 中闭包的强大威力
+JavaScript闭包的底层运行机制
+我从来不理解JavaScript闭包，直到有人这样向我解释它...
+破解前端面试（80% 应聘者不及格系列）：从闭包说起
+1.2 this/call/apply/bind
+JavaScript基础心法——this
+JavaScript深入之从ECMAScript规范解读this
+前端基础进阶（七）：全方位解读this
+面试官问：JS的this指向
+JavaScript深入之call和apply的模拟实现
+JavaScript基础心法—— call apply bind
+面试官问：能否模拟实现JS的call和apply方法
+回味JS基础:call apply 与 bind
+面试官问：能否模拟实现JS的bind方法
+不用call和apply方法模拟实现ES5的bind方法
+1.3 原型/继承
+深入理解 JavaScript 原型
+【THE LAST TIME】一文吃透所有JS原型相关知识点
+重新认识构造函数、原型和原型链
+JavaScript深入之从原型到原型链
+最详尽的 JS 原型与原型链终极详解，没有「可能是」。（一）
+最详尽的 JS 原型与原型链终极详解，没有「可能是」。（二）
+最详尽的 JS 原型与原型链终极详解，没有「可能是」。（三）
+JavaScript 引擎基础：原型优化
+Prototypes in JavaScript
+JavaScript深入之创建对象的多种方式以及优缺点
+详解JS原型链与继承
+从__proto__和prototype来深入理解JS对象和原型链
+代码复用模式
+JavaScript 中的继承：ES3、ES5 和 ES6
+1.4 Promise
+100 行代码实现 Promises/A+ 规范
+你好，JavaScript异步编程---- 理解JavaScript异步的美妙
+Promise不会？？看这里！！！史上最通俗易懂的Promise！！！
+一起学习造轮子（一）：从零开始写一个符合Promises/A+规范的promise
+Promise实现原理（附源码）
+当 async/await 遇上 forEach
+Promise 必知必会（十道题）
+BAT前端经典面试问题：史上最最最详细的手写Promise教程
+async function async1() {
+    console.log('async1 start');
+    await async2();
+    console.log('async1 end');
+}
+
+// 相当于
+async function async1() {
+    console.log('async1 start');
+    Promise.resolve(async2()).then(() => {
+      console.log('async1 end');
+  })
+}
+复制代码
+1.5 深浅拷贝
+JavaScript基础心法——深浅拷贝
+深拷贝的终极探索（90%的人都不知道）
+JavaScript专题之深浅拷贝
+javaScript中浅拷贝和深拷贝的实现
+深入剖析 JavaScript 的深复制
+「JavaScript」带你彻底搞清楚深拷贝、浅拷贝和循环引用
+面试题之如何实现一个深拷贝
+1.6 事件机制/Event Loop
+Tasks, microtasks, queues and schedules
+How JavaScript works
+从event loop规范探究javaScript异步及浏览器更新渲染时机
+这一次，彻底弄懂 JavaScript 执行机制
+【THE LAST TIME】彻底吃透 JavaScript 执行机制
+一次弄懂Event Loop（彻底解决此类面试问题）
+浏览器与Node的事件循环(Event Loop)有何区别?
+深入理解 JavaScript Event Loop
+The Node.js Event Loop, Timers, and process.nextTick()
+这个知识点真的是重在理解，一定要理解彻底
+
+for (const macroTask of macroTaskQueue) {
+  handleMacroTask();
+  
+  for (const microTask of microTaskQueue) {
+    handleMicroTask(microTask);
+  }
+}
+复制代码
+1.7 函数式编程
+函数式编程指北
+JavaScript专题之函数柯里化
+Understanding Functional Programming in Javascript
+What is Functional Programming?
+简明 JavaScript 函数式编程——入门篇
+You Should Learn Functional Programming
+JavaScript 函数式编程到底是个啥
+JavaScript-函数式编程
+1.8 Service Worker / PWA
+Service Worker：简介
+JavaScript 是如何工作的：Service Worker 的生命周期及使用场景
+借助Service Worker和cacheStorage缓存及离线开发
+PWA Lavas 文档
+PWA 学习手册
+面试官：请你实现一个PWA
+1.9 Web Worker
+浅谈HTML5 Web Worker
+JavaScript 中的多线程 -- Web Worker
+JavaScript 性能利器 —— Web Worker
+A Simple Introduction to Web Workers in JavaScript
+Speedy Introduction to Web Workers
+1.10 常用方法
+太多了... 总的来说就是 API 一定要熟悉...
+
+近一万字的ES6语法知识点补充
+ES6、ES7、ES8特性一锅炖(ES6、ES7、ES8学习指南)
+解锁多种JavaScript数组去重姿势
+Here’s how you can make better use of JavaScript arrays
+一个合格的中级前端工程师需要掌握的 28 个 JavaScript 技巧
+1.5万字概括ES6全部特性(已更新ES2020)
+2. CSS 基础
+
+
+position - CSS: Cascading Style Sheets | MDN
+position | CSS Tricks
+杀了个回马枪，还是说说position:sticky吧
+30 分钟学会 Flex 布局
+css行高line-height的一些深入理解及应用
+A Complete Guide to Flexbox
+写给自己看的display: flex布局教程
+从网易与淘宝的font-size思考前端设计稿与工作流
+细说移动端 经典的REM布局 与 新秀VW布局
+移动端1px解决方案
+Retina屏的移动设备如何实现真正1px的线？
+CSS retina hairline, the easy way.
+浏览器的回流与重绘 (Reflow & Repaint)
+回流与重绘：CSS性能让JavaScript变慢？
+CSS实现水平垂直居中的1010种方式（史上最全）
+干货!各种常见布局实现
+CSS 常见布局方式
+彻底搞懂CSS层叠上下文、层叠等级、层叠顺序、z-index
+深入理解CSS中的层叠上下文和层叠顺序
+Sass vs. Less
+2019年，你是否可以抛弃 CSS 预处理器？
+浅谈 CSS 预处理器（一）：为什么要使用预处理器？
+浏览器将rem转成px时有精度误差怎么办？
+Fighting the Space Between Inline Block Elements
+3. 框架(Vue 为主)
+
+
+3.1 MVVM
+50行代码的MVVM，感受闭包的艺术
+不好意思！耽误你的十分钟，让MVVM原理还给你
+基于Vue实现一个简易MVVM
+剖析Vue实现原理 - 如何实现双向绑定mvvm
+3.2 生命周期
+Vue 生命周期源码剖析
+你真的理解$nextTick么
+React 源码剖析系列 － 生命周期的管理艺术
+3.3 数据绑定
+Vue 深入响应式原理
+面试官: 实现双向绑定Proxy比defineproperty优劣如何?
+为什么Vue3.0不再使用defineProperty实现数据监听？
+3.4 状态管理
+Vuex、Flux、Redux、Redux-saga、Dva、MobX
+10行代码看尽redux实现
+Mobx 思想的实现原理，及与 Redux 对比
+使用原生 JavaScript 构建状态管理系统
+3.5 组件通信
+vue中8种组件通信方式, 值得收藏!
+Vue 组件间通信六种方式（完整版）
+Vue组件间通信
+3.6 Virtual DOM
+Vue Virtual DOM 源码剖析
+面试官: 你对虚拟DOM原理的理解?
+让虚拟DOM和DOM-diff不再成为你的绊脚石
+探索Virtual DOM的前世今生
+虚拟 DOM 到底是什么？(长文建议收藏)
+3.7 Diff
+详解vue的diff算法
+Deep In React 之详谈 React 16 Diff 策略(二)
+React 源码剖析系列 － 不可思议的 react diff
+浅入浅出图解 Dom Diff
+3.8 Vue 计算属性 VS 侦听属性
+Vue 计算属性 VS 侦听属性源码剖析
+Vue.js的computed和watch是如何工作的？
+3.9 React Hooks
+React Hooks 原理
+React hooks: not magic, just arrays
+Deep dive: How do React hooks really work?
+【React深入】从Mixin到HOC再到Hook
+React Hooks 详解 【近 1W 字】+ 项目实战
+30分钟精通React今年最劲爆的新特性——React Hooks
+React Hooks 详解（一）
+3.10 React Hoc/Vue mixin
+探索Vue高阶组件
+React 高阶组件(HOC)入门指南
+深入理解 React 高阶组件
+3.11 Vue 和 React 有什么不同
+从思想、生态、语法、数据、通信、diff等角度自己总结一下吧。
+
+4. 工程化
+
+
+4.1 Webpack
+前端工程师都得掌握的 webpack Loader
+webpack loader 从上手到理解系列：vue-loader
+webpack loader 从上手到理解系列：style-loader
+一文掌握Webpack编译流程
+手把手教你撸一个简易的 webpack
+带你走进webpack世界，成为webpack头号玩家。
+关于webpack4的14个知识点,童叟无欺
+手把手教你撸一个 Webpack Loader
+webpack 如何通过作用域分析消除无用代码
+【webpack进阶】你真的掌握了loader么？- loader十问
+Webpack小书
+聊一聊webpack-dev-server和其中socket，HMR的实现
+使用webpack4提升180%编译速度
+Webpack 大法之 Code Splitting
+轻松理解webpack热更新原理
+轻松理解webpack热更新原理
+揭秘webpack plugin
+4.2 Babel
+一篇文章了解前端开发必须懂的 Babel
+不容错过的 Babel7 知识
+前端工程师需要了解的 Babel 知识
+深入浅出 Babel 上篇：架构和原理 + 实战
+深入浅出 Babel 下篇：既生 Plugin 何生 Macros
+前端工程师的自我修养-关于 Babel 那些事儿
+前端与编译原理——用JS写一个JS解释器
+4.3 模板引擎
+编写一个简单的JavaScript模板引擎
+JavaScript模板引擎原理，几行代码的事儿
+Vue 模板编译原理
+JavaScript template engine in just 20 lines
+Understanding JavaScript Micro-Templating
+4.4 前端发布
+大公司里怎样开发和部署前端代码？
+前端高级进阶：前端部署的发展历程
+4.5 weex
+深入了解 Weex
+Weex原理概述
+Weex 是如何在 iOS 客户端上跑起来的
+详解 Weex 页面的渲染过程
+JSBridge 介绍及实现原理
+移动混合开发中的 JSBridge
+4.6 前端监控
+5 分钟撸一个前端性能监控工具
+把前端监控做到极致
+GMTC 大前端时代前端监控的最佳实践
+前端监控和前端埋点方案设计
+腾讯CDC团队：前端异常监控解决方案
+5. 性能优化
+
+
+5.1 打包阶段
+Webpack优化——将你的构建效率提速翻倍
+性能优化篇---Webpack构建速度优化
+webpack构建速度与结果优化
+让你的Webpack起飞—考拉会员后台Webpack优化实战
+webpack dllPlugin打包体积和速度优化
+使用webpack4提升180%编译速度
+Webpack 打包优化之速度篇
+多进程并行压缩代码
+Tree-Shaking性能优化实践 - 原理篇
+体积减少80%！释放webpack tree-shaking的真正潜力
+你的Tree-Shaking并没什么卵用
+webpack 如何通过作用域分析消除无用代码
+加速Webpack-缩小文件搜索范围
+Brief introduction to scope hoisting in Webpack
+通过Scope Hoisting优化Webpack输出
+webpack 的 scope hoisting 是什么？
+webpack优化之code splitting
+webpack 4: Code Splitting和chunks切分优化
+Webpack 大法之 Code Splitting
+Better tree shaking with deep scope analysis
+Front-End Performance Checklist 2020
+（译）2019年前端性能优化清单 — 上篇
+5.2 其它优化
+网站性能优化实战——从12.67s到1.06s的故事
+浏览器页面资源加载过程与优化
+聊聊前端开发中的长列表
+再谈前端虚拟列表的实现
+浅说虚拟列表的实现原理
+浏览器IMG图片原生懒加载loading=”lazy”实践指南
+用 preload 预加载页面资源
+App内网页启动加速实践：静态资源预加载视角
+腾讯HTTPS性能优化实践
+Preload, Prefetch And Priorities in Chrome
+Front-End Performance Checklist
+图片与视频懒加载的详细指南
+使用 Intersection Observer 来懒加载图片
+欢迎关注公众号「前端试炼」，回复【面试】获取完整复习导图。公众号平时会分享一些实用或者有意思的东西，发现代码之美。专注深度和最佳实践，希望打造一个高质量的公众号。
+
+
+
+6. TypeScript
+
+
+TypeScript 是什么
+为什么要在javascript中进行静态类型检查
+TypeScript Start: 基础类型
+TypeScript真香系列——接口篇
+TypeScript 中高级应用与最佳实践
+typescript 高级技巧
+可能是你需要的 React + TypeScript 50 条规范和经验
+从 JavaScript 到 TypeScript
+TypeScript + 大型项目实战
+TypeScript - 一种思维方式
+如何编写一个d.ts文件
+TypeScript 的声明文件的使用与编写
+TypeScript 进阶：给第三方库编写声明文件
+TypeScript泛型
+TypeScript 重构 Axios 经验分享
+手把手教写 TypeScript Transformer Plugin
+7. 网络
+
+
+7.1 HTTP
+听说『99% 的人都理解错了 HTTP 中 GET 与 POST 的区别』？？
+前端基础篇之HTTP协议
+都9102年了，还问GET和POST的区别
+HTTP 响应代码 | MDN
+如何理解HTTP响应的状态码？
+你所知道的3xx状态码
+关于浏览器缓存你知道多少
+浏览器缓存
+HTTP协议头部与Keep-Alive模式详解
+HTTP keep-alive 二三事
+7.2 HTTPS/HTTP2
+深入理解HTTPS工作原理
+九个问题从入门到熟悉HTTPS
+谈谈 HTTPS
+看图学HTTPS
+分分钟让你理解HTTPS
+解密HTTP/2与HTTP/3 的新特性
+浅谈 HTTP/2 Server Push
+HTTP2基本概念学习笔记
+7.3 DNS
+写给前端工程师的DNS基础知识
+前端优化: DNS预解析提升页面速度
+DNS解析
+7.4 TCP
+通俗大白话来理解TCP协议的三次握手和四次分手
+就是要你懂 TCP
+TCP协议详解
+面试时，你被问到过 TCP/IP 协议吗?
+“三次握手，四次挥手”你真的懂吗？
+7.5 CDN
+五分钟了解CDN
+漫话：如何给女朋友解释什么是CDN？
+关于 cdn、回源等问题一网打尽
+CDN是什么？使用CDN有什么优势？
+7.6 经典题
+从输入URL到页面展示，这中间发生了什么？
+前端经典面试题: 从输入URL到页面加载发生了什么？
+8. 设计模式
+
+
+Javascript常用的设计模式详解
+JavaScript设计模式
+JavaScript 中常见设计模式整理
+JavaScript 常见设计模式解析
+深入 JavaScript 设计模式，从此有了优化代码的理论依据
+设计模式之美-前端
+9. 数据结构/算法
+
+
+Linked Lists in JavaScript (ES6 code)
+DS with JS — Linked Lists — II
+LeetCode List
+JS中的算法与数据结构——链表(Linked-list)
+前端笔试&面试爬坑系列---算法
+漫画：什么是红黑树？
+前端你应该了解的数据结构与算法
+数据结构和算法在前端领域的应用（前菜）
+数据结构与算法在前端领域的应用 - 第二篇
+JavaScript 数据结构与算法之美
+10. 安全
+
+
+前端安全系列（一）：如何防止XSS攻击？
+前端安全系列（二）：如何防止CSRF攻击？
+Security
+前端也需要了解的 JSONP 安全
+【面试篇】寒冬求职之你必须要懂的Web安全
+谈谈对 Web 安全的理解
+程序员必须要了解的web安全
+可信前端之路：代码保护
+前端如何给 JavaScript 加密（不是混淆）？
+常见 Web 安全攻防总结
+11. Node
+一篇文章构建你的 NodeJS 知识体系
+真-Node多线程
+浏览器与Node的事件循环(Event Loop)有何区别?
+聊聊 Node.js RPC
+Understanding Streams in Node.js
+深入理解 Node.js 进程与线程
+如何通过饿了么 Node.js 面试
+字节跳动面试官：请你实现一个大文件上传和断点续传
+12. 项目/业务
+思考题，自由发挥
+
+13. 其它
+深入浅出浏览器渲染原理
+前端开发如何独立解决跨域问题
+探索 Serverless 中的前端开发模式
+「NGW」前端新技术赛场：Serverless SSR 技术内幕
+JavaScript与Unicode
+九种跨域方式实现原理（完整版）
+7分钟理解JS的节流、防抖及使用场景
+浏览器的工作原理：新式网络浏览器幕后揭秘
+Different Types Of Observers Supported By Modern Browsers
+浏览器同源策略与ajax跨域方法汇总
+14. 面试
+一年半经验如何准备阿里巴巴 P6 前端面试
+面试分享：两年工作经验成功面试阿里P6总结
+总结了17年初到18年初百场前端面试的面试经验(含答案)
+2018春招前端面试: 闯关记(精排精校) | 掘金技术征文
+20道JS原理题助你面试一臂之力！
+一年半经验，百度、有赞、阿里前端面试总结
+22 道高频 JavaScript 手写面试题及答案
+面试分享：专科半年经验面试阿里前端P6+总结(附面试真题及答案)
+写给女朋友的中级前端面试秘籍
+阿里前端攻城狮们写了一份前端面试题答案，请查收
+字节跳动今日头条前端面经（4轮技术面+hr面）
+「面试题」20+Vue面试题整理(持续更新)
+「吐血整理」再来一打Webpack面试题(持续更新)
+高级前端开发者必会的34道Vue面试题系列
+15. 书单
+推荐一些值得看的书，基本都是我看完或者有翻过几页觉得不错但是还没时间看的书。
+
+15.1 JavaScript
+JavaScript 高级程序设计（高程就不多说了，第四版有英文版）
+JavaScript 设计模式
+你不知道的 JavaScript
+JavaScript 语言精粹
+高性能 JavaScript
+Learning TypeScript 中文版
+深入理解 ES6
+ES6 标准入门
+深入理解 JavaScript 特性
+15.2 CSS
+CSS 权威指南（建议看英文版）
+精通 CSS 高级 Web 标准解决方案
+CSS 世界（张鑫旭老师的大作，但是建议需要有一定 CSS 实践后再看）
+15.3 Node
+Node.js 实战
+了不起的 Node.js
+15.4 计算机基础
+大话数据结构
+图解 HTTP
+计算机/程序是怎样跑起来的
+学习 JavaScript 数据结构与算法
+15.5 工程化/浏览器/软技能
+前端工程化体系设计与实践
+webpack 实战：入门、进阶与优化（了解一下 webpack 的所有会涉及到的知识点）
+WebKit 技术内幕（讲浏览器的，挺好的）
+重构：改善既有代码的涉及
+码农翻身
+程序员思维修炼
+编码：隐匿在计算机软硬件背后的语言
+写给大家看的设计书
+技术之瞳：阿里巴巴技术笔试心得
+结束语
+上文整理了网上的一些相关文章和躺在我收藏夹里精选文章，有一些文章还没看，还需要持续学习呀 ~
+
+放弃了假期快落的岛上生活（动森），吐血整理这份资料，希望对大家有所帮助~
+
+也可以扫码加我微信，拉你进交流划水聊天群，有看到好文章/代码都会发在群里。
+
+
+
+文章分类
+前端
+文章标签
+
+面试
+
+前端
+
+axuebin lv-5
+公众号 @ 玩相机的程序员
+发布了 20 篇专栏 · 获得点赞 7,971 · 获得阅读 519,975
+关注
+安装掘金浏览器插件
+打开新标签页发现好内容，掘金、GitHub、Dribbble、ProductHunt 等站点内容轻松获取。快来安装掘金浏览器插件获取高质量内容吧！
+
+
+我在往日还未抽烟的头像
+我在往日还未抽烟
+受益了
+7天前
+用户8900150905385的头像
+用户8900150905385
+涂涂改改又是一年👏
+7天前
+Jesse_Yin的头像
+Jesse_Yin
+请问大神，好多链接失效了，能更新一下吗
+2月前
+liucc的头像
+liucc
+🐂🍺
+2月前
+wawoweb的头像
+wawoweb lv-2
+前端 @ 百度
+每天亿遍💪
+2月前
+CheeseMen的头像
+CheeseMen
+时长两月半的前端练习生
+经典永流传，2021了我还在看这篇文章😂
+2月前
+
+axuebin lv-5 (作者)
+公众号 @ 玩相机的程序员
+哈哈 我是不是应该改个名
+2月前
+
+CheeseMen
+时长两月半的前端练习生
+回复 axuebin: 期待你的2021更新版，虽然我2020的都还没学完😃
+2月前
+
+axuebin lv-5 (作者)
+公众号 @ 玩相机的程序员
+回复 CheeseMen: 标题已更新 哈哈哈
+2月前
+Alex丶Cheng的头像
+Alex丶Cheng lv-2
+页面仔专家 @ 长沙
+学废了。🤣
+3月前
+DeepLove的头像
+DeepLove
+做梦都没敢想这么多😭
+3月前
+杜审言的头像
+杜审言
+前端
+好多链接不管用了
+4月前
+
+axuebin lv-5 (作者)
+公众号 @ 玩相机的程序员
+可能很多文章被掘金认为有问题 审核不通过了
+4月前
+看到我请叫我去敲代码的头像
+看到我请叫我去敲代码
+看完了，明天就去面16K
+4月前
+
+大号三十级
+资深bug工程师 @ 公司倒闭了
+16少了，至少30+，兄弟自信点😁
+23天前
+feifeialiang的头像
+feifeialiang
+前端大学生
+争取春招前看完，加油
+4月前
+清玄的头像
+清玄
+前端开发工程师 @ Huohuoit
+工作之余全部学完冲阿里之打卡第一天
+4月前
+摸鱼的小晗的头像
+摸鱼的小晗 lv-1
+一个很菜的前端╮(╯▽╰)╭菇凉
+准备开始着手来看
+4月前
+何为幸运的头像
+何为幸运
+前端
+好全呀
+4月前
+家有一只小憨憨的头像
+家有一只小憨憨
+前端开发
+加油2021
+4月前
+
+axuebin lv-5 (作者)
+公众号 @ 玩相机的程序员
+时间过得好快~
+4月前
+用户4367080629386的头像
+用户4367080629386
+前端菜鸡
+想变强但不想变秃👩‍💻
+4月前
+zhangxinyong12的头像
+zhangxinyong12 lv-1
+前端开发 @ 某大型电商公司
+😘膜拜 
+ 大佬😳
+5月前
+写bug呢的头像
+写bug呢 lv-1
+很赞，文章质量很高，看了一星期， 第一个知识点的文章还没看完，继续努力😂
+5月前
+张刘洋的头像
+张刘洋
+web前端开发 @ 万通中心某链公司
+加油2021
+5月前
+lycpang的头像
+lycpang
+切图仔 @ 努力让这一格不为null
+大佬，一键三连了。话说能给发一个源文件吗
+5月前
+
+axuebin lv-5 (作者)
+公众号 @ 玩相机的程序员
+很不幸的是源文件换电脑没备份丢失了。。有些地方想修改都没法改了。。
+5月前
+相关推荐
+是小册姐嘿
+7天前
+前端  后端  Android  程序员  iOS
+技术助力 l 掘金小册免费学
+
+59
+
+55
+ITEM
+2天前
+前端
+从一道让我失眠的 Promise 面试题开始，深入分析 Promise 实现细节
+
+948
+
+119
+从一道让我失眠的 Promise 面试题开始，深入分析 Promise 实现细节
+网易云音乐大前端团队
+1天前
+Node.js  前端
+Libuv 之 - 只看这篇是不够的
+
+75
+
+7
+Libuv 之 - 只看这篇是不够的
+淘系前端团队
+11小时前
+前端
+从0到1实现Web端H.265播放器：视频解码篇
+
+49
+
+6
+TianTianUp
+1天前
+前端  面试
+阿里腾讯面试梳理&个人成长经历分享
+
+383
+
+40
+ 阿里腾讯面试梳理&个人成长经历分享
+全城武
+1天前
+CSS  前端
+画小米的新Logo只用border-radius可不行！
+
+43
+
+15
+阅文前端团队
+3天前
+CSS  前端
+CSS 实现优惠券的技巧
+
+627
+
+46
+JayYuen
+4小时前
+前端
+Javascript 高效开发工具函数
+
+10
+
+1
+FESKY
+3小时前
+TypeScript  前端
+Typescript 泛型包教包会
+
+6
+
+Typescript 泛型包教包会
+zym起来敲代码
+2天前
+前端
+加入WangEditor团队的一个月
+
+58
+
+43
+关于作者
+
+axuebin lv-5 
+公众号 @ 玩相机的程序员
+获得点赞7,971
+文章被阅读519,975
+相关文章
+JavaScript复制内容到剪贴板
+ 446  52
+一年半经验如何准备阿里巴巴前端面试
+ 543  80
+教你如何写初/高级前端简历【赠简历导图】
+ 636  35
+2020 年前端分类推荐书单【结合思维导图】
+ 389  43
+尤大 3 天前发在 GitHub 上的 vue-lit 是啥？
+ 300  54
+目录
+前言
+1. JavaScript 基础
+1.1 执行上下文/作用域链/闭包
+1.2 this/call/apply/bind
+1.3 原型/继承
+1.4 Promise
+1.5 深浅拷贝
+1.6 事件机制/Event Loop
+1.7 函数式编程
+1.8 Service Worker / PWA
+1.9 Web Worker
+1.10 常用方法
+2. CSS 基础
+3. 框架(Vue 为主)
+3.1 MVVM
+3.2 生命周期
+3.3 数据绑定
+3.4 状态管理
+3.5 组件通信
+3.6 Virtual DOM
+3.7 Diff
+3.8 Vue 计算属性 VS 侦听属性
+3.9 React Hooks
+3.10 React Hoc/Vue mixin
+3.11 Vue 和 React 有什么不同
+4. 工程化
+4.1 Webpack
+4.2 Babel
+4.3 模板引擎
+4.4 前端发布
+4.5 weex
+4.6 前端监控
+5. 性能优化
+5.1 打包阶段
+5.2 其它优化
+6. TypeScript
+7. 网络
+7.1 HTTP
+7.2 HTTPS/HTTP2
+7.3 DNS
+7.4 TCP
+7.5 CDN
+7.6 经典题
+8. 设计模式
+9. 数据结构/算法
+10. 安全
+11. Node
+12. 项目/业务
+13. 其它
+14. 面试
+15. 书单
+15.1 JavaScript
+15.2 CSS
+15.3 Node
+15.4 计算机基础
+15.5 工程化/浏览器/软技能
+结束语

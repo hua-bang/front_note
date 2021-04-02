@@ -41,4 +41,6 @@
 
 // import ProxyImage from "./js/Proxy/ES6/index"
 
-import HSystem from "./js/Facade/index"
+// import HSystem from "./js/Facade/index"
+
+import Subject from "./js/Observer/index"
