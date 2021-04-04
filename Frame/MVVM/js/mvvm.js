@@ -78,6 +78,7 @@ class MVVM {
                 }
                 // 保留旧的模板
                 child.$templateHTML = child.innerHTML;
+                child.$type = "template";
                 // {{ key }}替换值
                 child.innerHTML = child.innerHTML.replace(new RegExp('\\{\\{\\s*'+ key +'\\s*\\}\\}', 'gm'), getString(vm._data[key]));
                 Observer.target = child;
@@ -94,11 +95,18 @@ class MVVM {
     vEvent(event, attribute, target) {
         let key = attribute.value;
         const vm = this;
+        target.$type = event;
         switch(event) {
             case "v-text": {
+                Observer.target = target;
+                vm[key];
+                Observer.target = null;
                 target.textContent = vm._data[key];
             }
             case "v-model": {
+                Observer.target = target;
+                vm[key];
+                Observer.target = null;
                 target.value = vm._data[key];
                 target.addEventListener("input", (e) => {
                     let value = e.target.value;
@@ -127,8 +135,18 @@ class Observer {
     // 通知 更新值
     notify(key, val) {
         this.subNode.forEach(node => {
-            node.innerHTML = node.$templateHTML.replace(new RegExp('\\{\\{\\s*'+ key +'\\s*\\}\\}', 'gm'), getString(val))
+            handlerNodeByType(node, key, val)       
         });
+    }
+}
+
+function handlerNodeByType(node, key ,val) {
+    if(node.$type === "template") {
+        node.innerHTML = node.$templateHTML.replace(new RegExp('\\{\\{\\s*'+ key +'\\s*\\}\\}', 'gm'), getString(val))
+    }else if(node.$type === "v-text") {
+        node.innerHTML = getString(val);
+    }else if(node.$type === "v-model") {
+        node.value = val;
     }
 }
 
