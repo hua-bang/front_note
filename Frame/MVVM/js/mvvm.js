@@ -63,6 +63,11 @@ class MVVM {
         let vm = this;
         // 遍历node的节点
         [].forEach.call(node.children, child => {
+            if(child && child.attributes.length > 0) {
+                [].forEach.call(child.attributes, (attribute => {
+                    this.vEvent(attribute.name, attribute, child);
+                }))
+            }
             // 匹配节点
             if(!child.firstElementChild && /\{\{(.*)\}\}/.test(child.innerHTML)) {
                 // 找匹配
@@ -74,7 +79,7 @@ class MVVM {
                 // 保留旧的模板
                 child.$templateHTML = child.innerHTML;
                 // {{ key }}替换值
-                child.innerHTML = child.innerHTML.replace(new RegExp('\\{\\{\\s*'+ key +'\\s*\\}\\}', 'gm'), this.getString(vm._data[key]));
+                child.innerHTML = child.innerHTML.replace(new RegExp('\\{\\{\\s*'+ key +'\\s*\\}\\}', 'gm'), getString(vm._data[key]));
                 Observer.target = child;
                 vm[key];
                 Observer.target = null;
@@ -86,11 +91,23 @@ class MVVM {
         })
     }
 
-    getString(val) {
-        if(typeof val === "object") {
-            return JSON.stringify(val);
-        }else {
-            return val;
+    vEvent(event, attribute, target) {
+        let key = attribute.value;
+        const vm = this;
+        switch(event) {
+            case "v-text": {
+                target.textContent = vm._data[key];
+            }
+            case "v-model": {
+                target.value = vm._data[key];
+                target.addEventListener("input", (e) => {
+                    let value = e.target.value;
+                    vm[key] = value;
+                })
+            }
+            case "v-html": {
+                target.innerHTML = vm._data[key];
+            }
         }
     }
 }
@@ -110,8 +127,16 @@ class Observer {
     // 通知 更新值
     notify(key, val) {
         this.subNode.forEach(node => {
-            node.innerHTML = node.$templateHTML.replace(new RegExp('\\{\\{\\s*'+ key +'\\s*\\}\\}', 'gm'), this.getString(val))
+            node.innerHTML = node.$templateHTML.replace(new RegExp('\\{\\{\\s*'+ key +'\\s*\\}\\}', 'gm'), getString(val))
         });
+    }
+}
+
+function getString(val) {
+    if(typeof val === "object") {
+        return JSON.stringify(val);
+    }else {
+        return val;
     }
 }
 
@@ -124,7 +149,8 @@ let vm = new MVVM({
             test: {
                 a: 1,
                 b: 2
-            }
+            },
+            htmlStr: `<div style="color:red">123456</div>`
         }
     }
 })

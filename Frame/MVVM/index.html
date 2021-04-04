@@ -13,12 +13,15 @@
       <div>age: {{ age }}</div>
       <div>{{ test }}</div>
       <div>
-        <div>{{age}}</div>
+        <div>
+          <input v-model="name" />
+        </div>
       </div>
       <div>
-        <div>
-          <div>{{ name }}</div>
-        </div>
+        <div v-text="name"></div>
+      </div>
+      <div>
+        <div v-html="htmlStr"></div>
       </div>
     </div>
   </body>
