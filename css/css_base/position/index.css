@@ -1,0 +1,31 @@
+.box {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background: red;
+  color: white;
+}
+#one {
+  position: static;
+}
+
+#two {
+  position: relative; /*相对于原来*/
+  top: 10px;
+}
+
+#three {
+  position: absolute; /*相对于最近的position不为static的元素*/
+  left: 0;
+}
+
+#four {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+
+.main {
+  margin: 10px;
+  position: relative;
+}
