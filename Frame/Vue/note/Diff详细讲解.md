@@ -48,8 +48,8 @@
        - 如果`oldVnode`没有子节点而`Vnode`有，则将`Vnode`的子节点真实化之后添加到`el`
        - 如果两者都有子节点，则执行`updateChildren`函数比较子节点，这一步很重要
    - updateChildren（import）
-   - ![img](https://user-gold-cdn.xitu.io/2018/5/19/163783b76bc005cf?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-   - ![img](https://user-gold-cdn.xitu.io/2018/5/19/163783eb58bfdb34?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+     - ![img](https://user-gold-cdn.xitu.io/2018/5/19/163783b76bc005cf?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+     - ![img](https://user-gold-cdn.xitu.io/2018/5/19/163783eb58bfdb34?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
      - 概括
        - 将VNode子节点`Vch`和`oldVnode`的子节点`oldCh`提取出来
        - oldCh和vCh各有两个头尾的变量startIdx和EndIdx，它们的2个变量相互比较，一共有4种比较方式。
