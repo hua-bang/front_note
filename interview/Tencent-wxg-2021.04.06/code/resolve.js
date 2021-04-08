@@ -41,11 +41,39 @@
 // 递归
 function resolve(tree) {
     let arr = [];
-    if(tree.require) {
-        tree.require.forEach(v => {
-            arr.push(...resolve(v));
-        })
+
+    function resolveTree(tree) {
+        if(tree.require) {
+            tree.require.forEach(v => {
+                resolveTree(v);
+            })
+        }
+        if(!arr.includes(tree.name)) {
+            arr.push(tree.name)
+        }
     }
-    arr.push(tree.name)
-    return [...new Set(arr)];
+    
+    resolveTree(tree);
+    return arr;
 }
+
+var tree2 = {
+    name: 'page.js',
+    require: [{
+        name: 'A.js',
+        require: [{
+            name: 'B.js',
+            require: [{
+                name: 'C.js'
+            }]
+        }]
+    }, {
+        name: 'D.js',
+        require: [{
+            name: 'C.js'
+        }, {
+            name: 'E.js'
+        }]
+    }]
+}
+console.log(resolve(tree2))  // ['C.js', 'E.js', 'D.js', 'B.js', 'A.js', 'page.js']
