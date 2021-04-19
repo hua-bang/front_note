@@ -1,0 +1,35 @@
+#### overflow溢出的使用详情
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            border: 3px solid red;
+            width: 300px;
+            height: 100px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        根据《化妆品监督管理条例》第二十四条规定，特殊化妆品注册证有效期为5年。有效期届满需要延续注册的，应当在有效期届满30个工作日前提出延续注册的申请。除有本条第二款规定情形外，国务院药品监督管理部门应当在特殊化妆品注册证有效期届满前作出准予延续的决定；逾期未作决定的，视为准予延续。
+
+有下列情形之一的，不予延续注册：
+
+（一）注册人未在规定期限内提出延续注册申请；
+
+       （二）强制性国家标准、技术规范已经修订，申请延续注册的化妆品不能达到修订后标准、技术规范的要求。
+    </div>
+</body>
+</html>
+```
+
