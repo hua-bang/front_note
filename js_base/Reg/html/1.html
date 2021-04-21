@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="username">
+</body>
+<script>
+    document.querySelector("[name='username']")
+    .addEventListener("blur", function(){
+        let res = this.value.match(/^[a-z]{3,6}$/i);
+        console.log(res ? "成功": "失败")
+    })
+</script>
+</html>
