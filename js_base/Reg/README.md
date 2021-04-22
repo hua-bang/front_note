@@ -91,3 +91,181 @@ console.log(hd.match(/\d/g).join(""));
 | \S     | 除了空白符外任意一个字符匹配                         | [^\n\f\r\t\v] |
 | .      | 匹配除换行符外的任意字符                             |               |
 
+#### 所有字符
+
+可以使用 `[\s\S]` 或 `[\d\D]` 来匹配所有字符
+
+```js
+let hd = `
+  <span>
+    houdunren
+    hdcms
+  </span>
+`;
+let res = hd.match(/<span>[\s\S]+<\/span>/);
+console.log(res[0]);
+```
+
+### 模式修饰
+
+正则表达式在执行时会按他们的默认执行方式进行，但有时候默认的处理方式总不能满足我们的需求，所以可以使用模式修正符更改默认方式。
+
+| 修饰符 | 说明                                    |
+| ------ | --------------------------------------- |
+| i      | 不区分大小写字母的匹配                  |
+| g      | 全局搜索所有匹配内容                    |
+| m      | 视为多行                                |
+| s      | 视为单行忽略换行符，使用.可匹配所有字符 |
+| y      | 从regexp.lastIndex开始匹配              |
+| u      | 正确处理四个字符的UTF-16编码            |
+
+#### i
+
+将所有houdunren.com统一为小写
+
+```js
+let hd = "houdunren.com HOUDUNREN.COM";
+hd = hd.replace(/houdunren\.com/gi, "houdunren.com");
+console.log(hd);
+```
+
+#### g
+
+使用g修饰符可以全局操作内容
+
+### 原子组
+
+- 如果一次要匹配多个元子，可以通过元子组完成
+- 原子组与原子表的差别在于原子组一次匹配多个元子，而原子表则是匹配任意一个字符
+- 元字符组用 `()` 包裹
+
+#### 基本使用
+
+没有添加 `g` 模式修正符时只匹配到第一个，匹配到的信息包含以下数据
+
+| 变量    | 说明             |
+| ------- | ---------------- |
+| 0       | 匹配到的完整内容 |
+| 1,2.... | 匹配到的原子组   |
+| index   | 原字符串中的位置 |
+| input   | 原字符串         |
+| groups  | 命名分组         |
+
+在`match`中使用原子组匹配，会将每个组数据返回到结果中
+
+- 0 为匹配到的完成内容
+- 1/2 等 为原子级内容
+- index 匹配的开始位置
+- input 原始数据
+- groups 组别名
+
+```text
+let hd = "houdunren.com";
+console.log(hd.match(/houdun(ren)\.(com)/)); 
+//["houdunren.com", "ren", "com", index: 0, input: "houdunren.com", groups: undefined]
+```
+
+下面使用原子组匹配标题元素
+
+```text
+let hd = `
+  <h1>houdunren</h1>
+  <span>后盾人</span>
+  <h2>hdcms</h2>
+`;
+
+console.table(hd.match(/<(h[1-6])[\s\S]*<\/\1>/g));
+```
+
+检测 `0~100` 的数值，使用 `parseInt` 将数值转为10进制
+
+```text
+console.log(/^(\d{1,2}|100)$/.test(parseInt(09, 10)));
+```
+
+### [#](https://houdunren.gitee.io/note/js/14 正则表达式.html#邮箱匹配)邮箱匹配
+
+下面使用原子组匹配邮箱
+
+```js
+let hd = "2300071698@qq.com";
+let reg = /^[\w\-]+@[\w\-]+\.(com|org|cn|cc|net)$/i;
+console.dir(hd.match(reg));
+```
+
+如果邮箱是以下格式 `houdunren@hd.com.cn` 上面规则将无效，需要定义以下方式
+
+```js
+let hd = `admin@houdunren.com.cn`;
+let reg = /^[\w-]+@([\w-]+\.)+(org|com|cc|cn)$/;
+console.log(hd.match(reg));
+```
+
+### 引用分组
+
+`\n` 在匹配时引用原子组， `$n` 指在替换时使用匹配的组数据。下面将标签替换为`p`标签
+
+```js
+let hd = `
+  <h1>houdunren</h1>
+  <span>后盾人</span>
+  <h2>hdcms</h2>
+`;
+
+let reg = /<(h[1-6])>([\s\S]*)<\/\1>/gi;
+console.log(hd.replace(reg, `<p>$2</p>`));
+```
+
+如果只希望组参与匹配，便不希望返回到结果中使用 `(?:` 处理。下面是获取所有域名的示例
+
+```js
+let hd = `
+  https://www.houdunren.com
+  http://houdunwang.com
+  https://hdcms.com
+`;
+
+let reg = /https?:\/\/((?:\w+\.)?\w+\.(?:com|org|cn))/gi;
+while ((v = reg.exec(hd))) {
+  console.dir(v);
+}
+```
+
+### 分组别名
+
+如果希望返回的组数据更清晰，可以为原子组编号，结果将保存在返回的 `groups`字段中
+
+?<\tag\>
+
+组别名使用 `?<>` 形式定义，下面将标签替换为`p`标签
+
+```text
+let hd = `
+  <h1>houdunren</h1>
+  <span>后盾人</span>
+  <h2>hdcms</h2>
+`;
+let reg = /<(?<tag>h[1-6])>(?<con>[\s\S]*)<\/\1>/gi;
+console.log(hd.replace(reg, `<p>$<con></p>`));
+```
+
+获取链接与网站名称组成数组集合
+
+```html
+<body>
+  <a href="https://www.houdunren.com">后盾人</a>
+  <a href="https://www.hdcms.com">hdcms</a>
+  <a href="https://www.sina.com.cn">新浪</a>
+</body>
+
+<script>
+  let body = document.body.innerHTML;
+  let reg = /<a\s*.+?(?<link>https?:\/\/(\w+\.)+(com|org|cc|cn)).*>(?<title>.+)<\/a>/gi;
+  const links = [];
+  for (const iterator of body.matchAll(reg)) {
+    links.push(iterator["groups"]);
+  }
+  console.log(links);
+</script>
+```
+
