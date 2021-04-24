@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <span>123</span>
+        <span>456</span>
+        <span>
+            <span>789</span>
+        </span>
+    </main>
+    <h1>houdunren.com</h1>
+    <h2>hdcms.com</h2>
+    <h3></h3>
+    <H1></H1>
+</body>
+<script>
+    const main = document.querySelector("main");
+    const reg = /<span>([\s\S]+?)<\/span>/gi;
+    main.innerHTML = main.innerHTML.replace(reg, (v, p1) => {
+        return `<h4 style="color:red">后盾人-${p1}</h4>`
+    });
+
+    let body = document.body.innerHTML;
+    console.table(body.match(/<(h[1-6])>[\s\S]{0,}?<\/\1>/gi));
+</script>
+</html>

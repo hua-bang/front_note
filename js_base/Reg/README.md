@@ -260,12 +260,228 @@ console.log(hd.replace(reg, `<p>$<con></p>`));
 
 <script>
   let body = document.body.innerHTML;
-  let reg = /<a\s*.+?(?<link>https?:\/\/(\w+\.)+(com|org|cc|cn)).*>(?<title>.+)<\/a>/gi;
+  let reg = /<a\s*.+?(?<link>https?:\/\/(\w+\.)+(com|org|cc|//m,.//.,mm.,     cn)).*>(?<title>.+)<\/a>/gi;
   const links = [];
   for (const iterator of body.matchAll(reg)) {
     links.push(iterator["groups"]);
   }
   console.log(links);
 </script>
+```
+
+### 重复匹配
+
+#### 基本使用
+
+如果要重复匹配一些内容时我们要使用重复匹配修饰符，包括以下几种。
+
+| 符号   | 说明            |
+| ------ | --------------- |
+| *      | 重复0次或多次   |
+| +      | 重复1次或多次   |
+| ?      | 重复0次或一次   |
+| {n}    | 重复n次         |
+| {n, }  | 重复n次到无数次 |
+| {n, m} | 重复n次到m次    |
+
+默认情况下重复选项对单个字符进行重复匹配，即不是贪婪匹配
+
+```js
+let hd = "hdddd";
+console.log(hd.match(/hd+/i)); //hddd
+```
+
+使用原子组后则对整个组重复匹配
+
+```js
+let hd = "hdddd";
+console.log(hd.match(/(hd)+/i)); //hd
+```
+
+下面是验证坐机号的正则
+
+```js
+let hd = "010-12345678";
+console.log(/0\d{2,3}-\d{7,8}/.exec(hd));
+```
+
+验证用户名只能为3~8位的字母或数字，并以字母开始
+
+```js
+<body>
+  <input type="text" name="username" />
+</body>
+<script>
+  let input = document.querySelector(`[name="username"]`);
+  input.addEventListener("keyup", e => {
+    const value = e.target.value;
+    let state = /^[a-z][\w]{2,7}$/i.test(value);
+    console.log(
+      state ? "正确！" : "用户名只能为3~8位的字母或数字，并以字母开始"
+    );
+  });
+</script>
+```
+
+验证密码必须包含大写字母并在5~10位之间
+
+```js
+<body>
+<input type="text" name="password" />
+</body>
+<script>
+let input = document.querySelector(`[name="password"]`);
+input.addEventListener("keyup", e => {
+  const value = e.target.value.trim();
+  const regs = [/^[a-zA-Z0-9]{5,10}$/, /[A-Z]/];
+  let state = regs.every(v => v.test(value));
+  console.log(state ? "正确！" : "密码必须包含大写字母并在5~10位之间");
+});
+</script>
+```
+
+#### 禁止贪婪
+
+正则表达式在进行重复匹配时，默认是贪婪匹配模式，也就是说会尽量匹配更多内容，但是有的时候我们并不希望他匹配更多内容，这时可以通过?进行修饰来禁止重复匹配
+
+| 使用   | 说明                          |
+| ------ | ----------------------------- |
+| *?     | 重复任意次，但尽可能少重复    |
+| +?     | 重复1次或多次，但尽可能少重复 |
+| ??     | 重复0次或1次，但尽可能少重复  |
+| {n,m}? | 重复n次到m次，但尽可能少重复  |
+| {n, }? | 重复n次到多次，但尽可能少重复 |
+
+下面是禁止贪婪的语法例子
+
+```js
+let str = "aaa";
+console.log(str.match(/a+/)); //aaa
+console.log(str.match(/a+?/)); //a
+console.log(str.match(/a{2,3}?/)); //aa
+console.log(str.match(/a{2,}?/)); //aa
+```
+
+将所有span更换为`h4` 并描红，并在内容前加上 `后盾人-`
+
+```js
+<body>
+  <main>
+    <span>houdunwang</span>
+    <span>hdcms.com</span>
+    <span>houdunren.com</span>
+  </main>
+</body>
+<script>
+  const main = document.querySelector("main");
+  const reg = /<span>([\s\S]+?)<\/span>/gi;
+  main.innerHTML = main.innerHTML.replace(reg, (v, p1) => {
+    console.log(p1);
+    return `<h4 style="color:red">后盾人-${p1}</h4>`;
+  });
+</script>
+```
+
+下面是使用禁止贪婪查找页面中的标题元素
+
+```js
+<body>
+  <h1>
+    houdunren.com
+  </h1>
+  <h2>hdcms.com</h2>
+  <h3></H3>
+  <H1></H1>
+</body>
+
+<script>
+  let body = document.body.innerHTML;
+  let reg = /<(h[1-6])>[\s\S]*?<\/\1>/gi;
+  console.table(body.match(reg));
+</script>
+```
+
+### 全局匹配
+
+#### 问题分析
+
+下面是使用`match` 全局获取页面中标签内容，但并不会返回匹配细节
+
+```html
+<body>
+  <h1>houdunren.com</h1>
+  <h2>hdcms.com</h2>
+  <h1>后盾人</h1>
+</body>
+
+<script>
+  function elem(tag) {
+    const reg = new RegExp("<(" + tag + ")>.+?<\.\\1>", "g");
+    return document.body.innerHTML.match(reg);
+  }
+  console.table(elem("h1"));
+</script>
+```
+
+#### matchAll
+
+在新浏览器中支持使用 `matchAll` 操作，并返回迭代对象
+
+> 需要添加 `g` 修饰符
+
+```js
+let str = "houdunren";
+let reg = /[a-z]/ig;
+for (const iterator of str.matchAll(reg)) {
+  console.log(iterator);
+}
+```
+
+在原型定义 `matchAll`方法，用于在旧浏览器中工作，不需要添加`g` 模式运行
+
+```js
+String.prototype.matchAll = function(reg) {
+  let res = this.match(reg);
+  if (res) {
+    let str = this.replace(res[0], "^".repeat(res[0].length));
+    let match = str.matchAll(reg) || [];
+    return [res, ...match];
+  }
+};
+let str = "houdunren";
+console.dir(str.matchAll(/(U)/i));
+```
+
+#### exec
+
+使用 `g` 模式修正符并结合 `exec` 循环操作可以获取结果和匹配细节
+
+```html
+<body>
+  <h1>houdunren.com</h1>
+  <h2>hdcms.com</h2>
+  <h1>后盾人</h1>
+</body>
+<script>
+  function search(string, reg) {
+    const matchs = [];
+    while ((data = reg.exec( string))) {
+      matchs.push(data);
+    }
+    return matchs;
+  }
+  console.log(search(document.body.innerHTML, /<(h[1-6])>[\s\S]+?<\/\1>/gi));
+</script>
+```
+
+使用上面定义的函数来检索字符串中的网址
+
+```js
+let hd = `https://hdcms.com  
+https://www.sina.com.cn
+https://www.houdunren.com`;
+
+let res = search(hd, /https?:\/\/(\w+\.)?(\w+\.)+(com|cn)/gi);
+console.dir(res);
 ```
 

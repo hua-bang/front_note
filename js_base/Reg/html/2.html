@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="username" id="">
+    <input type="password" name="password" id="">
+</body>
+<script>
+    let input = document.querySelector("[name='username']");
+    input.addEventListener("blur", e => {
+        const val = e.target.value;
+        let state = /^[a-z][\w]{2,7}$/i.test(val);
+        console.log(state ? "正确" : "错误");
+    });
+
+    let passwordInput = document.querySelector("[name='password']");
+    passwordInput.addEventListener("blur", e => {
+        const val = e.target.value.trim();
+        let regs = [/^[a-zA-Z0-9]{5,10}$/, /[A-Z]/];
+        let state = regs.every(v => v.test(val));
+        console.log(state ? "正确" : "错误");
+    })
+</script>
+</html>
