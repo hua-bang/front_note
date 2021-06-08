@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <template id="tmpl">
+       <script>
+           alert("hello");
+       </script> 
+       <div class="message">hello1, world</div>
+    </template>
+    <template id="tmpl2">
+        <style>
+            .shadow-test {
+                color: red
+            }
+        </style>
+        <p class="shadow-test">
+            
+        </p>
+    </template>
+    <div id="elem2">click</div>
+</body>
+<script>
+    let elem = document.createElement("div");
+    elem.append(tmpl.content.cloneNode(true));
+    document.body.append(elem);
+
+    elem2.onclick = () => {
+        elem2.attachShadow({
+            mode: "open"
+        });
+        elem2.shadowRoot.append(tmpl2.content.cloneNode(true));
+        elem2.shadowRoot.querySelector(".shadow-test").innerHTML = "hello, hug";
+    }
+</script>
+</html>
