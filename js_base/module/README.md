@@ -220,4 +220,23 @@
   };
   ```
 
-  
+
+#### Dynamic imports
+
+Export and import are called "static". The syntax is very simple and strict;
+
+1. The module path must be a primitive string, can't be a function call
+2. We can't import conditionally or at run-time
+
+#### The import() expression
+
+This expression loads the module and returns a promise that resolves into a moudle object that contains all its exports. It can be called from any plcae in the code
+
+```js
+let modulePath = prompt("Which module to load?");
+
+import(modulePath)
+  .then(obj => <module object>)
+  .catch(err => <loading error, e.g. if no such module>)
+```
+
