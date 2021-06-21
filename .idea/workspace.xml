@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fda6ea41-7eb6-4307-b7a6-722ad304de01" name="Default Changelist" comment="ShadowDOMSlot&#10;ShadowDOMStyle&#10;TemplateElement">
+    <list default="true" id="fda6ea41-7eb6-4307-b7a6-722ad304de01" name="Default Changelist" comment="HTTP_HTML_游览器的使用">
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/dist/bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/dist/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/src/img/hello.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/webpack.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/.babelrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/assets/hello.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/dist/bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/dist/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/src/a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/src/index.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/webpack.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engineering/webpack/image-20210621221700090.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/network/DHCP/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js_base/module/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/js_base/module/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,9 +36,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="SCSS File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -38,22 +62,31 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="1pIATzPrqxkS7Kxk6WOhWAJN80h" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Engineering/webpack/code/demo/src/img" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="ts.external.directory.path" value="F:\JetBrains\Toolbox\apps\WebStorm\ch-0\203.7717.59\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\github\js_note\Engineering\webpack\code\demo\src\img" />
+      <recent name="F:\github\js_note\Engineering\webpack\code\resource\assets" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\github\js_note\js_base\asynchronous\promise\executor" />
       <recent name="F:\github\js_note\js_base\function\private" />
@@ -61,6 +94,51 @@
       <recent name="F:\github\js_note\js_base\function\call" />
       <recent name="F:\github\js_note\js_base\function\this" />
     </key>
+  </component>
+  <component name="RunManager" selected="npm.build (1)">
+    <configuration default="true" type="NodeJSConfigurationType" path-to-node="E:/nodejs/node" path-to-js-file="$PROJECT_DIR$/test/proxy/index.js">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.js" type="NodeJSConfigurationType" path-to-node="C:/Program Files/nodejs/node" nameIsGenerated="true" path-to-js-file="test/proxy/index.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="build (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/Engineering/webpack/code/demo/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/Engineering/webpack/code/resource/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="hot" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/Engineering/webpack/code/resource/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="hot" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build (1)" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.hot" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -104,6 +182,14 @@
       <workItem from="1623155769450" duration="364000" />
       <workItem from="1623160010432" duration="22000" />
       <workItem from="1623288355904" duration="72000" />
+      <workItem from="1624178534500" duration="469000" />
+      <workItem from="1624179993780" duration="1952000" />
+      <workItem from="1624237696518" duration="440000" />
+      <workItem from="1624238160320" duration="1151000" />
+      <workItem from="1624239375875" duration="299000" />
+      <workItem from="1624239789100" duration="6112000" />
+      <workItem from="1624268281589" duration="28000" />
+      <workItem from="1624286120487" duration="1990000" />
     </task>
     <task id="LOCAL-00001" summary="字符串的迭代解析">
       <created>1614860624164</created>
@@ -322,7 +408,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623116548267</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="HTTP_HTML_游览器的使用">
+      <created>1624178639724</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1624178639724</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,7 +437,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="arrowFunction concise usage &#10;the direction of this" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="map,set,reduce,some,every,filter数组高级用法" />
     <MESSAGE value="startsWith, endsWith, template string" />
     <MESSAGE value="解构赋值的运用&#10;数组的解构&#10;对象的解构&#10;数组对象符合解构&#10;三点扩展运行符号的使用" />
@@ -369,7 +462,8 @@
     <MESSAGE value="dom的学习" />
     <MESSAGE value="VUE源码分析" />
     <MESSAGE value="ShadowDOMSlot&#10;ShadowDOMStyle&#10;TemplateElement" />
-    <option name="LAST_COMMIT_MESSAGE" value="ShadowDOMSlot&#10;ShadowDOMStyle&#10;TemplateElement" />
+    <MESSAGE value="HTTP_HTML_游览器的使用" />
+    <option name="LAST_COMMIT_MESSAGE" value="HTTP_HTML_游览器的使用" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -378,6 +472,16 @@
           <url>file://$PROJECT_DIR$/js_base/Object/prototype/dynamic.js</url>
           <line>16</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test/index.js</url>
+          <line>2</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test/proxy/index.js</url>
+          <line>9</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

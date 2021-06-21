@@ -1,0 +1,41 @@
+<head><script defer src="bundle.js"></script></head>Html Webpack Plugin:
+<pre>
+  Error: Child compilation failed:
+  Module Error (from ./node_modules/html-loader/dist/cjs.js):
+  HtmlSourceError: Bad value for attribute "src" on element "img": Must be non-empty (From line 9, column 6; to line 9, column 12)
+  ModuleError: Module Error (from ./node_modules/html-loader/dist/cjs.js):
+  HtmlSourceError: Bad value for attribute "src" on element "img": Must be non-empty (From line 9, column 6; to line 9, column 12)
+  
+  - NormalModule.js:550 Object.emitError
+    [demo]/[webpack]/lib/NormalModule.js:550:6
+  
+  - index.js:53 Object.loader
+    [demo]/[html-loader]/dist/index.js:53:10
+  
+  - child-compiler.js:169 
+    [demo]/[html-webpack-plugin]/lib/child-compiler.js:169:18
+  
+  - Compiler.js:538 
+    [demo]/[webpack]/lib/Compiler.js:538:11
+  
+  - Compiler.js:1106 
+    [demo]/[webpack]/lib/Compiler.js:1106:17
+  
+  
+  - Hook.js:18 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
+    [demo]/[tapable]/lib/Hook.js:18:14
+  
+  - Compiler.js:1102 
+    [demo]/[webpack]/lib/Compiler.js:1102:33
+  
+  - Compilation.js:2249 finalCallback
+    [demo]/[webpack]/lib/Compilation.js:2249:11
+  
+  - Compilation.js:2540 
+    [demo]/[webpack]/lib/Compilation.js:2540:11
+  
+  
+  - Hook.js:18 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
+    [demo]/[tapable]/lib/Hook.js:18:14
+  
+</pre>
