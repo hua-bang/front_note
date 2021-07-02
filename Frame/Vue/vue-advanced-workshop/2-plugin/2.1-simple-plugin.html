@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>    
+
+const RulesPlugin = {
+    install(Vue, options) {
+        Vue.mixin({
+            created() {
+                if(this.$options.rules) {
+                    Object.keys(this.$options.rules).forEach((key) => {
+                        const rule = this.$options.rules[key];
+                        this.$watch(key, (newValue) => {
+                            if(!rule.validate(newValue)) {
+                                console.log(rule.message);
+                            }
+                        });
+                    });
+                }
+            }
+        })
+    }
+};
+
+Vue.use(RulesPlugin);
+
+const vm = new Vue({
+  data: { foo: 10 },
+  rules: {
+    foo: {
+      validate: value => value > 1,
+      message: 'foo must be greater than one'
+    }
+  }
+})
+
+vm.foo = 0 // should log: "foo must be greater than one"
+
+
+</script>
+</html>
