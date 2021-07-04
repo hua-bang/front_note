@@ -71,13 +71,13 @@ class TreeNode {
 
 - 邻接表
 
-  - 使用数组 verticesvertices 存储顶点，邻接表 edgesedges 存储边。 edgesedges 为一个二维容器，第一维 ii 代表顶点索引，第二维 edges[i]edges[i] 存储此顶点对应的边集和；例如 edges[0] = [1, 2, 3, 4]edges[0]=[1,2,3,4] 代表 vertices[0]vertices[0] 的边集合为 [1, 2, 3, 4][1,2,3,4] 。
+  - 使用数组 vertices 存储顶点，邻接表 edges存储边。 edges为一个二维容器，第一维 ii 代表顶点索引，第二维 edges[i]edges[i] 存储此顶点对应的边集和；例如 edges[0] = [1, 2, 3, 4]edges[0]=[1,2,3,4] 代表 vertices[0]vertices[0] 的边集合为 [1, 2, 3, 4][1,2,3,4] 。
 
     ![image-20210629154307050](image-20210629154307050.png)
 
 - 邻接矩阵
 
-  -  使用数组 verticesvertices 存储顶点，邻接矩阵 edgesedges 存储边； edges[i][j]edges[i][j] 代表节点 i + 1i+1 和 节点 j + 1j+1 之间是否有边。
+  -  使用数组 vertices存储顶点，邻接矩阵 edges存储边； edges\[i\]\[j\]代表节点 i + 1i+1 和 节点 j + 1j+1 之间是否有边。
 
     ![image-20210629154259344](image-20210629154259344.png)
 
@@ -85,6 +85,8 @@ class TreeNode {
 
   - 邻接矩阵至于节点数量有关，N^2，当边数量少于节点数量，则邻接矩阵会造成比较大的浪费。
   - 邻接表 适合存储稀疏图（顶点较多、边较少）； 邻接矩阵 适合存储稠密图（顶点较少、边较多）
+
+同时，根据方向还分成有向图和无向图。同时要注意权值。
 
 **散列表**
 
