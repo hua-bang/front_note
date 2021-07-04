@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <Counter></Counter>
+        <Counter></Counter>
+        <Counter></Counter>
+        <button @click="increment">increment</button>
+    </div>
+</body>
+<script>    
+
+const state = new Vue({
+    // reactive
+    data() {
+        return {
+            count: 0
+        }
+    },
+    methods: {
+        
+        // hidden the detail of how state change
+        inc() {
+            this.count++;
+        }
+    }
+})
+
+const Counter = {
+    render: h => h('div', state.count)
+}
+
+const vm = new Vue({
+    el: "#app",
+    components: {
+        Counter
+    },
+    methods: {
+        increment() {
+            state.inc();
+        }
+    }
+})
+</script>
+</html>

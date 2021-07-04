@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+    </div>
+</body>
+<script>   
+
+function app ({ el, model, view, actions }) {
+
+    const wrapperActions = [];
+
+    Object.keys(actions).forEach(key => {
+        wrapperActions[key] = () => {
+            let result = actions[key](model);
+            Object.assign(model, result); 
+        }
+    })
+
+    return new Vue({
+        el,
+        data() {
+            return model;
+        },
+        render: h => view(h, model, wrapperActions)
+    })
+}
+
+
+
+// voila
+app({
+    el: '#app',
+    model: {
+        count: 0
+    },
+    actions: {
+        inc: ({ count }) => ({ count: count + 1 }),
+        dec: ({ count }) => ({ count: count - 1 })
+    },
+    view: (h, model, actions) => h('div', [
+        model.count, ' ',
+        h('button', { on: { click: actions.inc }}, '+'),
+        h('button', { on: { click: actions.dec }}, '-')
+    ])
+})
+</script>
+</html>

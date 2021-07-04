@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <Counter></Counter>
+        <Counter></Counter>
+        <Counter></Counter>
+        <button @click="increment">increment</button>       
+        <button @click="add">increment 2</button>
+    </div>
+</body>
+<script>    
+
+// vuex实际上也是基于响应式 
+
+/**
+ * 
+ * return Vue实例
+ */
+function createStore({ state, mutations }) {
+    return new Vue({
+        data() {
+            return {
+                state
+            };
+        },
+        methods: {
+            commit(mutationType, ...args) {
+                // closure nice.
+                mutations[mutationType](this.state, ...args);
+            }
+        }
+    })
+}
+
+const store = createStore({
+    state: {
+        count: 0
+    },
+    mutations: {
+        inc(state) {
+            state.count++;
+        },
+        add(state, val) {
+            state.count += val;
+        }
+    }
+});
+
+const Counter = {
+    render: h => h('div', store.state.count)
+}
+
+const vm = new Vue({
+    el: "#app",
+    components: {
+        Counter
+    },
+    methods: {
+        increment() {
+            store.commit("inc")
+        },
+        add() {
+            store.commit("add", 2);
+        }
+    }
+})
+</script>
+</html>
