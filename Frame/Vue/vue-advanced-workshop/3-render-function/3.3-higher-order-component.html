@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <avatar src="http://via.placeholder.com/200x200"></avatar>
+        <smart-avatar username="hug"></smart-avatar>
+    </div>
+</body>
+<script>
+const Avatar = {
+    props: ["src"],
+    template: `<img :src="src" />`
+};
+
+function fetchAvatar(username) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve("https://cn.vuejs.org/images/logo.svg");
+        }, 1000)
+    });    
+}
+
+//  the function must return the new component base InnerComponent
+function withAvatarURL(InnerComponent) {
+    return {
+        props: [ "username" ],
+        data() {
+            return {
+                url: "http://via.placeholder.com/200x200"
+            }
+        },
+        created() {
+            fetchAvatar(this.username).then(src => {
+                this.url = src;
+            })
+        },
+        render(h) {
+            return h(InnerComponent, {
+                props: {
+                    src: this.url
+                }
+            })
+        }
+    };
+}
+
+const SmartAvatar = withAvatarURL(Avatar)
+
+const vm = new Vue({
+    el: "#app",
+    components: {
+        Avatar,
+        SmartAvatar
+    }
+})
+</script>
+</html>
