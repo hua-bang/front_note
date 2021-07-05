@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+      <form @submit="validate">
+        <input v-model="text">
+        <br>
+        <input v-model="email">
+        <input v-model="number">
+    
+        <ul v-if="!$v.valid" style="color:red">
+          <li v-for="error in $v.errors">
+            {{ error }}
+          </li>
+        </ul>
+    
+        <input type="submit" :disabled="!$v.valid">
+      </form>
+    </div>
+</body>
+<script>
+
+
+const emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+const ValidatePlugin = {
+  install(Vue) {
+    Vue.mixin({
+      beforeCreate() {
+        this.$options.computed = Object.assign({}, this.$options.computed, {
+          $v() {
+            
+            const rules = this.$options.validations;
+          
+            let valid = true;
+            const errors = [];
+
+            Object.keys(rules).forEach(key => {
+              const validates = rules[key];
+              const value = this[key];
+
+              validates.forEach(validor => {
+                if(!validor.validate(value)) {
+                  valid = false;
+                  errors.push(validor.message(key, value));
+                }
+              })
+            })
+
+            return {
+              valid,
+              errors
+            }
+          }
+        })
+      },
+    });
+  }
+};
+
+Vue.use(ValidatePlugin);
+
+
+const vm = new Vue({
+  el: "#app",
+  data() {
+    return {
+      text: 'foo',
+      email: '',
+      number: ""
+    }
+  },
+  validations: {
+    text: [
+      {
+        validate: value => value.length >= 5,
+        message: (key, value) => `${key} should have a min length of 5, but got ${value.length}`
+      },
+      {
+        validate: value => value.length > 10,
+        message: (key, value) => `${key} should have a max length of 10, but got ${value.length}`
+      },
+    ],
+    email: [
+      {
+        validate: value => emailRE.test(value),
+        message: key => `${key} must be a valid email`
+      }
+    ],
+    number: [
+      {
+        validate: value => value.length > 5,
+        message: (key,value) => `${key} should have a min length of 5, but got ${value.length}`
+      },
+      {
+        validate: value => !isNaN(value),
+        message: key => `${key} must be number`
+      },
+    ]
+  },
+  methods: {
+    validate (e) {
+      if (!this.$v.valid) {
+        e.preventDefault()
+        alert('not valid!')
+      }
+    }
+  }
+});
+
+</script>
+</html>
