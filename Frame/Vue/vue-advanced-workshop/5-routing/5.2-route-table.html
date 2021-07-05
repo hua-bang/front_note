@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+    </div>
+</body>
+<script>
+const Foo = {
+    render(h) {
+        return h("div", "foo")
+    }
+};
+
+const Bar = {
+    render(h) {
+        return h("div", "bar")
+    }
+};
+
+const NotFound = {
+    render: h => h("div", "not found")
+}
+
+const routeTable = {
+    foo: Foo,
+    bar: Bar,
+    404: NotFound
+};
+
+
+const vm = new Vue({
+    el: "#app",
+    data() {
+        return {
+            path: window.location.hash.substr(1)
+        }
+    },
+    render(h) {
+        return h("div", [
+            (routeTable[this.path] ? h(routeTable[this.path]) : h(routeTable[404])),
+            h("a", { attrs: { href: "#bar"} }, "bar"),
+            h("a", { attrs: { href: "#foo"} }, "foo"),
+        ])
+        
+    }
+});
+
+window.addEventListener("hashchange", () => {
+    vm.path = window.location.hash.substr(1)
+});
+</script>
+</html>

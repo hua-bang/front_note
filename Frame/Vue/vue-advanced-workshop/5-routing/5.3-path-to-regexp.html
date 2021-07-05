@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="./path-to-regexp.js"></script>
+</head>
+<body>
+    <div id="app">
+    </div>
+</body>
+<script>
+
+// '#/foo/123' -> foo with id: 123
+// '#/bar' -> Bar
+// '#/404' -> NotFound
+
+// path-to-regexp usage:
+// const regex = pathToRegexp(pattern)
+// const match = regex.exec(path)
+
+// 1. 编译过后的路由
+
+const Foo = {
+  props: ['id', 'name'],
+  template: `<div>foo with id: {{ id }}, name: {{name}}</div>`
+}
+const Bar = { template: `<div>bar</div>` }
+const NotFound = { template: `<div>not found!</div>` }
+
+const routeTable = {
+  '/foo/:id/:name': Foo,
+  '/bar': Bar
+}
+
+// the arr to save the compiledRoute { dynamicSegments, regex, component }
+const compiledRoutes = [];
+Object.keys(routeTable).forEach(path => {
+    const dynamicSegments = [];
+    const regex = pathToRegexp(path, dynamicSegments);
+    const component = routeTable[path];
+
+    compiledRoutes.push({
+      dynamicSegments,
+      regex,
+      component
+    });
+})
+
+
+window.addEventListener('hashchange', () => {
+  app.url = window.location.hash.slice(1)
+})
+
+const app = new Vue({
+  el: '#app',
+  data: {
+    url: window.location.hash.slice(1)
+  },
+  render (h) {
+    const path = '/' + this.url
+
+    let componentToRender
+    let props = {};
+
+    compiledRoutes.some(compiledRoute => {
+      let match = compiledRoute.regex.exec(path);
+      if(match) {
+        // right
+        componentToRender = compiledRoute['component'];
+        compiledRoute.dynamicSegments.forEach((param, index) => {
+          props[param.name] = match[index+1];
+        })
+        return true;
+      }
+      return false;
+    })
+
+    return h('div', [
+      h(componentToRender || NotFound, { props }),
+      h('a', { attrs: { href: '#foo/123/hua' }}, 'foo 123'),
+      ' | ',
+      h('a', { attrs: { href: '#foo/234/test' }}, 'foo 234'),
+      ' | ',
+      h('a', { attrs: { href: '#bar' }}, 'bar'),
+      ' | ',
+      h('a', { attrs: { href: '#garbage' }}, 'garbage')
+    ])
+  }
+})
+
+</script>
+</html>

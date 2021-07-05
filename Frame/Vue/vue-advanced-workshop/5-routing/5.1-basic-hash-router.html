@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <a href="#foo">foo</a>
+        <a href="#bar">bar</a>
+        <my-router-view :path="path"></my-router-view>
+        <compoent :is="path"></compoent>
+    </div>
+</body>
+<script>
+const Foo = {
+    render(h) {
+        return h("div", "foo")
+    }
+};
+
+const Bar = {
+    render(h) {
+        return h("div", "bar")
+    }
+};
+
+const MyRouterView = {
+    props: [
+        "path"
+    ],
+    render(h) {
+        return this.path == "foo" ? h(Foo) : h(Bar); 
+    }
+}
+
+const vm = new Vue({
+    el: "#app",
+    components: {
+        MyRouterView,
+        Foo,
+        Bar
+    },
+    data() {
+        return {
+            path: window.location.hash.substr(1)
+        }
+    }
+});
+
+window.addEventListener("hashchange", () => {
+    let hash = window.location.hash.substr(1);
+    vm.path = hash;
+});
+</script>
+</html>
