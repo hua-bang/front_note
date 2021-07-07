@@ -13,6 +13,40 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
 
 }
 
+
+function quickSortIteration(arr) {
+    
+    const stack = [];
+
+    stack.push({
+        low: 0,
+        high: arr.length - 1
+    });
+
+    while (stack.length) {
+
+        let { low, high } = stack.pop();
+        let pivot = partition(arr, low, high);
+
+        if (pivot - 1 > low) {
+            stack.push({
+                low,
+                high: pivot - 1
+            })
+        }
+
+        if (pivot + 1 < high) {
+            stack.push({
+                low: pivot + 1 ,
+                high
+            })
+        }
+    }
+
+    return arr;
+
+}
+
 // 找基准值，注意 这里中还将数组进行了排序操作
 function partition(arr, left, right) {
     // 选择第一个为基准值
@@ -36,4 +70,6 @@ function swap(arr, i, j) {
     arr[i] = temp;
 }
 
-console.log(quickSort([2,29,3,15,22,8,30,25]))
+console.log(quickSort([2, 29, 3, 15, 22, 8, 30, 25]))
+
+console.log(quickSortIteration([2,29,3,15,22,8,30,25]))
