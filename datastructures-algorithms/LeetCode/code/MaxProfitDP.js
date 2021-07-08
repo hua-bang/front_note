@@ -28,5 +28,21 @@ var maxProfit = function(prices) {
     }
     return maxPro;
 };
+var maxProfit = function (prices) {
+	if (prices.length === 0) {
+		return 0;
+	}
+	const dp = [];
+	dp[0] = 0;
+	let min = prices[0];
+
+	for (let i = 1; i < prices.length; i++) {
+		min = min > prices[i] ? prices[i] : min;
+		let profit = prices[i] - min;
+		dp[i] = dp[i - 1] > profit ? dp[i - 1] : profit;
+	}
+
+	return dp[prices.length - 1];
+};
 
 console.log(maxProfit([7,1,5,3,6,4]));
