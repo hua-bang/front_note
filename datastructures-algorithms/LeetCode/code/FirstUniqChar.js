@@ -1,4 +1,5 @@
 // https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xn5z8r/
+// https://leetcode-cn.com/leetbook/read/illustration-of-algorithm/5viisg/
 
 /**
  * @param {string} s
@@ -40,3 +41,26 @@
     }
     return -1;
 };
+
+var firstUniqChar = function (s) {
+    if (s.length == 0) {
+        return " ";
+    }
+
+    let map = {};
+
+    for (let i = 0; i < s.length; i++) {
+        if (map[s[i]] === undefined) {
+            map[s[i]] = true;
+        } else {
+            map[s[i]] = false;
+        }
+    }
+
+    for (let i = 0; i < s.length; i++) {
+        if (map[s[i]]) {
+            return s[i];
+        }
+    }
+    return " ";
+}
