@@ -1,0 +1,6 @@
+html, body {
+  background: pink;
+}
+.test {
+  backface-visibility: hidden;
+}
