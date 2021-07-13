@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hr{
+            height: 1px;
+            background: black;
+        }
+        .scale-half {
+            transform: scaleY(0.5);
+            transform-origin: 50% 100%;
+        }
+        .linear-gradient {
+            background: linear-gradient(0deg, #fff, #000);
+        }
+        .boxshadow {
+            background: none;
+            box-shadow: 0 0.5px 0 #000;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>0.5px(scale)</p>
+        <div class="hr scale-half"></div>
+    </div>
+
+    <div>
+        <p>0.5px(linear-gradient)</p>
+        <div class="hr linear-gradient"></div>
+    </div>
+
+    <div>
+        <p>0.5px(boxshadow)</p>
+        <div class="hr boxshadow"></div>
+    </div>
+</body>
+</html>
