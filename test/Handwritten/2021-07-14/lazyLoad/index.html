@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div style="width: 100vw;">
+    <div>
+      <div>
+        <img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/acc4485e64354eb599b54569e5285e6a~tplv-k3u1fbpfcp-watermark.image"  style="height: 200px;width: 200px;"/>
+      </div>
+      <div>
+        <img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/acc4485e64354eb599b54569e5285e6a~tplv-k3u1fbpfcp-watermark.image"  style="height: 200px;width: 200px;"/>
+      </div>
+      <div>
+        <img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/acc4485e64354eb599b54569e5285e6a~tplv-k3u1fbpfcp-watermark.image"  style="height: 200px;width: 200px;"/>
+      </div>
+      <div>
+        <img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/acc4485e64354eb599b54569e5285e6a~tplv-k3u1fbpfcp-watermark.image"  style="height: 200px;width: 200px;"/>
+      </div>
+      <div>
+        <img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/acc4485e64354eb599b54569e5285e6a~tplv-k3u1fbpfcp-watermark.image"  style="height: 200px;width: 200px;"/>
+      </div>
+      <div>
+        <img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/acc4485e64354eb599b54569e5285e6a~tplv-k3u1fbpfcp-watermark.image"  style="height: 200px;width: 200px;"/>
+      </div>
+      <div>
+        <img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/acc4485e64354eb599b54569e5285e6a~tplv-k3u1fbpfcp-watermark.image"  style="height: 200px;width: 200px;"/>
+      </div>
+      <div>
+        <img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/acc4485e64354eb599b54569e5285e6a~tplv-k3u1fbpfcp-watermark.image"  style="height: 200px;width: 200px;"/>
+      </div>
+      <div>
+        <img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/acc4485e64354eb599b54569e5285e6a~tplv-k3u1fbpfcp-watermark.image"  style="height: 200px;width: 200px;"/>
+      </div>
+      <div>
+        <img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/acc4485e64354eb599b54569e5285e6a~tplv-k3u1fbpfcp-watermark.image"  style="height: 200px;width: 200px;"/>
+      </div>
+      <div>
+        <img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/acc4485e64354eb599b54569e5285e6a~tplv-k3u1fbpfcp-watermark.image"  style="height: 200px;width: 200px;"/>
+      </div>
+      <div>
+        <img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/acc4485e64354eb599b54569e5285e6a~tplv-k3u1fbpfcp-watermark.image"  style="height: 200px;width: 200px;"/>
+      </div>
+      <div>
+        <img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/acc4485e64354eb599b54569e5285e6a~tplv-k3u1fbpfcp-watermark.image"  style="height: 200px;width: 200px;"/>
+      </div>
+      <div>
+        <img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/acc4485e64354eb599b54569e5285e6a~tplv-k3u1fbpfcp-watermark.image"  style="height: 200px;width: 200px;"/>
+      </div>
+      <div>
+        <img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/acc4485e64354eb599b54569e5285e6a~tplv-k3u1fbpfcp-watermark.image"  style="height: 200px;width: 200px;"/>
+      </div>
+      <div>
+        <img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/acc4485e64354eb599b54569e5285e6a~tplv-k3u1fbpfcp-watermark.image"  style="height: 200px;width: 200px;"/>
+      </div>
+      
+      
+    </div>
+  </div>
+</body>
+<script>
+  function lazyload() {
+  const imgs = document.getElementsByTagName('img');
+  const len = imgs.length;
+  // 视口的高度
+  const viewHeight = document.documentElement.clientHeight;
+  // 滚动条高度
+  const scrollHeight = document.documentElement.scrollTop || document.body.scrollTop;
+  for (let i = 0; i < len; i++) {
+    const offsetHeight = imgs[i].offsetTop;
+    if (offsetHeight < viewHeight + scrollHeight) {
+      const src = imgs[i].dataset.src;
+      imgs[i].src = src;
+    }
+  }
+}
+window.addEventListener('scroll', lazyload);
+</script>
+</html>
