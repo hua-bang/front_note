@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "presets": {
+      "type": "array",
+      "description": "预设"
+    }
+  },
+  "additionalProperties": true
+}
