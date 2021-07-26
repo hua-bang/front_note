@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .mart100 {
+      margin-top: 100px;
+    }
+
+    .parent {
+      width: 400px;
+      border: 1px solid #FFB366;
+    }
+
+    .child {
+      float: left;
+      width: 100px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      border: 1px solid #79e679;
+    }
+
+    .parent::after {
+      content: "::after";
+      text-align: center;
+      display: block;
+      border: 1px solid #FF9999;
+    }
+
+    .clearfix::after {
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="parent mart100 clearfix">
+    <div class="child">child</div>
+    <div class="child">child</div>
+  </div>
+</body>
+
+</html>

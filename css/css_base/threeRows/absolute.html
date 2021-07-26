@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  .layout {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+  }
+
+  .header,
+  .footer {
+    height: 50px;
+    background: tomato;
+  }
+
+  .header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .main {
+    width: 100%;
+    height: 100%;
+    background: royalblue;
+    box-sizing: border-box;
+    padding: 50px 0;
+  }
+</style>
+
+<body>
+  <div class="layout">
+    <div class="header"></div>
+    <div class="main">
+      123
+    </div>
+    <div class="footer"></div>
+  </div>
+</body>
+
+</html>
