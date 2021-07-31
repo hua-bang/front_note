@@ -1,10 +1,24 @@
 import React, { Component } from 'react'
 import "./css/index.css";
 import UserItem from './Item';
+import PubSub from "pubsub-js";
 
 export default class UserList extends Component {
+  state = {
+    users: [],
+    isFirst: true,
+    isLoading: false,
+    error: ""
+  }
+
+  componentDidMount() {
+    PubSub.subscribe("ChangeListState", (msg, data) => {
+      this.setState(data)
+    })
+  }
+
   render() {
-    const { users, isFirst, isLoading, error } = this.props;
+    const { users, isFirst, isLoading, error } = this.state;
     return (
       <div>
         <div className="row">

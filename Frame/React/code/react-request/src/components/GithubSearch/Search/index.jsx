@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getUser } from "../../../api/github"
-
+import PubSub from 'pubsub-js';
 export default class Search extends Component {
 
   state = {
@@ -8,22 +8,22 @@ export default class Search extends Component {
   }
 
   searchKeyword = () => {
-    const context = this;
     const keyword = this.state.keyword;
-    context.props.updateAppState({
+    PubSub.publish("ChangeListState", {
       isFirst: false,
       isLoading: true
-    })
+    });
+
     getUser(keyword).then(res => {
-      context.props.saveUsers(res.data.items);
-      context.props.updateAppState({
+      PubSub.publish("ChangeListState", {
+        users: res.data.items,
         isLoading: false
-      })
+      });
     }).catch(error => {
-      context.props.updateAppState({
+      PubSub.publish("ChangeListState", {
         isLoading: false,
         error: error.message
-      })
+      });
     })
   }
 
