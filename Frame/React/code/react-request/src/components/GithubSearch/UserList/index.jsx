@@ -12,9 +12,13 @@ export default class UserList extends Component {
   }
 
   componentDidMount() {
-    PubSub.subscribe("ChangeListState", (msg, data) => {
+    this.token = PubSub.subscribe("ChangeListState", (msg, data) => {
       this.setState(data)
     })
+  }
+
+  componentWillUnmount() {
+    PubSub.unsubscribe(this.token);
   }
 
   render() {
