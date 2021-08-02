@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getUser } from "../../../api/github"
+import { getUser, getUserByFetch } from "../../../api/github"
 import PubSub from 'pubsub-js';
 export default class Search extends Component {
 
@@ -14,9 +14,9 @@ export default class Search extends Component {
       isLoading: true
     });
 
-    getUser(keyword).then(res => {
+    getUserByFetch(keyword).then(data => {
       PubSub.publish("ChangeListState", {
-        users: res.data.items,
+        users: data.items,
         isLoading: false
       });
     }).catch(error => {
