@@ -30,7 +30,7 @@ class Dep {
   }
 }
 
-function effectWatch(effect) {
+export function effectWatch(effect) {
   currentEffect = effect;
   effect();
   currentEffect = null;
@@ -52,7 +52,7 @@ function getDep(target, key) {
 
 const targetMap = new Map();
 
-function reactive(raw) {
+export function reactive(raw) {
   return new Proxy(raw, {
     get(target, key) {
       let dep = getDep(target, key);
@@ -68,9 +68,4 @@ function reactive(raw) {
       return result;
     }
   })
-}
-
-module.exports = {
-  reactive,
-  effectWatch
 }
