@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+<script>
+  function h(tag, props, children) {
+    return {
+      tag,
+      props,
+      children
+    }
+  }
+
+  let vdom = h("div", { class: "red" }, [
+    h("span", { style: "color: red" }, ["hello", h("p", null, "world")])
+  ]);
+
+  function mount(vnode, container) {
+    mountElement(vnode, container);
+  }
+
+  function mountElement(vnode, container) {
+
+    const { tag, props, children } = vnode;
+    // 1. tag
+    let el = vnode.el = document.createElement(tag);
+
+    // 2.props
+    if (props) {
+      Object.keys(props).forEach(key => {
+        el.setAttribute(key, props[key]);
+      })
+    }
+
+    // 3. children
+    if (children) {
+      if (["string", "number"].includes(typeof children)) {
+        el.textContent = children;
+      } else if (Array.isArray(children)) {
+        children.forEach(child => {
+          if (child.tag) {
+            mountElement(child, el);
+          }
+          else {
+            el.textContent = child;
+          }
+        })
+      }
+    }
+
+    container.appendChild(el);
+  }
+
+  mount(vdom, document.querySelector("#app"));
+
+  function pathch(n1, n2) {
+
+  }
+</script>
+
+</html>
