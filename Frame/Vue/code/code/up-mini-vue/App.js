@@ -44,10 +44,6 @@ export default {
       // 计算最小的更新点  -> vdom js对象
       // diff
 
-      // reset
-    // const div = document.createElement("div");
-    // div.innerText = context.state.count;
-    // return div;
     return h(
       "div",
       {
