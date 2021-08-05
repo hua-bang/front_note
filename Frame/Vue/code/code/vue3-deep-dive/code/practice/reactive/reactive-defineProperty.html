@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  let activeEffect;
+
+  class Dep {
+    effects = new Set();
+
+    depend() {
+      if (activeEffect) {
+        this.effects.add(activeEffect);
+      }
+    }
+
+    notice() {
+      this.effects.forEach(effect => effect());
+    }
+  }
+
+  function reactive(raw) {
+    Object.keys(raw).forEach(key => {
+      let dep = new Dep();
+      let value = raw[key];
+      Object.defineProperty(raw, key, {
+        get() {
+          dep.depend();
+          return value;
+        },
+        set(newValue) {
+          let oldValue = value;
+          value = newValue;
+          if (oldValue !== newValue) {
+            dep.notice();
+          }
+        }
+      })
+    })
+    return raw;
+  }
+
+  function watchEffect(effect) {
+    activeEffect = effect;
+    effect();
+    activeEffect = null;
+  }
+
+  const a = reactive({
+    value: 6
+  });
+
+  let b;
+
+  watchEffect(() => {
+    b = a.value * 2;
+    console.log(b);
+  })
+
+  a.value++;
+
+  a.value++;
+
+  a.value++;
+</script>
+
+</html>
