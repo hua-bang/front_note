@@ -153,8 +153,200 @@ function mountElement(vnode, container) {
 
 ### 5. 通过DomDiff高效更新视图
 
+通过对比最小的变动，去直接给dom节点打补丁，而非改变整个节点。
+
 ![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8d4f3cd633a747babce2fe13d85de791~tplv-k3u1fbpfcp-zoom-1.image)
 
 ### 6.总结
 
+以性能最优的方式去进行修改。
+
 ![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7280be36614c4bdeb0cc0a13235a33b5~tplv-k3u1fbpfcp-zoom-1.image)
+
+## 四、数据响应实现
+
+### 1.什么是数据响应
+
+#### 举个例子
+
+有这样一个需求，a和b有关联关系，要求a变化的时候，b也跟着变化，详细一点，b永远是a的两倍。（b = 2 * a）;
+
+#### 方案
+
+#### v1
+
+每次a改变的代码后，加上b代码的改变的逻辑。
+
+操作简单，但十分繁琐。
+
+```js
+let a = 10;
+let b = a * 2;
+a = 20;
+b = a * 2;
+```
+
+#### v2
+
+使用函数调用
+
+操作简单，但十分繁琐。
+
+```js
+let a = 10;
+let b;
+update();
+
+function update() {
+  b = a + 10;
+  console.log(b);
+}
+a = 20;
+update();
+```
+
+#### v3
+
+声明响应式对象进行调用, 借助`@vue/reactivity`
+
+```js
+const { effect, reactive } = require("@vue/reactivity");
+
+let a = reactive({
+  value: 1
+});
+let b;
+effect(() => {
+  b = a.value + 10;
+  console.log(b);
+});
+
+a.value = 30; // b = 40
+```
+
+问题来了，Vue3是如何实现的呢？
+
+### 2.Vue3响应式的实现
+
+Vue实现数据响应的原理是利用了数据劫持，同时也采用了观察者模式。
+
+#### 数据劫持：
+
+Vue2使用的是ES5的Object.defineProperty（劫持对象上的每一个属性）
+
+Vue3则采用的是ES6的Proxy（直接代理整个对象，劫持整个对象）
+
+希望你能先熟悉这两个api的用法及其意图
+
+- Object.defineProperty(https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+- Proxy(https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+
+#### 观察者模型：
+
+Dep可以简单理解为Set，存放dep对应的effect。
+
+Vue3对应的数据可以建立一个代理对象，每个代理对象上有很多的键，每个键会对应一个Dep，代理对象用了Map去维护自身的Deps，即depsMap，同时，我们有很多的对象，我们直接使用全局的targetMap来存储。
+
+![reactivity](reactivity.jpg)
+
+#### 数据响应=数据劫持 + 观察者模型
+
+思路：将每个对象进行代理，并且给每个对象的键都会设置好对应的dep，当我们的对象被访问时候，我们对应Proxy中的**traps**会进行拦截。
+
+当我们访问时，我们会触发他的**getter**，这时候我们的dep就可以去收集依赖。
+
+当我们修改时，我们会触发他的**setter**，这时候我们去通知依赖进行更新。
+
+注：在收集依赖的时候我们需要使用全局变量来存放当前的依赖。
+
+### 3.Vue3响应式的简单实现
+
+这里只是按照思路，并没有完整实现，完整请阅读Vue3源码。
+
+代码如下：
+
+```js
+let activeEffect;
+
+const targetMap = new WeakMap();
+
+function getDep(target, key) {
+  let depsMap = targetMap.get(target);
+  if (!depsMap) {
+    depsMap = new Map();
+    targetMap.set(target, depsMap);
+  }
+  let dep = depsMap.get(key);
+  if (!dep) {
+    dep = new Set();
+    depsMap.set(key, dep);
+  }
+  return dep;
+}
+
+function track(target, key) {
+  if (activeEffect) {
+    let dep = getDep(target, key);
+    dep.add(activeEffect);
+  }
+}
+
+function trigger(target, key) {
+  let dep = getDep(target, key);
+  dep.forEach(effect => {
+    effect();
+  })
+}
+
+const reactiveHandler = {
+  get(target, key, receiver) {
+    track(target, key);
+    return Reflect.get(target, key, receiver);
+  },
+  set(target, key, value, receiver) {
+    const oldValue = target[key];
+    const result = Reflect.set(target, key, value, receiver);
+    if (oldValue !== value) {
+      trigger(target, key);
+    }
+    return result;
+  }
+}
+
+function reactive(raw) {
+  return new Proxy(raw, reactiveHandler);
+}
+
+function watchEffect(effect) {
+  activeEffect = effect;
+  effect();
+  activeEffect = null;
+}
+
+const a = reactive({
+  value: 6
+});
+
+let b;
+
+watchEffect(() => {
+  b = a.value * 2;
+  console.log(b);
+})
+
+a.value++;
+
+a.value++;
+
+a.value++;
+
+a.value++;
+```
+
+结果如下
+
+![image-20210805222312772](image-20210805222312772.png)
+
+我们达到我们的预取结果，同时，其实我们看到effect中你可以中很多的时，比如，你可以去使得你的编译器根据你的数据去进行更新。
+
+so 就可以达到数据变化，视图也跟着改变的效果。
