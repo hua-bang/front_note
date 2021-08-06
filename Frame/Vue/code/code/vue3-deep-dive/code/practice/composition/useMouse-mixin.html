@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+</body>
+<script>
+  const { h, ref, createApp, onMounted, onUnmounted } = Vue;
+
+  const MouseMixin = {
+    data() {
+      return {
+        x: 0,
+        y: 0
+      }
+    },
+    methods: {
+      updateMouse(event) {
+        this.x = event.pageX;
+        this.y = event.pageY;
+      }
+    },
+    mounted() {
+      window.addEventListener("mousemove", this.updateMouse);
+    },
+    unmounted() {
+      window.removeEventListener("mousemove", this.updateMouse);
+    }
+  }
+
+
+  function withMouse(Inner) {
+    return {
+      data() {
+        return {
+          x: 0,
+          y: 0
+        }
+      },
+      methods: {
+        updateMouse(event) {
+          this.x = event.pageX;
+          this.y = event.pageY;
+        }
+      },
+      mounted() {
+        window.addEventListener("mousemove", this.updateMouse);
+      },
+      unmounted() {
+        window.removeEventListener("mousemove", this.updateMouse);
+      },
+      render() {
+        return h(Inner, {
+          x: this.x,
+          y: this.y
+        })
+      }
+    }
+  }
+
+  const App = {
+    mixins: [MouseMixin],
+    template: `
+      <div>
+        {{x}} --- {{y}}  
+      </div>
+    `
+  }
+
+  createApp(App).mount("#app");
+</script>
+
+</html>

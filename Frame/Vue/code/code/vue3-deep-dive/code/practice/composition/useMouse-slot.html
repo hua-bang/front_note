@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+</body>
+<script>
+  const { h, ref, createApp, onMounted, onUnmounted } = Vue;
+
+  const Mouse = {
+    data() {
+      return {
+        x: 0,
+        y: 0
+      }
+    },
+    methods: {
+      updateMouse(event) {
+        this.x = event.pageX;
+        this.y = event.pageY;
+      }
+    },
+    mounted() {
+      window.addEventListener("mousemove", this.updateMouse);
+    },
+    unmounted() {
+      window.removeEventListener("mousemove", this.updateMouse);
+    },
+    render() {
+      return this.$slots.default && this.$slots.default({
+        x: this.x,
+        y: this.y
+      })
+    }
+  }
+
+  const Foo = {
+    render() {
+      return this.$slots.default && this.$slots.default({
+        x: 1
+      })
+    }
+  }
+
+  const App = {
+    components: { Mouse, Foo },
+    template: `
+      <Mouse v-slot="{ x, y }">
+        <Foo v-slot="{x: foo}">
+          {{x}} --- {{y}} --- {{foo}}
+        </Foo>
+      </Mouse>
+    `
+  }
+
+  createApp(App).mount("#app");
+</script>
+
+</html>

@@ -6,6 +6,12 @@
 
 ## 前言
 
+#### 感谢
+
+这里特别感谢[全栈然叔](https://juejin.cn/user/1978776660216136)的文章，看完然叔的总结，从而自己也打算写一篇文章来进行总结。
+
+（注：小白第一次写文章，若有不规范之处，不足之处，也请各位大佬批评指正）
+
 #### 说明：
 
 这个视频的一些前置条件
@@ -13,6 +19,16 @@
 - 对JavaScript有一定的基础，比较能够理解API的用法以及用意。
 - 对Vue3的有一定认识，并明白Vue3的核心原理。
 - 充满热爱的心💪
+
+**视频链接**：
+
+[【原版视频】](https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/vue3-overview)
+
+[【bilibili】](https://www.bilibili.com/video/BV1rC4y187Vw?p=1)
+
+**参考文章**：
+
+[[Vue官方教程笔记]- 尤雨溪手写mini-vue](https://juejin.cn/post/6911897255087702030#heading-1)
 
 ## 一、整体流程
 
@@ -350,3 +366,107 @@ a.value++;
 我们达到我们的预取结果，同时，其实我们看到effect中你可以中很多的时，比如，你可以去使得你的编译器根据你的数据去进行更新。
 
 so 就可以达到数据变化，视图也跟着改变的效果。
+
+## 四、响应式 + 渲染函数 = 简易mini-vue的实现
+
+我们将响应式和渲染函数结合在一起，实现简单的mini-vue
+
+当然这里用了render函数，并没有涉及template及其编译相关的步骤。
+
+思路：我们组件的render函数可以根据使用vue中的响应式变量，这时候，我们将render渲染的逻辑放入watchEffect，使得响应式数据对应的dep可以进行收集。
+
+```js
+watchEffect(() => {
+  if (!isMouted) {
+    prevNode = component.render();
+    mount(prevNode, container);
+    isMouted = true;
+  } else {
+    let currNode = component.render();
+    patch(prevNode, currNode);
+    prevNode = currNode;
+  }
+})
+```
+
+这里我们可以看到，我们分为挂载前和挂载后的逻辑
+
+- 挂载前：
+  - 第一次挂载，我们通过render生成Vnode，在挂载到对应的容器上
+  - 此时会通过mount函数进行渲染。
+  - 记录挂载的状态，并保存这个Vnode
+- 挂载后
+  - 后面的挂载，我们通过render生成Vnode
+  - 生成了Vnode之后，我们去对比之前保存的旧的Vnode和新的Vnode，在对应的DOM打补丁。
+  - 并保存这个Vnode
+
+代码：
+
+```js
+import { mount, patch } from "../core/render/index.js";
+import { reactive, watchEffect } from "../core/reactivity/index.js";
+
+export function createApp(component) {
+  return {
+    mount(container) {
+      let isMouted = false;
+      let prevNode;
+      watchEffect(() => {
+        if (!isMouted) {
+          prevNode = component.render();
+          mount(prevNode, container);
+          isMouted = true;
+        } else {
+          let currNode = component.render();
+          patch(prevNode, currNode);
+          prevNode = currNode;
+        }
+      })
+    }
+  }
+}
+```
+
+```js
+import { h } from "../core/render/h.js";
+import { mount, patch } from "../core/render/index.js";
+import { reactive, watchEffect } from "../core/reactivity/index.js";
+
+export default {
+  data: reactive({
+    count: 0
+  }),
+  render() {
+    return h("div", {
+      onClick: () => { this.data.count++; }
+    }, String(this.data.count));
+  }
+}
+```
+
+```js
+import { createApp } from "../core/index.js";
+import App from "./App.js";
+
+createApp(App).mount(document.querySelector("#app"));
+```
+
+效果如下
+
+![动画](动画.gif)
+
+## 源码地址
+
+源码放在github上，有兴趣的小伙伴可以看看喔
+
+[vue3-deep-dive]: https://github.com/hua-bang/front_note/tree/master/Frame/Vue/code/code/vue3-deep-dive
+
+## 总结
+
+看过尤大大的一些课程，质量是真的高，简明扼要同时又能抓住重点。
+
+个人感觉比实现更加重要的是，编程时候的思维，思想。
+
+整个课程尤大大并非都是在将实现，而是当我们有了一个可行的编程思想，我们再去加以实现。
+
+（注：小白第一次写文章，若有不规范之处，不足之处，也请各位大佬批评指正）

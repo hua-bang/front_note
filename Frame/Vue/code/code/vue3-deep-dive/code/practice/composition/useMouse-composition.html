@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div id="app">
+    {{x}} --- {{y}}
+  </div>
+</body>
+<script>
+  const { h, ref, createApp, onMounted, onUnmounted } = Vue;
+
+  function useMouse() {
+    const x = ref(0);
+    const y = ref(0);
+
+    function handlerMousemove(event) {
+      x.value = event.pageX;
+      y.value = event.pageY;
+    }
+
+    onMounted(() => {
+      window.addEventListener("mousemove", handlerMousemove);
+    })
+
+    onUnmounted(() => {
+      window.removeEventListener("mousemove", handlerMousemove);
+    });
+
+    return {
+      x, y
+    }
+  }
+
+  const App = {
+    setup() {
+      return {
+        ...useMouse()
+      }
+    }
+  }
+
+  createApp(App).mount("#app");
+</script>
+
+</html>

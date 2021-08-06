@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div id="app">
+  </div>
+</body>
+<script>
+  const { h, ref, createApp, onMounted, onUnmounted, watchEffect, isReactive } = Vue;
+
+  function useFetch(getUrl) {
+    const data = ref(null);
+    const error = ref(null);
+    const isPending = ref(true);
+
+    watchEffect(() => {
+      isPending.value = true;
+      data.value = null;
+      error.value = null;
+      fetch(getUrl())
+        .then(res => res.json())
+        .then(res => {
+          setTimeout(() => {
+            isPending.value = false;
+            data.value = res;
+          }, 1000);
+        }).catch(err => {
+          isPending.value = false;
+          error.value = err
+        });
+    })
+
+    return {
+      data,
+      error,
+      isPending
+    }
+  }
+
+
+  function useGetMockJson(getId) {
+    return useFetch(() => `https://jsonplaceholder.typicode.com/todos/${getId()}`)
+  }
+  const Post = {
+    props: ['id'],
+    template: `
+      <div v-if="isPending">loading~~~</div>
+      <div v-else>
+        <div v-if="data">{{data}}</div>
+        <div v-if="error">something went {{error.message}}</div>
+      </div>
+    `,
+    setup(props) {
+      const { data, error, isPending } = useGetMockJson(() => props.id);
+
+      return {
+        data,
+        error,
+        isPending
+      }
+    }
+  }
+
+  const App = {
+    components: {
+      Post
+    },
+    template: `
+      <Post :id="id" />
+      <button @click="id++">plus id</button>
+    `,
+    setup() {
+      const id = ref(1);
+
+      return {
+        id
+      }
+    }
+  }
+
+  createApp(App).mount("#app");
+</script>
+
+</html>
