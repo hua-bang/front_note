@@ -1,0 +1,20 @@
+{
+  "include": [
+    "./src/**/*"
+  ],
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "es5", /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', 'ES2021', or 'ESNEXT'. */
+    "module": "commonjs", /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
+    "allowJs": true, /* 默认为false 编译js */
+    "checkJs": false, /* 是否检查Js， 默认为false */
+    "removeComments": false, /*移除注释 默认false*/
+    "noEmit": false, // 不生成编译后的文件
+    "noEmitOnError": false, // 错误时不生成编译后的文件
+    "alwaysStrict": true, // 开启严格模式,
+    "noImplicitAny": true, // 检查隐式any
+    "noImplicitThis": true, // 检查隐式this
+    "strictNullChecks": false, // 检查null，
+    "strict": false, // 所有严格的总开关
+  }
+}
