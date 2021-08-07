@@ -1,0 +1,16 @@
+{
+  "presets": [
+    [
+      // 指定环境的插件
+      "@babel/preset-env",
+      {
+        "targets": {
+          "chrome": "88"
+        },
+        "corejs": "3",
+        // 按需加载
+        "useBuiltIns": "usage"
+      }
+    ]
+  ]
+}
