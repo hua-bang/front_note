@@ -1,4 +1,4 @@
-var ProductOfNumbers = function() {
+var ProductOfNumbers = function () {
     this.list = [];
 };
 
@@ -6,7 +6,7 @@ var ProductOfNumbers = function() {
  * @param {number} num
  * @return {void}
  */
-ProductOfNumbers.prototype.add = function(num) {
+ProductOfNumbers.prototype.add = function (num) {
     this.list.push(num);
 };
 
@@ -14,9 +14,9 @@ ProductOfNumbers.prototype.add = function(num) {
  * @param {number} k
  * @return {number}
  */
-ProductOfNumbers.prototype.getProduct = function(k) {
+ProductOfNumbers.prototype.getProduct = function (k) {
     let result = 1;
-    for(let i = this.list.length - k; i < this.list.length; i++) {
+    for (let i = this.list.length - k; i < this.list.length; i++) {
         result *= this.list[i];
     }
     return result;
