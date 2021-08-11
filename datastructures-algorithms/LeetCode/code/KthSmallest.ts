@@ -13,18 +13,19 @@ class TreeNode {
 
 function kthSmallest(root: TreeNode | null, k: number): number {
   let stack: TreeNode[] = [];
-  let res = [];
+  let count = 1;
   while (root || stack.length) {
     while (root) {
       stack.push(root);
       root = root.left;
     }
     let node = stack.pop();
-    res.push(node.val);
+    if (count++ === k) {
+      return node.val;
+    }
     if (node.right) {
       root = node.right;
     }
-  }
-  console.log(res);
-  return res[k - 1];
+  };
+  return -1;
 };
