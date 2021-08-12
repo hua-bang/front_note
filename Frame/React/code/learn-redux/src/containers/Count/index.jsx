@@ -4,7 +4,7 @@ import {
   createIncrementAction,
   createIncrementAsyncAction,
   createDecrementAction
-} from "../../redux/count_action";
+} from "../../redux/actions/count";
 // 1. 定义UI组件
 
 class Count extends React.Component {
@@ -46,7 +46,8 @@ class Count extends React.Component {
     return (
       <div>
         <div className="title">
-          <h2>目前的Count为{ this.props.count }</h2>
+          <h2>目前的Count为{this.props.count}</h2>
+          <h2>下方人数组件为{ this.props.people.length }</h2>
         </div>
         <div className="content">
           <select value={this.state.selectedNumber} onChange={ this.changeSelectedNumber }>
@@ -70,7 +71,8 @@ class Count extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    count: state
+    count: state.count,
+    people: state.people
   };
 }
 
