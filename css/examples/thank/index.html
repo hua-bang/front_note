@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+  <title>Document</title>
+  <style>
+    :root {
+      font-size: 32px;
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      background-color: #FFCD00;
+      font-family: 'Concert One', cursive;
+      perspective: 2500px;
+    }
+
+    h1,
+    h2 {
+      position: relative;
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 10rem;
+      animation: 5s rotate ease-in-out infinite;
+    }
+
+    h1::after {
+      content: "30000";
+
+    }
+
+    h1::before {
+      content: "30000";
+    }
+
+    h1::before,
+    h2::before,
+    h1::after,
+    h2::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    img {
+      width: 100px;
+      margin-top: 60px;
+    }
+
+    h2::after,
+    h2::before {
+      content: "Thank You!";
+    }
+
+    h1::before {
+      color: #009CDE;
+      animation: 5s h1-before ease-in-out infinite;
+    }
+
+    h1::after {
+      color: #003C71;
+      animation: 5s h1-after ease-in-out infinite;
+    }
+
+    @keyframes h1-before {
+
+      0%,
+      100% {
+        transform: translate3d(15px, 5px, -10px);
+      }
+
+      50% {
+        transform: translate3d(-15px, 5px -10px);
+      }
+    }
+
+    @keyframes h1-after {
+
+      0%,
+      100% {
+        transform: translate3d(30px, 10px, -20px);
+      }
+
+      50% {
+        transform: translate3d(-30px, 10px, -20px);
+      }
+    }
+
+    @keyframes rotate {
+
+      0%,
+      100% {
+        transform: rotate3d(0, 1, 0, -20deg);
+      }
+
+      50% {
+        transform: rotate3d(0, 1, 0, 20deg);
+      }
+    }
+
+    h2 {
+      font-size: 5rem;
+      letter-spacing: -4px;
+      animation: 2.5s thank-you ease-in-out infinite;
+    }
+
+    @keyframes thank-you {
+
+      0%,
+      100% {
+        transform: rotate3d(1, 0, 0, -10deg);
+      }
+
+      50% {
+        transform: rotate3d(1, 0, 0, 10deg);
+      }
+    }
+
+    @keyframes h2-before {
+
+      0%,
+      100% {
+        transform: translate3d(0px, 6px, -10px);
+      }
+
+      50% {
+        transform: translate3d(0px, -3px, -10px);
+      }
+    }
+
+    h2::after {
+      color: #003C71;
+      animation: 2.5s h2-after ease-in-out infinite;
+    }
+
+    h2::before {
+      color: #009CDE;
+      animation: 2.5s h2-before ease-in-out infinite;
+    }
+
+    @keyframes h2-after {
+
+      0%,
+      100% {
+        transform: translate3d(0px, 12px, -20px);
+      }
+
+      50% {
+        transform: translate3d(0px, -6px, -20px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>30000</h1>
+  <h2>Thank You!</h2>
+
+  <a href="https://space.bilibili.com/451368848" target="_blank">
+    <img src="https://assets.codepen.io/2002878/codingstartup-logo-rounded.png" />
+  </a>
+</body>
+
+</html>
