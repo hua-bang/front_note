@@ -1,4 +1,5 @@
-const { compose } = require("./express");
+// const { compose } = require("./express");
+const { compose } = require("./simple");
 const middlewares = [
   next => {
     console.log('1 start')

@@ -1,4 +1,4 @@
-exports.compose = (middlewares = []) => {
+exports.composeAsync = (middlewares = []) => {
   return async () => {
     let count = 0;
     async function next() {
@@ -9,5 +9,14 @@ exports.compose = (middlewares = []) => {
       }
     }
     return await next();
+  };
+}
+
+exports.compose = (middlewares = []) => {
+  let count = 0;
+  return function next() {
+    if (count < middlewares.length) {
+      return middlewares[count++](next);
+    }
   };
 }
