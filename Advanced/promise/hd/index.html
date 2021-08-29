@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="./index.js">
+</script>
+<script>
+  // let p1 = new HPromise((resolve, reject) => {
+  //   resolve("b")
+  // }).then(res => {
+  //   return p1
+  // },error => {
+  //   console.log("error")
+  // });
+
+  let p1 = new HPromise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("p1")
+    }, 2000)
+  })
+
+  let p2 = new HPromise((resolve, reject) => {
+    resolve("p2")
+  })
+
+  let p3 = HPromise.reject("p3");
+  HPromise.all([p1, p2, "3"]).then(res => {
+    console.log(res);
+  }, err => {
+    console.log(err);
+  })
+
+  HPromise.race([p1, p2, "3"]).then(res => {
+    console.log(res);
+  }, err => {
+    console.log(err);
+  })
+  // HPromise.resolve(p1).then(res => {
+  //   console.log(res);
+  // }, (err) => {
+  //   console.log("err" + err);
+  // })
+
+
+  // HPromise.reject("error").then(res => {
+  //   console.log(res);
+  // }, error => {
+  //   console.log(error);
+  // })
+</script>
+
+</html>
