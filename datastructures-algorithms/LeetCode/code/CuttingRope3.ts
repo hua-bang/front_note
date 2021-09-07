@@ -1,4 +1,4 @@
-function cuttingRope(n) {
+function cuttingRope(n: number): number {
   if (n <= 3) {
     return n - 1;
   }
@@ -9,4 +9,4 @@ function cuttingRope(n) {
     n = n - 3;
   }
   return res * n % (1e9 + 7);
-}
+};
