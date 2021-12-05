@@ -1,0 +1,17 @@
+<template>
+  <div>
+    <ul>
+      <li style="color: red;" > name: {{ name }}</li>
+      <li> age: {{ age }}</li>
+      <li> role: {{ role }}</li>
+    </ul>
+  </div>
+</template>
+
+<script>
+export default () => ({
+  name: 'hug',
+  age: '18',
+  role: 'student'
+})
+</script>
