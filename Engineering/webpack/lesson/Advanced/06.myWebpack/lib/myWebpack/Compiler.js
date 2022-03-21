@@ -51,7 +51,8 @@ class Compiler {
       }
     }, {});
 
-    this.generate(depsGraph);
+    // this.generate(depsGraph);
+    this.generateByDepsGraph(depsGraph);
   }
 
   // 开始构建
@@ -105,7 +106,27 @@ class Compiler {
     fs.writeFileSync(filePath, bundle, "utf-8");
   }
 
+  generateByDepsGraph(depsGraph) {
+    const bundle = `
+      (function (depsGraph) {
+        function require(module) {
+          function localRequire(module) {
+            return require(depsGraph[module].deps[relativePath]);
+          }
 
+          var exports = {};
+
+          (function (require, exports, code) {
+            eval(code);
+          })(localRequire, exports, depsGraph[module].code)
+
+          return exports;
+        }
+
+        require('${this.options.entry}')
+      })(${JSON.stringify(depsGraph)})
+    `
+  }
 }
 
 module.exports = Compiler;

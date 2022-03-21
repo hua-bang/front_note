@@ -1,0 +1,23 @@
+{
+  "name": "vue-loader-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@vue/compiler-sfc": "^3.1.5",
+    "vue-loader": "^16.2.0",
+    "vue-template-compiler": "^2.6.14"
+  }
+}

@@ -7,5 +7,5 @@ module.exports = function (content) {
   validate(schema, options, {
     name: "loader3"
   });
-  return content;
+  return "loader " + content;
 }
