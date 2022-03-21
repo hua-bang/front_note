@@ -12,7 +12,7 @@
                 "<node_internals>/**"
             ],
             "runtimeExecutable": "E:/nvm/v14.15.1/node.exe",
-            "program": "${workspaceFolder}/test/index.js",
+            "program": "${workspaceFolder}/datastructures-algorithms/LeetCode/code/BreakfastNumber.js",
         }
     ]
 }

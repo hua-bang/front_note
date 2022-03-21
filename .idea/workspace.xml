@@ -2,31 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fda6ea41-7eb6-4307-b7a6-722ad304de01" name="Default Changelist" comment="HTTP_HTML_游览器的使用">
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/dist/bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/dist/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/src/img/hello.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/demo/webpack.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/.babelrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/assets/hello.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/dist/bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/dist/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/src/a.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/src/index.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/code/resource/webpack.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engineering/webpack/image-20210621221700090.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/network/DHCP/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/Docs.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/docs/BFC.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/image-20210701203034061.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/code/api/args.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/code/api/console.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/code/api/process.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/code/api/require-export/a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/code/api/require-export/b.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/code/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/code/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/paths/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engineering/gulp/demo/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Engineering/gulp/demo/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datastructures-algorithms/algorithms/QuickSort.js" beforeDir="false" afterPath="$PROJECT_DIR$/datastructures-algorithms/algorithms/QuickSort.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,6 +180,7 @@
       <workItem from="1624239789100" duration="6112000" />
       <workItem from="1624268281589" duration="28000" />
       <workItem from="1624286120487" duration="1990000" />
+      <workItem from="1625642195789" duration="30000" />
     </task>
     <task id="LOCAL-00001" summary="字符串的迭代解析">
       <created>1614860624164</created>
