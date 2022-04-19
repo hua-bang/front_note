@@ -1,0 +1,28 @@
+{
+  "name": "js_note",
+  "version": "1.0.0",
+  "description": "记录个人学习前端的知识。",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hua-bang/front_note.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hua-bang/front_note/issues"
+  },
+  "homepage": "https://github.com/hua-bang/front_note#readme",
+  "dependencies": {
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  }
+}
