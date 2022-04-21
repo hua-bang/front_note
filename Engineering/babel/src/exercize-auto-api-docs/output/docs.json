@@ -1,0 +1,83 @@
+[
+  {
+    "type": "function",
+    "name": "sayHi",
+    "params": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "age",
+        "type": "number"
+      },
+      {
+        "name": "a",
+        "type": "boolean"
+      }
+    ],
+    "return": "string",
+    "doc": {
+      "description": "测试函数",
+      "tags": [
+        {
+          "title": "param",
+          "description": "名字",
+          "type": null,
+          "name": "name"
+        },
+        {
+          "title": "param",
+          "description": "年龄",
+          "type": null,
+          "name": "age"
+        },
+        {
+          "title": "param",
+          "description": "测试",
+          "type": null,
+          "name": "a"
+        },
+        {
+          "title": "returns",
+          "description": "string",
+          "type": null
+        }
+      ]
+    }
+  },
+  {
+    "type": "class",
+    "name": "A",
+    "constructorInfo": {
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ]
+    },
+    "methodsInfo": [
+      {
+        "name": "sayHi",
+        "doc": {
+          "description": "方法测试",
+          "tags": []
+        },
+        "params": [],
+        "return": "string"
+      }
+    ],
+    "propertiesInfo": [
+      {
+        "name": "name",
+        "type": "string",
+        "doc": []
+      }
+    ],
+    "doc": {
+      "description": "类测试",
+      "tags": []
+    }
+  }
+]
